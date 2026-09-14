@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { Navbar, NavTabType } from './components/Navbar';
 import { MatchmakerView } from './components/MatchmakerView';
@@ -33,7 +33,9 @@ import {
   Handshake,
   Info,
   Compass,
-  HelpCircle
+  HelpCircle,
+  ChevronDown,
+  ChevronUp
 } from 'lucide-react';
 
 type TabType = NavTabType;
@@ -45,6 +47,23 @@ const MainContent: React.FC = () => {
   const [isAICounselorOpen, setIsAICounselorOpen] = useState(false);
   const [aiContext, setAiContext] = useState<{ college: string; program: string } | null>(null);
   const [selectedOfferApplication, setSelectedOfferApplication] = useState<Application | null>(null);
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const onScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  const handleScrollAction = () => {
+    if (scrollY < 250) {
+      window.scrollBy({ top: 600, behavior: 'smooth' });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
 
   const handleOpenAICounselor = (context?: { college: string; program: string }) => {
     setAiContext(context || null);
@@ -138,6 +157,26 @@ const MainContent: React.FC = () => {
           <ContactView onOpenAICounselor={handleOpenAICounselor} />
         )}
       </main>
+
+      {/* Floating Scroll Navigation Button */}
+      <button
+        onClick={handleScrollAction}
+        className="fixed bottom-20 right-6 z-40 bg-white/95 backdrop-blur-xs hover:bg-slate-50 text-slate-700 hover:text-indigo-600 p-3 sm:px-4 sm:py-2.5 rounded-full shadow-lg border border-slate-200/90 flex items-center gap-1.5 transition-all duration-200 cursor-pointer hover:shadow-xl hover:scale-105"
+        title={scrollY < 250 ? 'Scroll Down' : 'Back to Top'}
+        aria-label={scrollY < 250 ? 'Scroll Down' : 'Back to Top'}
+      >
+        {scrollY < 250 ? (
+          <>
+            <ChevronDown className="w-4 h-4 text-indigo-600 animate-bounce" />
+            <span className="text-xs font-semibold hidden sm:inline">Scroll Down</span>
+          </>
+        ) : (
+          <>
+            <ChevronUp className="w-4 h-4 text-indigo-600" />
+            <span className="text-xs font-semibold hidden sm:inline">Back to Top</span>
+          </>
+        )}
+      </button>
 
       {/* Floating AI Counselor Floating Trigger */}
       <button
