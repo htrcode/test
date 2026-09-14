@@ -1,0 +1,48 @@
+<svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="margexaNavy" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b2447" />
+      <stop offset="100%" stop-color="#19376d" />
+    </linearGradient>
+    <linearGradient id="roadTealLight" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00796b" />
+      <stop offset="45%" stop-color="#009688" />
+      <stop offset="100%" stop-color="#26a69a" />
+    </linearGradient>
+    <linearGradient id="roadTealDark" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#004d40" />
+      <stop offset="60%" stop-color="#00796b" />
+      <stop offset="100%" stop-color="#00897b" />
+    </linearGradient>
+  </defs>
+
+  <!-- M Left Pillar -->
+  <path d="M90 220C90 160 110 112 162 112C202 112 230 148 250 180C262 160 282 132 310 116V220H262V168C250 152 234 136 218 136C194 136 178 156 174 188V220H90Z" fill="url(#margexaNavy)"/>
+  <path d="M90 156C90 120 122 108 150 108C186 108 214 144 234 176C246 156 266 124 298 116V228H254V172C242 156 226 140 210 140C186 140 174 160 170 192V228H90V156Z" fill="#0b2447"/>
+  <path d="M266 132H314V224H266V132Z" fill="#0b2447"/>
+
+  <!-- Roadway Pathway -->
+  <path d="M78 224C114 188 174 156 254 136C278 130 302 126 314 124V140C298 142 274 146 250 152C178 172 122 204 94 236L78 224Z" fill="url(#roadTealDark)"/>
+  <path d="M90 236C122 196 186 164 266 144C286 138 302 134 314 132V144C302 146 286 150 266 156C190 176 130 208 102 244L90 236Z" fill="url(#roadTealLight)"/>
+  <path d="M98 232C126 198 186 168 270 148C290 142 306 140 314 138V140C302 142 286 144 266 150C190 170 130 202 102 236L98 232Z" fill="#ffffff" opacity="0.9"/>
+
+  <!-- Pedestal -->
+  <rect x="294" y="104" width="20" height="30" rx="2" fill="#009688"/>
+
+  <!-- Mortarboard -->
+  <polygon points="304,48 376,74 304,100 232,74" fill="#0b2447"/>
+  <path d="M260 86L304 104L348 86V96C348 110 328 122 304 122C280 122 260 110 260 96V86Z" fill="#081c38"/>
+  <circle cx="304" cy="74" r="5" fill="#26a69a"/>
+  <path d="M304 74C328 76 360 80 368 100V120" stroke="#0b2447" stroke-width="5" stroke-linecap="round"/>
+  <ellipse cx="368" cy="124" rx="6" ry="10" fill="#0b2447"/>
+
+  <!-- Wordmark -->
+  <text x="50" y="310" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="52" fill="#0b2447" letter-spacing="4">MARGE</text>
+  <text x="282" y="310" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="52" fill="#009688" letter-spacing="4">X</text>
+  <text x="328" y="310" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="52" fill="#0b2447" letter-spacing="4">A</text>
+
+  <!-- Tagline -->
+  <rect x="30" y="348" width="30" height="2" rx="1" fill="#009688"/>
+  <text x="70" y="352" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="14.5" fill="#0b2447" letter-spacing="0.5">Your College. Your Course. Our Guidance.</text>
+  <rect x="340" y="348" width="30" height="2" rx="1" fill="#009688"/>
+</svg>

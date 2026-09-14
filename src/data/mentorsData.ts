@@ -1,0 +1,43 @@
+import { Mentor } from '../types';
+
+export const MENTORS_DATA: Mentor[] = [
+  {
+    id: 'mentor-1',
+    name: 'Prof. K. Sreedharan',
+    role: 'Former Academic Dean & Calicut University Advisor',
+    affiliation: 'Senior Academic Consultant for Chathamkulam Institutions & KTU',
+    experience: '28+ Years in Higher Education',
+    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80',
+    expertise: ['MBA & BBA Career Pathways', 'Kerala University Allotment Rules', 'Chathamkulam Admissions', 'SOP Guidance'],
+    rating: 4.95,
+    sessionsCount: 640,
+    availableSlots: ['Today 4:00 PM', 'Tomorrow 11:00 AM', 'Tomorrow 3:30 PM', 'Friday 5:00 PM'],
+    bio: 'Guided more than 4,000 students into top management and engineering institutions in Kerala. Specializes in matching student aptitude with campus culture and placement realities.',
+  },
+  {
+    id: 'mentor-2',
+    name: 'Er. Ananya Nair',
+    role: 'Senior Tech Recruiter & Career Strategist',
+    affiliation: 'Ex-TCS Innovation Labs, Mentor at MARGEXA',
+    experience: '12+ Years in Tech & Polytechnic Mentorship',
+    avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80',
+    expertise: ['Polytechnic Diploma vs B.Tech Decisions', 'Full Stack & AI Course Selection', 'Internship Planning'],
+    rating: 4.9,
+    sessionsCount: 420,
+    availableSlots: ['Today 6:00 PM', 'Tomorrow 2:00 PM', 'Saturday 10:30 AM'],
+    bio: 'Passionate about engineering pathways, polytechnic lateral entries, and career prospects in Kerala IT corridors (Infopark & Technopark).',
+  },
+  {
+    id: 'mentor-3',
+    name: 'Adv. Mathew Thomas',
+    role: 'Higher Education Legal & Scholarship Specialist',
+    affiliation: 'Kerala State Education Advocacy Forum',
+    experience: '16+ Years in Scholarship Law & Admission Portals',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80',
+    expertise: ['E-Grantz & State Scholarships', 'Minority & Merit Waivers', 'Distance vs Regular Degree Validity'],
+    rating: 4.88,
+    sessionsCount: 310,
+    availableSlots: ['Tomorrow 10:00 AM', 'Thursday 4:00 PM', 'Saturday 2:00 PM'],
+    bio: 'Ensures no deserving student is denied higher education due to financial hardship. Expert in identifying fee waivers and institutional grants.',
+  },
+];
