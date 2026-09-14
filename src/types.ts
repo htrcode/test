@@ -24,6 +24,8 @@ export interface StudentProfile {
   counselorRequested: boolean;
   avatar?: string;
   isRegistered: boolean;
+  isVipMember?: boolean;
+  vipPlanExpiry?: string;
 }
 
 export interface Program {

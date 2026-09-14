@@ -3,6 +3,7 @@ import path from "path";
 import { createServer as createViteServer } from "vite";
 import { GoogleGenAI } from "@google/genai";
 import dotenv from "dotenv";
+import { MARGEXA_KNOWLEDGE_BASE, generateDomainExpertReply as generateRichDomainReply } from "./src/data/advisorKnowledge";
 
 dotenv.config();
 
@@ -565,7 +566,7 @@ async function startServer() {
 
       if (!ai) {
         // Use our deeply trained domain-expert knowledge engine
-        const reply = generateDomainExpertReply(userMessage, profile);
+        const reply = generateRichDomainReply(userMessage, profile);
         return res.json({ reply, source: "margexa-expert-engine" });
       }
 
@@ -573,7 +574,7 @@ async function startServer() {
 Your goal is to provide accurate, authoritative, thorough, and highly encouraging admission counseling to students seeking higher education in Kerala.
 
 EXTENSIVE KNOWLEDGE BASE:
-${CHATHAMKULAM_KNOWLEDGE}
+${MARGEXA_KNOWLEDGE_BASE}
 
 STUDENT PROFILE CONTEXT:
 - Name: ${profile?.name || 'Candidate'}
@@ -587,16 +588,22 @@ ${currentCollegeContext ? `Contextual College/Course: ${JSON.stringify(currentCo
 
 COUNSELING DIRECTIVES:
 1. Always directly and thoroughly address the student's question with specific Kerala and Chathamkulam facts, figures, fees, and rules.
-2. If the student asks about Chathamkulam Institutions or merit scholarships/fee waivers, explicitly state the tier structure:
-   - 90%+: 50% tuition fee waiver
-   - 80-89%: 40% tuition fee waiver
-   - 70-79%: 25% tuition fee waiver
-   - Calculate their specific discounted fee based on their score (${profile?.percentage || 75}%).
-3. If they ask about Chathamkulam Business School (CBS) MBA, detail the dual specializations (Logistics & Supply Chain, Finance, Marketing, HR, Systems), Calicut University affiliation, KMAT cutoff, and placement statistics (94%+).
-4. If they ask about Polytechnic Diplomas, compare Computer, Mechanical, and Civil branches, explain lateral entry to B.Tech 2nd year through Kerala LET, and detail Chathamkulam Polytechnic.
-5. If they ask about Distance vs Regular Education, explain that degrees from UGC-DEB recognized universities (Sree Narayanaguru Open University - SGOU, Calicut SDE, IGNOU) are 100% valid for Kerala PSC and government exams, and contrast the cost/flexibility with regular campus placements.
-6. If they ask about Institutional Registration or Career Guidance Centers, explain how colleges can register quota seats and how career consultancies partner with MARGEXA for up to 40% revenue share.
-7. Format your response cleanly with clear headings, bullet points, and bold text. Avoid generic or repetitive answers.`;
+2. If the student asks about Student VIP Mentorship or Priority VIP Counseling:
+   - Emphasize that it is a SINGLE MONTHLY PLAN of ₹349/month (students do NOT have to pay every time they consult).
+   - It covers BOTH guaranteed 20-minute priority callback / video consultation AND 1-on-1 private strategy sessions with senior deans (Prof. K. Sreedharan, Er. Ananya Nair, Adv. Mathew Thomas).
+   - All bookings during the active month are 100% free with zero per-session fees.
+3. If the student asks about Chathamkulam Institutions or merit scholarships/fee waivers, explicitly state the tier structure:
+   - Tier 1 (90%+): 50% tuition fee waiver
+   - Tier 2 (80-89%): 40% tuition fee waiver
+   - Tier 3 (70-79%): 25% tuition fee waiver
+   - Single Girl Child: ₹10,000 annual subsidy
+   - Calculate their specific discounted fee based on their score (${profile?.percentage || 75}%) and budget (₹${profile?.budget ? Number(profile.budget).toLocaleString('en-IN') : '1,00,000'}/yr).
+4. If they ask about Chathamkulam Business School (CBS) MBA, detail the dual specializations (Logistics & Supply Chain, Finance, Marketing, HR, Systems), Calicut University affiliation, KMAT cutoff (~72/720), and placement statistics (94%+, avg 4.8 - 6.2 LPA, recruiters like Federal Bank, TCS, HDFC, Flipkart, DHL, EY).
+5. If they ask about Polytechnic Diplomas, detail Computer, Mechanical, and Civil branches at Chathamkulam Polytechnic, explain lateral entry to 2nd year for +2 PCM/ITI, and progression to B.Tech 2nd year through Kerala LET (bypassing KEAM).
+6. If they ask about Distance vs Regular Education, explain that degrees from UGC-DEB recognized universities (Sree Narayanaguru Open University - SGOU, Calicut SDE, IGNOU) are 100% legally valid for Kerala PSC, UPSC, KAS, and government exams, and contrast the cost/flexibility with regular campus placements.
+7. If they ask about Hostels & Transportation, detail Chathamkulam's separate secure hostels with Kerala mess (₹4,500 - ₹5,500/month) and 6 bus routes connecting Palakkad, Ottapalam, Alathur, Mannarkkad, Chittur, and Walayar.
+8. If they ask about Guidance Centers & Consultancies, explain the partnership tiers (Silver: Free/₹5k commission, Gold: ₹19,999/mo/₹10k commission, Platinum: ₹49,999/mo/₹15k commission).
+9. Format your response cleanly with clear markdown headings (###), bullet points, and bold text. Avoid generic or repetitive answers.`;
 
       const geminiPromise = ai.models.generateContent({
         model: "gemini-3.8-flash",
@@ -616,13 +623,13 @@ COUNSELING DIRECTIVES:
       );
 
       const response = await Promise.race([geminiPromise, timeoutPromise]);
-      const reply = response?.text || generateDomainExpertReply(userMessage, profile);
+      const reply = response?.text || generateRichDomainReply(userMessage, profile);
       res.json({ reply, source: "gemini" });
     } catch (error: any) {
       console.error("AI Counselor note:", error?.message || error);
       const userMessage = (req.body.message || req.body.query || "").trim();
       const profile = req.body.profile || req.body.studentProfile || {};
-      const fallbackReply = generateDomainExpertReply(userMessage, profile);
+      const fallbackReply = generateRichDomainReply(userMessage, profile);
       res.json({
         reply: fallbackReply,
         source: "margexa-expert-engine-fallback",

@@ -3,6 +3,7 @@ import Markdown from 'react-markdown';
 import { useAuth } from '../context/AuthContext';
 import { MargexaIcon } from './MargexaLogo';
 import { Send, Sparkles, X, User, RefreshCw, HelpCircle, ShieldCheck } from 'lucide-react';
+import { generateDomainExpertReply } from '../data/advisorKnowledge';
 
 interface AICounselorDrawerProps {
   isOpen: boolean;
@@ -111,10 +112,11 @@ How can I guide your admission journey today?`;
       };
       setMessages((prev) => [...prev, botMsg]);
     } catch (err) {
+      const richReply = generateDomainExpertReply(userPrompt, student);
       const fallbackMsg: ChatMessage = {
         id: (Date.now() + 1).toString(),
         sender: 'assistant',
-        text: `With your score of **${student.percentage}%** and budget of **₹${student.budget.toLocaleString('en-IN')}/year**, you are eligible for direct seat allotment and up to **40% merit fee concessions** at Chathamkulam Institutions (Palakkad). Please apply through your MARGEXA dashboard or call our helpline at **+91 94470 12389**.`,
+        text: richReply,
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
       };
       setMessages((prev) => [...prev, fallbackMsg]);
@@ -124,13 +126,14 @@ How can I guide your admission journey today?`;
   };
 
   const quickPrompts = [
+    'Tell me about the ₹349/month VIP Mentorship plan',
     'How do I qualify for Chathamkulam merit fee waivers?',
     'Tell me about Chathamkulam Business School MBA options',
-    'Which diploma branch has the highest placement in Kerala?',
     'Can I join B.Tech 2nd year after polytechnic diploma (LET)?',
     'Distance vs Regular Degree: which is valid for Kerala PSC?',
-    'What courses fit my exact budget and marks?',
+    'BCA vs B.Tech: Which is better for software jobs?',
     'What are the hostel, food, and bus facilities at Chathamkulam?',
+    'What courses fit my exact budget and marks?',
     'How can Career Guidance Centers partner with MARGEXA?',
   ];
 

@@ -69,9 +69,9 @@ const FAQ_DATA: FAQItem[] = [
   {
     id: 'faq-vip-mentorship',
     category: 'general',
-    question: 'Can students take 1-on-1 VIP Mentorship, and what is the fee?',
+    question: 'How does the Student VIP Mentorship Monthly Plan (₹349/month) work?',
     answer:
-      'Yes! Students can take a 1-on-1 VIP Academic Mentorship session for just ₹349 (special student rate, 65% off regular ₹999). This includes a private 30-minute live video session with veteran academic deans, KTU/Calicut University advisors, and corporate recruiters. Your mentor analyzes your academic marks, guides you through college shortlisting, checks your Chathamkulam merit scholarship eligibility, and delivers a customized admission roadmap.',
+      'The Student VIP Mentorship is an all-inclusive monthly plan for just ₹349/month. Students DO NOT have to pay every time they book! It unlocks both key VIP features: (1) Book Priority VIP Counseling with guaranteed 20-minute fast-track callbacks or video consultations from senior admission officers, and (2) 1-on-1 Personalized Academic Mentorship sessions with veteran academic deans, KTU/Calicut University advisors, and corporate placement heads. All sessions throughout your active subscription month are 100% included with no per-session fees.',
   },
   {
     id: 'faq-7',

@@ -29,6 +29,10 @@ interface AuthContextType {
   setIsAuthModalOpen: (open: boolean) => void;
   isProfileModalOpen: boolean;
   setIsProfileModalOpen: (open: boolean) => void;
+  isVipMember: boolean;
+  vipPlanExpiry: string;
+  subscribeVipPlan: () => void;
+  cancelVipPlan: () => void;
 }
 
 const DEFAULT_PROFILE: StudentProfile = {
@@ -47,6 +51,8 @@ const DEFAULT_PROFILE: StudentProfile = {
   entranceExam: 'KMAT / Board Merit',
   counselorRequested: true,
   isRegistered: true,
+  isVipMember: false,
+  vipPlanExpiry: '',
 };
 
 const INITIAL_APPLICATIONS: Application[] = [
@@ -212,10 +218,32 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const updateProfile = (updated: Partial<StudentProfile>) => {
-    setStudent((prev) => ({
-      ...prev,
-      ...updated,
-    }));
+    setStudent((prev) => {
+      const next = { ...prev, ...updated };
+      try {
+        localStorage.setItem('margexa_student_profile', JSON.stringify(next));
+      } catch (e) {
+        console.error('Failed to persist profile', e);
+      }
+      return next;
+    });
+  };
+
+  const subscribeVipPlan = () => {
+    const nextMonth = new Date();
+    nextMonth.setDate(nextMonth.getDate() + 30);
+    const expiryStr = `Active until ${nextMonth.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}`;
+    updateProfile({
+      isVipMember: true,
+      vipPlanExpiry: expiryStr,
+    });
+  };
+
+  const cancelVipPlan = () => {
+    updateProfile({
+      isVipMember: false,
+      vipPlanExpiry: '',
+    });
   };
 
   const applyToProgram = (college: College, program: Program) => {
@@ -345,6 +373,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         setIsAuthModalOpen,
         isProfileModalOpen,
         setIsProfileModalOpen,
+        isVipMember: Boolean(student.isVipMember),
+        vipPlanExpiry: student.vipPlanExpiry || '',
+        subscribeVipPlan,
+        cancelVipPlan,
       }}
     >
       {children}

@@ -196,7 +196,7 @@ export const MatchmakerView: React.FC<MatchmakerViewProps> = ({
         </div>
       </div>
 
-      {/* Student VIP Mentorship Banner (₹349) */}
+      {/* Student VIP Mentorship Banner (₹349/month) */}
       <div className="bg-gradient-to-r from-amber-500/15 via-indigo-500/10 to-blue-500/15 border border-amber-300/80 rounded-2xl p-4 sm:p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 text-left shadow-xs">
         <div className="flex items-start sm:items-center gap-3.5">
           <div className="w-10 h-10 rounded-xl bg-amber-500 text-white flex items-center justify-center shrink-0 shadow-sm mt-0.5 sm:mt-0">
@@ -205,29 +205,29 @@ export const MatchmakerView: React.FC<MatchmakerViewProps> = ({
           <div>
             <div className="flex flex-wrap items-center gap-2">
               <span className="text-[10px] uppercase font-black tracking-wider text-amber-900 bg-amber-200/90 px-2 py-0.5 rounded border border-amber-300">
-                Special Student Rate • ₹349
+                VIP Mentorship Monthly Plan • ₹349/mo
               </span>
               <h3 className="text-sm font-bold text-slate-950">
-                Students can also take 1-on-1 VIP Academic Mentorship
+                Students can get Priority VIP Counseling & 1-on-1 Mentorship for ₹349/mo
               </h3>
             </div>
             <p className="text-xs text-slate-600 mt-0.5 leading-relaxed">
-              Book a targeted 30-minute private video session with former university deans to evaluate your college cutoff rank, Chathamkulam merit quota, and institutional fee waivers.
+              One monthly subscription unlocks 20-minute priority callbacks and 1-on-1 strategic sessions with veteran academic deans. You do not have to pay every time!
             </p>
           </div>
         </div>
 
         <div className="flex items-center gap-3 shrink-0 self-end md:self-auto">
           <div className="text-right hidden sm:block">
-            <div className="text-xs text-slate-400 line-through">₹999</div>
-            <div className="text-sm font-black text-slate-900">₹349 / session</div>
+            <div className="text-xs text-slate-400 font-medium">Monthly Plan</div>
+            <div className="text-sm font-black text-slate-900">₹349 / month</div>
           </div>
           <button
             onClick={() => onNavigateToMentorship && onNavigateToMentorship()}
             className="px-4 py-2 rounded-xl bg-slate-900 hover:bg-indigo-600 text-white text-xs font-bold transition whitespace-nowrap cursor-pointer flex items-center gap-1.5 shadow-xs"
           >
             <Crown className="w-3.5 h-3.5 text-amber-400" />
-            Book VIP Mentorship (₹349)
+            Get VIP Plan (₹349/mo)
           </button>
         </div>
       </div>

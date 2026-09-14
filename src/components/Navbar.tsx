@@ -313,7 +313,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenC
                         VIP Mentorship
                       </span>
                       <span className="px-1.5 py-0.5 rounded text-[10px] font-black bg-amber-100 text-amber-900 border border-amber-300">
-                        ₹349
+                        ₹349/mo
                       </span>
                     </button>
                   </div>
@@ -475,7 +475,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenC
             }`}
           >
             <Crown className="w-3.5 h-3.5 text-amber-500" />
-            VIP Mentorship (₹349)
+            VIP Mentorship (₹349/mo)
           </button>
           <button
             onClick={() => setActiveTab('partners')}
