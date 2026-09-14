@@ -50,7 +50,7 @@ const FAQ_DATA: FAQItem[] = [
     category: 'partners',
     question: 'How does the MARGEXA Partner Network work for Career Guidance Centers and Consultancies?',
     answer:
-      'Educational consultancies, coaching centers, and individual career advisors can enroll as certified MARGEXA partners. Partners receive authorized admission quotas, white-label counseling tools, priority document processing, and direct per-admission commissions:\n• Silver Counselor: Direct admission commission of ₹5,000 per student.\n• Gold Certified Center: Monthly subscription of ₹10,000/mo with ₹10,000 commission per admission.\n• Platinum Master Franchise: Monthly subscription of ₹15,000/mo with ₹15,000 commission per admission and exclusive district territorial rights.',
+      'Educational consultancies, coaching centers, and individual career advisors can enroll as certified MARGEXA partners. Partners receive authorized admission quotas, white-label counseling tools, priority document processing, and direct per-admission commissions:\n• Silver Counselor: Direct admission commission of ₹5,000 per student.\n• Gold Certified Center: Monthly subscription of ₹19,999/mo with ₹10,000 commission per admission.\n• Platinum Master Franchise: Monthly subscription of ₹49,999/mo with ₹15,000 commission per admission and exclusive district territorial rights.',
   },
   {
     id: 'faq-5',
@@ -65,6 +65,13 @@ const FAQ_DATA: FAQItem[] = [
     question: 'Is MARGEXA free for students, or are there hidden admission charges?',
     answer:
       'MARGEXA is 100% FREE for students and parents! You can take our AI compatibility assessment, compare course fees, check scholarship eligibility, apply for institutional seats, and download your verified Provisional Offer Letter without paying a single rupee. All tuition fees and hostel deposits are paid directly to the respective college accounts.',
+  },
+  {
+    id: 'faq-vip-mentorship',
+    category: 'general',
+    question: 'Can students take 1-on-1 VIP Mentorship, and what is the fee?',
+    answer:
+      'Yes! Students can take a 1-on-1 VIP Academic Mentorship session for just ₹349 (special student rate, 65% off regular ₹999). This includes a private 30-minute live video session with veteran academic deans, KTU/Calicut University advisors, and corporate recruiters. Your mentor analyzes your academic marks, guides you through college shortlisting, checks your Chathamkulam merit scholarship eligibility, and delivers a customized admission roadmap.',
   },
   {
     id: 'faq-7',

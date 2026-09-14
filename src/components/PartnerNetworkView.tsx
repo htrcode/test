@@ -49,7 +49,7 @@ export const PartnerNetworkView: React.FC<PartnerNetworkViewProps> = ({
   const [city, setCity] = useState('Kozhikode');
   const [district, setDistrict] = useState('Kozhikode');
   const [studentVolume, setStudentVolume] = useState<CareerCenterPartner['annualStudentVolume']>('50-100 students');
-  const [selectedTier, setSelectedTier] = useState<CareerCenterPartner['partnershipTier']>('Gold Certified (₹10,000/mo)');
+  const [selectedTier, setSelectedTier] = useState<CareerCenterPartner['partnershipTier']>('Gold Certified (₹19,999/mo)');
   const [services, setServices] = useState<string[]>(['Plus Two Career Guidance', 'Degree & MBA Admissions']);
 
   // Success State
@@ -414,7 +414,7 @@ export const PartnerNetworkView: React.FC<PartnerNetworkViewProps> = ({
                   </div>
                   <div>
                     <div className="text-2xl font-black text-slate-950 font-heading">
-                      ₹10,000 <span className="text-xs font-normal text-slate-500">/ month</span>
+                      ₹19,999 <span className="text-xs font-normal text-slate-500">/ month</span>
                     </div>
                     <div className="text-xs font-bold text-indigo-700 mt-0.5">
                       Commission: ₹10,000 per admission
@@ -450,13 +450,13 @@ export const PartnerNetworkView: React.FC<PartnerNetworkViewProps> = ({
 
                 <button
                   onClick={() => {
-                    setSelectedTier('Gold Certified (₹10,000/mo)');
+                    setSelectedTier('Gold Certified (₹19,999/mo)');
                     const el = document.getElementById('consultancy-reg-form');
                     el?.scrollIntoView({ behavior: 'smooth' });
                   }}
                   className="w-full py-2.5 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold shadow-md shadow-indigo-600/20 transition cursor-pointer"
                 >
-                  Apply for Gold Certified (₹10,000/mo)
+                  Apply for Gold Certified (₹19,999/mo)
                 </button>
               </div>
 
@@ -471,7 +471,7 @@ export const PartnerNetworkView: React.FC<PartnerNetworkViewProps> = ({
                   </div>
                   <div>
                     <div className="text-2xl font-black text-slate-950 font-heading">
-                      ₹15,000 <span className="text-xs font-normal text-slate-500">/ month</span>
+                      ₹49,999 <span className="text-xs font-normal text-slate-500">/ month</span>
                     </div>
                     <div className="text-xs font-bold text-amber-700 mt-0.5">
                       Commission: ₹15,000 per admission
@@ -507,13 +507,13 @@ export const PartnerNetworkView: React.FC<PartnerNetworkViewProps> = ({
 
                 <button
                   onClick={() => {
-                    setSelectedTier('Platinum Master Franchise (₹15,000/mo)');
+                    setSelectedTier('Platinum Master Franchise (₹49,999/mo)');
                     const el = document.getElementById('consultancy-reg-form');
                     el?.scrollIntoView({ behavior: 'smooth' });
                   }}
                   className="w-full py-2.5 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold transition cursor-pointer"
                 >
-                  Apply for Master Franchise (₹15,000/mo)
+                  Apply for Master Franchise (₹49,999/mo)
                 </button>
               </div>
             </div>
@@ -702,11 +702,11 @@ export const PartnerNetworkView: React.FC<PartnerNetworkViewProps> = ({
                       <option value="Silver Counselor (₹5,000 commission)">
                         Silver Counselor (₹5,000/mo • ₹5,000 Commission)
                       </option>
-                      <option value="Gold Certified (₹10,000/mo)">
-                        Gold Certified (₹10,000/mo • ₹10,000 Commission - Popular)
+                      <option value="Gold Certified (₹19,999/mo)">
+                        Gold Certified (₹19,999/mo • ₹10,000 Commission - Popular)
                       </option>
-                      <option value="Platinum Master Franchise (₹15,000/mo)">
-                        Platinum Master Franchise (₹15,000/mo • ₹15,000 Commission)
+                      <option value="Platinum Master Franchise (₹49,999/mo)">
+                        Platinum Master Franchise (₹49,999/mo • ₹15,000 Commission)
                       </option>
                     </select>
                   </div>

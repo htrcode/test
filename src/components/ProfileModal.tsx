@@ -11,11 +11,12 @@ import {
   MapPin,
   Building,
   Save,
-  CheckCircle2
+  CheckCircle2,
+  LogOut
 } from 'lucide-react';
 
 export const ProfileModal: React.FC = () => {
-  const { student, updateProfile, isProfileModalOpen, setIsProfileModalOpen } = useAuth();
+  const { student, updateProfile, isProfileModalOpen, setIsProfileModalOpen, logout } = useAuth();
 
   const [formData, setFormData] = useState({
     name: student.name,
@@ -351,22 +352,37 @@ export const ProfileModal: React.FC = () => {
             />
           </div>
 
-          {/* Footer Save */}
-          <div className="pt-2 border-t border-slate-100 flex items-center justify-end gap-3">
+          {/* Footer Save & Sign Out */}
+          <div className="pt-3 border-t border-slate-100 flex items-center justify-between gap-3">
             <button
               type="button"
-              onClick={() => setIsProfileModalOpen(false)}
-              className="px-4 py-2 text-sm text-slate-600 hover:text-slate-900 font-medium transition cursor-pointer"
+              onClick={() => {
+                logout();
+                setIsProfileModalOpen(false);
+              }}
+              className="px-3.5 py-2 rounded-xl text-rose-600 hover:bg-rose-50 border border-rose-200/80 text-xs font-bold flex items-center gap-1.5 transition cursor-pointer"
+              title="Sign out of your account"
             >
-              Cancel
+              <LogOut className="w-3.5 h-3.5" />
+              Sign Out
             </button>
-            <button
-              type="submit"
-              className="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm shadow-md shadow-indigo-500/20 transition cursor-pointer flex items-center gap-2"
-            >
-              <Save className="w-4 h-4" />
-              Save Profile & Update Matches
-            </button>
+
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={() => setIsProfileModalOpen(false)}
+                className="px-4 py-2 text-sm text-slate-600 hover:text-slate-900 font-medium transition cursor-pointer"
+              >
+                Cancel
+              </button>
+              <button
+                type="submit"
+                className="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm shadow-md shadow-indigo-500/20 transition cursor-pointer flex items-center gap-2"
+              >
+                <Save className="w-4 h-4" />
+                Save Profile
+              </button>
+            </div>
           </div>
         </form>
       </div>

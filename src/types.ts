@@ -103,6 +103,8 @@ export interface CareerCenterPartner {
   annualStudentVolume: '20-50 students' | '50-100 students' | '100-300 students' | '300+ students';
   partnershipTier:
     | 'Silver Counselor (₹5,000 commission)'
+    | 'Gold Certified (₹19,999/mo)'
+    | 'Platinum Master Franchise (₹49,999/mo)'
     | 'Gold Certified (₹10,000/mo)'
     | 'Platinum Master Franchise (₹15,000/mo)'
     | 'Silver Counselor (Free)'
