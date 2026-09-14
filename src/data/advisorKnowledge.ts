@@ -131,7 +131,7 @@ E. Campus Hostels, Mess & Transport Facilities:
 ===================================================================
 6. MARGEXA CONSULTANCY & GUIDANCE CENTER PARTNERSHIP TIERS
 ===================================================================
-- Silver Counselor: Free registration, ₹5,000 referral commission per verified admission.
+- Silver Counselor: ₹9,999/month, ₹5,000 referral commission per verified admission.
 - Gold Certified Partner: ₹19,999/month, ₹10,000 referral commission, co-branded student dashboard, direct Chathamkulam quota desk.
 - Platinum Master Franchise: ₹49,999/month, ₹15,000 referral commission, exclusive territorial rights for taluk/district, institutional priority allotment.
 `;
@@ -572,7 +572,7 @@ For personal seat reservation guidance, contact our Admissions Desk at **+91 944
 MARGEXA collaborates with certified educational consultancies, student counseling centers, and career guides across Kerala:
 
 * **Partnership Tiers:**
-  1. **Silver Counselor (Free Registration):**
+  1. **Silver Counselor (₹9,999/Month):**
      - **₹5,000 Referral Commission** per successfully enrolled student.
      - Access to the MARGEXA digital referral desk and admission brochures.
   2. **Gold Certified Partner (₹19,999/Month):**

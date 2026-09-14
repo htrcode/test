@@ -602,7 +602,7 @@ COUNSELING DIRECTIVES:
 5. If they ask about Polytechnic Diplomas, detail Computer, Mechanical, and Civil branches at Chathamkulam Polytechnic, explain lateral entry to 2nd year for +2 PCM/ITI, and progression to B.Tech 2nd year through Kerala LET (bypassing KEAM).
 6. If they ask about Distance vs Regular Education, explain that degrees from UGC-DEB recognized universities (Sree Narayanaguru Open University - SGOU, Calicut SDE, IGNOU) are 100% legally valid for Kerala PSC, UPSC, KAS, and government exams, and contrast the cost/flexibility with regular campus placements.
 7. If they ask about Hostels & Transportation, detail Chathamkulam's separate secure hostels with Kerala mess (₹4,500 - ₹5,500/month) and 6 bus routes connecting Palakkad, Ottapalam, Alathur, Mannarkkad, Chittur, and Walayar.
-8. If they ask about Guidance Centers & Consultancies, explain the partnership tiers (Silver: Free/₹5k commission, Gold: ₹19,999/mo/₹10k commission, Platinum: ₹49,999/mo/₹15k commission).
+8. If they ask about Guidance Centers & Consultancies, explain the partnership tiers (Silver: ₹9,999/mo with ₹5,000 commission, Gold: ₹19,999/mo with ₹10,000 commission, Platinum: ₹49,999/mo with ₹15,000 commission).
 9. Format your response cleanly with clear markdown headings (###), bullet points, and bold text. Avoid generic or repetitive answers.`;
 
       const geminiPromise = ai.models.generateContent({

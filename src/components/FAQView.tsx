@@ -50,7 +50,7 @@ const FAQ_DATA: FAQItem[] = [
     category: 'partners',
     question: 'How does the MARGEXA Partner Network work for Career Guidance Centers and Consultancies?',
     answer:
-      'Educational consultancies, coaching centers, and individual career advisors can enroll as certified MARGEXA partners. Partners receive authorized admission quotas, white-label counseling tools, priority document processing, and direct per-admission commissions:\n• Silver Counselor: Direct admission commission of ₹5,000 per student.\n• Gold Certified Center: Monthly subscription of ₹19,999/mo with ₹10,000 commission per admission.\n• Platinum Master Franchise: Monthly subscription of ₹49,999/mo with ₹15,000 commission per admission and exclusive district territorial rights.',
+      'Educational consultancies, coaching centers, and individual career advisors can enroll as certified MARGEXA partners. Partners receive authorized admission quotas, white-label counseling tools, priority document processing, and direct per-admission commissions:\n• Silver Counselor: Monthly subscription of ₹9,999/mo with ₹5,000 commission per admission.\n• Gold Certified Center: Monthly subscription of ₹19,999/mo with ₹10,000 commission per admission.\n• Platinum Master Franchise: Monthly subscription of ₹49,999/mo with ₹15,000 commission per admission and exclusive district territorial rights.',
   },
   {
     id: 'faq-5',

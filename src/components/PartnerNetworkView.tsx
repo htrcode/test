@@ -353,7 +353,7 @@ export const PartnerNetworkView: React.FC<PartnerNetworkViewProps> = ({
                   </div>
                   <div>
                     <div className="text-2xl font-black text-slate-950 font-heading">
-                      ₹5,000 <span className="text-xs font-normal text-slate-500">/ month</span>
+                      ₹9,999 <span className="text-xs font-normal text-slate-500">/ month</span>
                     </div>
                     <div className="text-xs font-bold text-emerald-600 mt-0.5">
                       Commission: ₹5,000 per admission
@@ -389,13 +389,13 @@ export const PartnerNetworkView: React.FC<PartnerNetworkViewProps> = ({
 
                 <button
                   onClick={() => {
-                    setSelectedTier('Silver Counselor (₹5,000 commission)');
+                    setSelectedTier('Silver Counselor (₹9,999/mo • ₹5,000 commission)');
                     const el = document.getElementById('consultancy-reg-form');
                     el?.scrollIntoView({ behavior: 'smooth' });
                   }}
                   className="w-full py-2.5 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold transition cursor-pointer"
                 >
-                  Join as Silver Counselor (₹5,000/mo)
+                  Join as Silver Counselor (₹9,999/mo)
                 </button>
               </div>
 
@@ -699,8 +699,8 @@ export const PartnerNetworkView: React.FC<PartnerNetworkViewProps> = ({
                       onChange={(e) => setSelectedTier(e.target.value as any)}
                       className="w-full px-3.5 py-2 rounded-xl border border-slate-300 focus:outline-hidden focus:ring-2 focus:ring-indigo-500 bg-white font-bold"
                     >
-                      <option value="Silver Counselor (₹5,000 commission)">
-                        Silver Counselor (₹5,000/mo • ₹5,000 Commission)
+                      <option value="Silver Counselor (₹9,999/mo • ₹5,000 commission)">
+                        Silver Counselor (₹9,999/mo • ₹5,000 Commission)
                       </option>
                       <option value="Gold Certified (₹19,999/mo)">
                         Gold Certified (₹19,999/mo • ₹10,000 Commission - Popular)

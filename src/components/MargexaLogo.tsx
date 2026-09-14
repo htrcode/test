@@ -196,7 +196,7 @@ export const MargexaLogo: React.FC<MargexaLogoProps> = ({
           <span className={`${titleSize} text-[#0b2447]`}>A</span>
         </div>
         {showTagline && (
-          <div className="flex items-center gap-1.5 mt-0.5 text-slate-600 font-medium">
+          <div className="hidden xl:flex items-center gap-1.5 mt-0.5 text-slate-600 font-medium">
             <span className="w-2.5 h-[1.5px] bg-[#009688] rounded-full hidden sm:inline-block"></span>
             <p className={`${taglineSize} tracking-tight leading-none whitespace-nowrap text-slate-600`}>
               Your College. Your Course. Our Guidance.
