@@ -27,16 +27,16 @@ const FAQ_DATA: FAQItem[] = [
   {
     id: 'faq-1',
     category: 'chathamkulam',
-    question: 'Can I join B.Tech 2nd year directly after a Polytechnic Diploma at Chathamkulam?',
+    question: 'Can I join B.Tech 2nd year directly after a Polytechnic Diploma in Kerala?',
     answer:
-      'Yes! AICTE and the Directorate of Technical Education (DTE Kerala) provide a direct Lateral Entry pathway. Diploma graduates who complete their 3-year diploma in Computer, Mechanical, or Civil Engineering from Chathamkulam Polytechnic College can take the Kerala Lateral Entry Test (LET) and gain direct admission into the 2nd year (3rd semester) of B.Tech across all KTU-affiliated government and private engineering colleges in Kerala. Plus Two Science (PCM) students can also join directly into the 2nd year of the diploma.',
+      'Yes! AICTE and the Directorate of Technical Education (DTE Kerala) provide a direct Lateral Entry pathway. Diploma graduates who complete their 3-year diploma in Computer, Mechanical, or Civil Engineering from recognized colleges (such as Central Polytechnic College CPT Thiruvananthapuram or GPTC Palakkad) can take the Kerala Lateral Entry Test (LET) and gain direct admission into the 2nd year (3rd semester) of B.Tech across all KTU-affiliated government and private engineering colleges in Kerala. Plus Two Science (PCM) students can also join directly into the 2nd year of the diploma.',
   },
   {
     id: 'faq-2',
     category: 'scholarships',
-    question: 'How do I qualify for Chathamkulam Institutional Merit Fee Waivers?',
+    question: 'How do I qualify for Kerala State & Central Government Scholarships?',
     answer:
-      'Merit fee waivers are awarded automatically based on your qualifying examination score:\n• Super Merit (90%+ marks): Flat 50% Tuition Fee Waiver across all semesters (e.g. CBS MBA tuition reduces from ₹1,20,000 to ₹60,000/yr; Polytechnic reduces to ₹19,000/yr).\n• Distinction Merit (80% - 89% marks): 40% Tuition Fee Waiver.\n• First Class Merit (75% - 79% marks): 25% Tuition Fee Waiver.\n• Women in Higher Ed Grant: Additional ₹10,000 annual concession for single girl children.\nYou can lock in your scholarship instantly via MARGEXA by submitting your application.',
+      'Scholarships and fee concessions are processed through official government portals based on your academic marks and socioeconomic category:\n• Kerala E-Grantz 3.0: 100% full tuition and examination fee reimbursement for eligible SC/ST/OEC and backward category students admitted into recognized degree, diploma, and PG courses.\n• KSHEC Merit Scholarship: Up to ₹60,000/year for meritorious undergraduate and postgraduate students.\n• AICTE Pragati Scheme: ₹50,000/year for girl students in approved technical diplomas and degrees.\n• Central Sector Scheme (NSP): ₹12,000 to ₹20,000/year for top 20th percentile Plus Two achievers.\nChathamkulam Business School maintains a transparent AICTE-prescribed fee (₹1,35,000 total for 2 years) without unverified private markups or gimmicks.',
   },
   {
     id: 'faq-3',
@@ -144,7 +144,7 @@ export const FAQView: React.FC<FAQViewProps> = ({
         </h1>
 
         <p className="text-xs sm:text-sm text-slate-600 max-w-2xl mx-auto">
-          Clear, authentic answers regarding Chathamkulam Group of Institutions, merit fee waivers, Kerala PSC degree validity, and our monthly partner consultancy plans.
+          Clear, authentic answers regarding Chathamkulam Business School, Kerala state scholarships, polytechnic lateral entry, Kerala PSC degree validity, and our monthly partner consultancy plans.
         </p>
 
         {/* Search Bar */}

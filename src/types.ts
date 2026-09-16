@@ -36,6 +36,8 @@ export interface Program {
   duration: string;
   mode: StudyMode;
   annualFee: number;
+  totalFee?: number;
+  feeNote?: string;
   eligibility: string;
   minPercentage: number;
   seats: number;
@@ -54,7 +56,7 @@ export interface College {
     district: string;
     state: string;
   };
-  type: 'Private Autonomous' | 'Government Aided' | 'Deemed University' | 'Self-Financing';
+  type: 'Private Autonomous' | 'Government Aided' | 'Government' | 'Deemed University' | 'Self-Financing';
   accreditation: string;
   rating: number;
   reviewsCount: number;

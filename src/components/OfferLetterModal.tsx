@@ -127,7 +127,7 @@ export const OfferLetterModal: React.FC<OfferLetterModalProps> = ({
             </div>
 
             <p>
-              This allotment is recognized under direct institutional intake and scholarship quota. If you are eligible for the <strong>Chathamkulam Institutional Merit Grant</strong> or <strong>Kerala State Scholarship</strong>, the applicable fee waiver of up to 40% will be adjusted during campus reporting.
+              This allotment is recognized under direct university/institutional intake. If you are eligible for the <strong>Kerala State Post-Matric Scholarship, E-Grantz 3.0, or KSHEC Merit Fellowship</strong>, the applicable state educational assistance will be processed via your institutional verification desk.
             </p>
 
             <div className="space-y-1.5 pt-2">

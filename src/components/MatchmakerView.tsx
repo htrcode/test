@@ -498,6 +498,16 @@ export const MatchmakerView: React.FC<MatchmakerViewProps> = ({
                       {match.program.annualFee.toLocaleString('en-IN')}
                       <span className="text-xs font-normal text-slate-500 ml-1">/ year</span>
                     </div>
+                    {match.program.totalFee && (
+                      <div className="text-[11px] font-semibold text-slate-600 mt-0.5">
+                        Total Course: ₹{match.program.totalFee.toLocaleString('en-IN')}
+                      </div>
+                    )}
+                    {match.program.feeNote && (
+                      <div className="text-[10px] text-indigo-700 font-medium bg-indigo-50/80 px-2 py-0.5 rounded mt-1">
+                        {match.program.feeNote}
+                      </div>
+                    )}
                     {feeDifference >= 0 ? (
                       <div className="text-[11px] text-emerald-700 font-semibold mt-0.5 flex items-center gap-1">
                         <CheckCircle2 className="w-3 h-3 text-emerald-600" />

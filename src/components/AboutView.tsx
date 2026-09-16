@@ -99,26 +99,26 @@ export const AboutView: React.FC<AboutViewProps> = ({
           <div className="w-12 h-12 rounded-2xl bg-amber-600 text-white flex items-center justify-center shadow-md shadow-amber-600/20">
             <Award className="w-6 h-6" />
           </div>
-          <h3 className="text-xl font-bold font-heading text-slate-900">Guaranteed Merit Grants</h3>
+          <h3 className="text-xl font-bold font-heading text-slate-900">Kerala State Welfare & Merit Grants</h3>
           <p className="text-xs text-slate-600 leading-relaxed">
-            Through institutional endowments from Chathamkulam Group and affiliated foundations, students with 75%+ marks receive locked-in fee waivers between 25% and 50% for all semesters of study.
+            We guide eligible students to claim official Kerala government schemes like E-Grantz 3.0, KSHEC Merit Fellowships, and AICTE Pragati grants, securing full tuition fee reimbursements and official allowances.
           </p>
         </div>
       </section>
 
-      {/* Featured Strategic Alliance: Chathamkulam Group of Institutions */}
+      {/* Featured Strategic Alliance: Chathamkulam Business School & Kerala Partner Network */}
       <section className="bg-white rounded-3xl border border-slate-200 p-8 sm:p-10 shadow-md space-y-6">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-100 pb-6">
           <div className="space-y-1">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-bold">
               <Building className="w-3.5 h-3.5 text-amber-700" />
-              Strategic Campus Anchor
+              Verified College Network
             </div>
             <h2 className="text-2xl sm:text-3xl font-black font-heading text-slate-950">
-              The Chathamkulam Group of Institutions Alliance
+              Chathamkulam Business School & Premier Kerala Institutions
             </h2>
             <p className="text-xs sm:text-sm text-slate-600">
-              Palakkad, Kerala — An esteemed hub of professional technical, managerial, and collegiate education.
+              Palakkad & Statewide Kerala — Verified AICTE, University of Calicut, and DTE Recognized Higher Education.
             </p>
           </div>
 
@@ -128,7 +128,7 @@ export const AboutView: React.FC<AboutViewProps> = ({
             rel="noreferrer"
             className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold transition shrink-0 self-start md:self-auto"
           >
-            <span>Official Campus Portal</span>
+            <span>Chathamkulam Portal</span>
             <ExternalLink className="w-3.5 h-3.5 text-amber-300" />
           </a>
         </div>
@@ -140,36 +140,36 @@ export const AboutView: React.FC<AboutViewProps> = ({
               <span>Chathamkulam Business School</span>
             </div>
             <p className="text-xs text-slate-600 leading-relaxed">
-              AICTE approved, affiliated with the University of Calicut. Offers premium dual-specialization MBA programs in Logistics, Finance, Marketing, HR, and Business Analytics with strong tie-ups in Kochi and UAE.
+              AICTE approved, affiliated with the University of Calicut. Offers premium 2-year full-time MBA programs in Logistics, Finance, Marketing, HR, and Business Analytics with strong tie-ups and campus placements.
             </p>
             <div className="text-[11px] font-bold text-indigo-600">
-              • Annual Tuition: ₹1,20,000 (Waivers up to ₹60,000/yr)
+              • Total 2-Year MBA Course Fee: ₹1,35,000 (₹67,500/year)
             </div>
           </div>
 
           <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-3">
             <div className="text-base font-bold text-slate-900 flex items-center gap-2">
               <Building className="w-5 h-5 text-cyan-600" />
-              <span>Chathamkulam Polytechnic College</span>
+              <span>Central Polytechnic College (CPT)</span>
             </div>
             <p className="text-xs text-slate-600 leading-relaxed">
-              DTE Kerala & AICTE approved 3-year polytechnic engineering diplomas in Computer, Mechanical, and Civil Engineering. Direct lateral entry pathway to 2nd year B.Tech via Kerala LET.
+              Government of Kerala premier technical institute in Thiruvananthapuram offering 3-year AICTE-approved diplomas in Mechanical, Civil, and Computer Engineering with lateral entry to B.Tech 2nd year.
             </p>
             <div className="text-[11px] font-bold text-cyan-700">
-              • Annual Tuition: ₹38,000 (Merit fees from ₹19,000/yr)
+              • Total 3-Year Polytechnic Fee: ₹11,400 (Govt. Subsidized)
             </div>
           </div>
 
           <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-3">
             <div className="text-base font-bold text-slate-900 flex items-center gap-2">
               <BookOpen className="w-5 h-5 text-emerald-600" />
-              <span>Chathamkulam Arts & Science</span>
+              <span>Sacred Heart College (Autonomous)</span>
             </div>
             <p className="text-xs text-slate-600 leading-relaxed">
-              Undergraduate powerhouse offering BCA, B.Com Computer Applications with Tally GST, and BBA. Modern air-conditioned computing labs and dedicated campus placement cell.
+              Top NAAC A++ rated premier institution in Kochi offering prestigious 3-year B.Com with Computer Application, BBA, and BCA programs with modern computing labs and campus recruitment.
             </p>
             <div className="text-[11px] font-bold text-emerald-700">
-              • Annual Tuition: ₹32,000 - ₹42,000/yr
+              • Total 3-Year Degree Fee: ₹66,000 - ₹1,14,000
             </div>
           </div>
         </div>

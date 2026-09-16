@@ -871,13 +871,13 @@ export const PartnerNetworkView: React.FC<PartnerNetworkViewProps> = ({
             </div>
 
             <p className="text-xs text-slate-700 leading-relaxed">
-              Through their official partnership with MARGEXA, Chathamkulam Institutions has expanded admissions across Malabar and Central Kerala for their AICTE-approved Chathamkulam Business School, College of Arts & Science, and Polytechnic Engineering Diploma college.
+              Through their official partnership with MARGEXA, Chathamkulam Business School has expanded admissions across Malabar and Central Kerala for their AICTE-approved, Calicut University-affiliated 2-Year MBA program (₹1,35,000 total course fee).
             </p>
 
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs pt-1">
               <div className="bg-white p-3 rounded-xl border border-slate-200">
                 <div className="text-slate-400 text-[10px]">Affiliation:</div>
-                <strong className="text-slate-900">University of Calicut & KTU</strong>
+                <strong className="text-slate-900">University of Calicut</strong>
               </div>
               <div className="bg-white p-3 rounded-xl border border-slate-200">
                 <div className="text-slate-400 text-[10px]">Accreditation:</div>

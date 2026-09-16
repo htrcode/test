@@ -51,8 +51,7 @@ export const ScholarshipsView: React.FC = () => {
               Merit & Institutional Fee Concessions
             </h1>
             <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-              We cross-check your academic percentage (<strong className="text-white">{student.percentage}%</strong>) and family budget against state welfare grants and private trust scholarships including{' '}
-              <strong className="text-amber-200">Chathamkulam Institutional Merit Grants</strong>.
+              We cross-check your academic percentage (<strong className="text-white">{student.percentage}%</strong>) and family budget against official Kerala state welfare endowments, KSHEC merit fellowships, AICTE Pragati schemes, and Central Sector post-matric assistance.
             </p>
           </div>
 

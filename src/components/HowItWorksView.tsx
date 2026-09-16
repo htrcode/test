@@ -66,17 +66,17 @@ export const HowItWorksView: React.FC<HowItWorksViewProps> = ({
     },
     {
       step: '03',
-      title: 'Automatic Merit Scholarship Lock-in',
-      tagline: 'Save up to 50% on Tuition',
+      title: 'Kerala Scholarship & Concession Tracker',
+      tagline: 'Unlock State Welfare & Merit Grants',
       icon: Award,
       color: 'emerald',
       description:
-        'MARGEXA automatically scans institutional endowment rules to calculate your fee waiver. For Chathamkulam Group of Institutions, scores above 90% unlock Tier 1 (50% flat fee cut), saving up to ₹60,000 annually.',
+        'MARGEXA automatically scans state and national higher education welfare guidelines to match you with valid schemes including Kerala E-Grantz 3.0, KSHEC Higher Education Fellowships, and AICTE Pragati grants.',
       details: [
-        'Super Merit (90%+): 50% Tuition Fee Reduction',
-        'Distinction Merit (80-89%): 40% Tuition Fee Reduction',
-        'First Class Merit (75-79%): 25% Tuition Fee Reduction',
-        'Additional ₹10,000 grant for Single Girl Children under women education quota',
+        'Kerala E-Grantz 3.0: 100% Tuition & Exam Fee Reimbursement for eligible categories',
+        'KSHEC Merit Scholarship: Up to ₹60,000/yr for top undergraduate & postgraduate students',
+        'AICTE Pragati Scheme: ₹50,000/year for female technical diploma & degree students',
+        'Central Sector Scheme (NSP): Direct cash grants for top 20th percentile Plus Two achievers',
       ],
     },
     {

@@ -213,7 +213,7 @@ export const CollegeDirectoryView: React.FC<CollegeDirectoryViewProps> = ({
 
               <div className="text-[11px] text-slate-300 text-left bg-white/5 p-3 rounded-xl border border-white/5">
                 <strong className="text-white block mb-1">Offered Programs:</strong>
-                Chathamkulam Business School (MBA), College of Arts & Science (B.Com, BBA, BCA), and Polytechnic (Mechanical, Civil, Computer Engineering).
+                Chathamkulam Business School: AICTE-Approved 2-Year Full-Time MBA with Dual Specializations (Logistics, Finance, Marketing, HR, Systems) at ₹1,35,000 total course fee.
               </div>
             </div>
           </div>

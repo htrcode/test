@@ -183,7 +183,7 @@ export const ContactView: React.FC<ContactViewProps> = ({ onOpenAICounselor }) =
                   admissions@margexa.edu.in
                 </a>
                 <p className="text-slate-500 text-[11px]">
-                  Chathamkulam Business School & Polytechnic quota admissions.
+                  Chathamkulam Business School & Kerala partner colleges admissions.
                 </p>
               </div>
             </div>
@@ -338,8 +338,8 @@ export const ContactView: React.FC<ContactViewProps> = ({ onOpenAICounselor }) =
                     >
                       <option value="Admission & Course Inquiry">Admission & Course Inquiry</option>
                       <option value="Chathamkulam Business School (MBA)">Chathamkulam Business School (MBA)</option>
-                      <option value="Chathamkulam Polytechnic Diploma (LET)">Chathamkulam Polytechnic Diploma (LET)</option>
-                      <option value="Merit Scholarships & Fee Waivers">Merit Scholarships & Fee Waivers</option>
+                      <option value="Polytechnic Diploma & Lateral Entry (LET)">Polytechnic Diploma & Lateral Entry (LET)</option>
+                      <option value="Kerala Scholarships & Financial Aid">Kerala Scholarships & Financial Aid</option>
                       <option value="Career Guidance Center Partner Network (Monthly Plans)">
                         Career Center Partner Network (Monthly Plans)
                       </option>

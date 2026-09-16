@@ -127,7 +127,7 @@ How can I guide your admission journey today?`;
 
   const quickPrompts = [
     'Tell me about the ₹349/month VIP Mentorship plan',
-    'How do I qualify for Chathamkulam merit fee waivers?',
+    'Which Kerala state scholarships and E-Grantz schemes can I apply for?',
     'Tell me about Chathamkulam Business School MBA options',
     'Can I join B.Tech 2nd year after polytechnic diploma (LET)?',
     'Distance vs Regular Degree: which is valid for Kerala PSC?',
@@ -277,7 +277,7 @@ How can I guide your admission journey today?`;
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Ask about Chathamkulam, cutoffs, merit fee waivers, MBA..."
+              placeholder="Ask about colleges, cutoffs, Kerala scholarships, MBA..."
               className="flex-1 bg-slate-100 border border-slate-200 rounded-xl px-4 py-2.5 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#0b2447] focus:bg-white transition"
               disabled={loading}
             />

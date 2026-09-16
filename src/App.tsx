@@ -294,7 +294,7 @@ const MainContent: React.FC = () => {
                     onClick={() => setActiveTab('scholarships')}
                     className="hover:text-white transition cursor-pointer"
                   >
-                    Chathamkulam Merit Grants
+                    Kerala Scholarships & Grants
                   </button>
                 </li>
                 <li>
@@ -326,10 +326,10 @@ const MainContent: React.FC = () => {
                   </a>
                 </li>
                 <li>Chathamkulam Business School (MBA)</li>
-                <li>Chathamkulam College of Arts & Science</li>
-                <li>Chathamkulam Polytechnic College</li>
+                <li>Sacred Heart College (Autonomous), Thevara</li>
+                <li>Central Polytechnic College (CPT), Thiruvananthapuram</li>
+                <li>Sree Narayana Guru Open University (SGOU)</li>
                 <li>Rajagiri College of Social Sciences, Kochi</li>
-                <li>SCMS Group of Institutions, Aluva</li>
                 <li>Govt. Polytechnic College, Palakkad</li>
               </ul>
             </div>

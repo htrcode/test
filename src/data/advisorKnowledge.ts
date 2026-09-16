@@ -8,69 +8,34 @@ export const MARGEXA_KNOWLEDGE_BASE = `
 MARGEXA MASTER ADMISSIONS & ACADEMIC KNOWLEDGE BASE (KERALA & CHATHAMKULAM):
 
 ===================================================================
-1. CHATHAMKULAM GROUP OF INSTITUTIONS (PALAKKAD, KERALA) - FLAGSHIP PARTNER
+1. CHATHAMKULAM BUSINESS SCHOOL (PALAKKAD, KERALA) - FLAGSHIP MBA PARTNER
 ===================================================================
 - Campus Location: Chathamkulam Knowledge City, Menonpara Road, Chandranagar / Palakkad - 678007, Kerala, India.
-- Official Website: https://chathamkulaminstitutions.org/
+- Official Website: http://www.cbs.chathamkulam.com/
 - Admissions Helpline: +91 94470 12389 | Central Desk: +91 491 254 7890 | Email: admissions@margexa.edu.in
-- Accreditations: Approved by AICTE (New Delhi), Affiliated with University of Calicut, Affiliated with APJ Abdul Kalam Technological University (KTU), Recognized by Directorate of Technical Education (DTE), Govt. of Kerala.
+- Accreditations: Approved by AICTE (New Delhi), Standalone Business School Affiliated with University of Calicut, Recognized by Govt. of Kerala.
 
 A. Chathamkulam Business School (CBS) - MBA:
 - Program: Master of Business Administration (MBA) - 2 Years Full-Time (4 Semesters).
-- Dual Specializations (Students can pick any 2 to graduate with dual competence):
+- Specializations (Students can graduate with dual competence):
   1. Logistics & Supply Chain Management: Tailored for high-growth supply chain roles in Cochin Port, Vallarpadam ICTT, Vizhinjam Transshipment Port, Coimbatore cargo corridors, and Gulf/Middle East logistics giants.
-  2. Financial Management: Corporate valuation, investment banking, equity research, FinTech, and banking operations.
-  3. Marketing Management: Digital marketing, brand management, consumer psychology, FMCG and e-commerce distribution.
-  4. Human Resource Management (HR): Talent acquisition, corporate labor laws, organizational culture, industrial relations.
-  5. Systems / IT Management: Business intelligence, ERP solutions, tech project governance.
-- Annual Tuition Fee: ₹1,20,000 to ₹1,45,000 per year (before merit concessions).
+  2. Human Resource & Financial Management: Corporate valuation, investment banking, equity research, talent acquisition, labor laws, organizational culture.
+  3. Marketing & Systems Management: Digital marketing, brand management, consumer psychology, ERP SAP, and business intelligence.
+- Total Course Fee: ₹1,35,000 for the full 2-Year Program (₹67,500/year) before merit concessions.
 - Eligibility: Bachelor's degree in any discipline (BA, B.Sc, B.Com, BBA, B.Tech) with min 50% aggregate (45% for SEBC/OBC/SC/ST) + valid scorecard in KMAT Kerala, CMAT, or CAT.
 - Admission Flow: One-Click application on MARGEXA -> Merit evaluation -> Personal Interview & GD -> Immediate Provisional Allotment Letter.
 - Placement Record: 94%+ placement. Average CTC: ₹4.8 - ₹6.2 LPA; Highest CTC: ₹8.5 LPA.
 - Major Recruiters: Federal Bank, TCS, HDFC Bank, Muthoot Finance, Reliance Retail, Flipkart Logistics, TVS Supply Chain, DHL Express, Axis Bank, Ernst & Young, Cognizant, Infopark tech startups.
 - High-Value Features: Bloomberg-style live financial simulation lab, entrepreneurship incubation center, free laptop provision for students, international certifications, and port internships.
+- Note on Other Programs: Chathamkulam focuses on its AICTE-approved 2-Year MBA. Students seeking Polytechnic Diplomas, Regular BBA/BCA/B.Com, or Distance degrees are connected directly to premier partner Kerala colleges offering those courses below!
 
-B. Chathamkulam College of Arts and Science (Affiliated to University of Calicut):
-- BCA (Bachelor of Computer Applications - 3 Years):
-  * Tuition: ₹42,000/year.
-  * Curriculum: Python, Full-Stack Web Development, Data Structures, DBMS, Cloud Computing, Mobile Application Development. Final semester live industry project with placement cell support.
-- B.Com with Computer Applications (3 Years):
-  * Tuition: ₹34,000/year.
-  * Curriculum: Tally Prime with computerized GST filing, Corporate Accounting, E-Commerce, Indian Banking Law, and bank exam coaching.
-- B.Com Finance (3 Years):
-  * Tuition: ₹32,000/year.
-  * Curriculum: Financial Markets, Cost Accounting, Corporate Auditing, Investment Analysis.
-- BBA (Bachelor of Business Administration - 3 Years):
-  * Tuition: ₹35,000/year.
-  * Curriculum: Entrepreneurship, Business Analytics, Consumer Behavior, Corporate Strategy. Direct pathway into Chathamkulam MBA.
-- M.Com Finance (Postgraduate - 2 Years):
-  * Tuition: ₹40,000/year.
-  * Curriculum: Advanced Portfolio Management, Security Analysis, Corporate Taxation, UGC NET / JRF preparatory support.
-- Eligibility: Pass in Plus Two (+2) / Higher Secondary (DHSE / CBSE / ICSE / VHSE) with passing marks.
+B. Fee Structure & State Welfare Scholarship Facilitation:
+- Chathamkulam Business School maintains a fixed, transparent AICTE and Calicut University approved fee of ₹1,35,000 for the full 2-year MBA (₹67,500/year). Chathamkulam does not offer separate private fee waivers.
+- Kerala Post-Matric & E-Grantz 3.0: 100% tuition assistance processing for eligible SC/ST/OEC/SEBC reservation categories.
+- KSHEC Merit Fellowships: Applicable for university postgraduate scholars meeting State Higher Education Council criteria.
+- How to Claim: Apply via the Kerala Scholarships portal or present community/income credentials at the Palakkad Admission Office (+91 94470 12389).
 
-C. Chathamkulam Polytechnic College (Approved by AICTE & DTE Kerala):
-- Programs (3-Year Engineering Diplomas):
-  1. Diploma in Computer Engineering: ₹38,000 - ₹45,000/year. Software development, computer hardware, network protocols, cybersecurity basics, IoT.
-  2. Diploma in Mechanical Engineering: ₹38,000 - ₹42,000/year. Advanced CNC machining, automobile workshops, thermodynamics, CAD/CAM drafting, mechatronics.
-  3. Diploma in Civil Engineering: ₹36,000 - ₹40,000/year. Total station land surveying, AutoCAD/Revit BIM, structural engineering, concrete testing.
-- Eligibility (1st Year Admission): 10th Standard / SSLC / CBSE / ICSE pass with Science & Mathematics.
-- Lateral Entry (Direct to 2nd Year / 3rd Semester):
-  * Candidates who passed Plus Two (+2) Science with Physics, Chemistry, and Mathematics (PCM).
-  * Candidates holding a 2-year National Trade Certificate (ITI) in relevant engineering trades.
-- Lateral Progression to B.Tech:
-  * Diploma graduates can take the Kerala Lateral Entry Test (LET) conducted by DTE Kerala and enter directly into the 2nd year (3rd semester) of B.Tech across all KTU-affiliated government and private engineering colleges in Kerala!
-- Campus Placements: L&T, MRF Tyres, Tata Motors, Wipro Infrastructure, Kanjikode industrial cluster, and Middle East contracting firms.
-
-D. Chathamkulam Institutional Merit Scholarships & Fee Waiver Tiers:
-- Tier 1 (Super Merit - 90% and above in qualifying exam): 50% Flat Tuition Fee Waiver across all years.
-- Tier 2 (High Merit - 80% to 89.9% in qualifying exam): 40% Tuition Fee Waiver.
-- Tier 3 (Merit Standing - 70% to 79.9% in qualifying exam): 25% Tuition Fee Waiver.
-- Single Girl Child / Rural Palakkad Concession: ₹10,000 annual subsidy.
-- Sports & Cultural Quota: Up to 30% reduction for district/state certificate holders.
-- Kerala Post-Matric & E-Grantz 3.0: 100% tuition assistance processing for eligible reservation categories.
-- How to Claim: Apply directly via the Scholarships tab on MARGEXA or present marks sheets at the Palakkad Admission Office (+91 94470 12389).
-
-E. Campus Hostels, Mess & Transport Facilities:
+C. Campus Hostels, Mess & Transport Facilities:
 - Separate Residential Hostels: Secure campus blocks for male and female students with 24/7 biometric security, resident faculty wardens, and high-speed Wi-Fi.
 - Hygienic Mess: Wholesome Kerala and South Indian cuisine (both vegetarian and non-vegetarian menus prepared under strict cleanliness standards).
 - Monthly Hostel & Mess Fee: ₹4,500 - ₹5,500 per month all-inclusive.
@@ -92,14 +57,16 @@ E. Campus Hostels, Mess & Transport Facilities:
 ===================================================================
 3. PARTNER COLLEGES & POLYTECHNICS NETWORK IN KERALA
 ===================================================================
-1. Chathamkulam Group of Institutions (Palakkad): MBA, BCA, B.Com, BBA, M.Com, Polytechnic Engineering Diplomas. AICTE / Calicut Univ / KTU.
-2. Rajagiri College of Social Sciences (Kochi): Autonomous, NAAC A++. MBA, MCA, MSW, B.Com, BBA, B.Sc Psychology. Highly reputed for corporate placements.
-3. TKM College of Engineering (Kollam): Govt-aided premier engineering college, KTU affiliated. B.Tech in CSE, Civil, Mechanical, Electrical, Electronics, Chemical, M.Tech, MCA. Gateway via KEAM.
-4. Farook College Autonomous (Kozhikode): Premier arts & science institution under Calicut University. BA, B.Sc, B.Com, MA, M.Sc, M.Com.
-5. Government Polytechnic College (Palakkad): DTE Kerala. Highly affordable (<₹5,000/yr) diplomas in Electronics, Civil, Mechanical, Instrumentation.
-6. Sree Narayanaguru Open University (SGOU, Kollam): Kerala's official State Open University established by Govt of Kerala for UGC-DEB approved distance degrees. 100% legally recognized for Kerala PSC, UPSC, SSC.
-7. School of Distance Education (SDE) - University of Calicut: Highly economical distance degrees (₹3,000 - ₹5,500/yr). Fully valid for higher studies and government exams.
-8. SCMS Cochin School of Business (Aluva, Ernakulam): AICTE approved PGDM/MBA, top corporate placement record in banking, retail, and consulting.
+1. Chathamkulam Business School (Palakkad): Premier AICTE standalone MBA (Logistics, HR & Finance, Marketing & Systems). http://www.cbs.chathamkulam.com/
+2. Central Polytechnic College - CPT (Thiruvananthapuram): Premier DTE Govt Polytechnic for Diploma in Mechanical, Civil, and Computer Engineering (₹11,850 total fee). https://cpt.ac.in/
+3. Sacred Heart College Autonomous (SH Thevara, Kochi): NAAC A++ premier arts & science campus for B.Com Computer Application (₹72,000 total), BBA (₹84,000 total), BCA (₹1,14,000 total). https://www.shcollege.ac.in/
+4. Sree Narayana Guru Open University - SGOU (Kollam): Kerala's official State Open University for UGC-DEB approved Distance B.Com Finance & Taxation (₹11,400 total), Distance BBA (₹12,600 total). https://sgou.ac.in/
+5. Rajagiri College of Social Sciences & RSET (Kochi): Autonomous, NAAC A++. MBA, MCA, MSW, B.Com, BBA, B.Sc Psychology. https://rajagiri.edu/
+6. TKM College of Engineering (Kollam): Govt-aided premier engineering college, KTU affiliated. B.Tech in CSE, Civil, Mechanical, Electrical, Electronics, Chemical, M.Tech, MCA. Gateway via KEAM.
+7. Farook College Autonomous (Kozhikode): Premier arts & science institution under Calicut University. BA, B.Sc, B.Com, MA, M.Sc, M.Com. https://www.farookcollege.ac.in/
+8. Government Polytechnic College (Palakkad): DTE Kerala. Highly affordable (<₹5,000/yr) diplomas in Electronics, Civil, Mechanical, Instrumentation.
+9. School of Distance Education (SDE) - University of Calicut: Highly economical distance degrees (₹3,000 - ₹5,500/yr). Fully valid for higher studies and government exams. https://sde.uoc.ac.in/
+10. SCMS Cochin School of Business (Aluva, Ernakulam): AICTE approved PGDM/MBA, top corporate placement record in banking, retail, and consulting.
 9. St. Teresa's College Autonomous (Ernakulam): NAAC A++, elite women's college for Arts, Science, Commerce, and Fashion Technology.
 10. Amrita Vishwa Vidyapeetham (Coimbatore / Amritapuri): Deemed university, B.Tech CSE, AI & Data Science, Aerospace Engineering, Integrated M.Sc.
 
@@ -150,30 +117,6 @@ export function generateDomainExpertReply(query: string, student: any): string {
   const preferredMode = student?.preferredMode || 'Offline Regular';
   const stream = student?.stream || 'General';
 
-  // Calculate Chathamkulam Merit Fee Concessions
-  let tierName = 'Tier 3 (Merit Standing)';
-  let waiverPercent = 25;
-  let effectiveMba = '₹90,000/year (Saved ₹30,000)';
-  let effectivePoly = '₹28,500/year (Saved ₹9,500)';
-  let effectiveBcom = '₹24,000/year (Saved ₹8,000)';
-  let effectiveBca = '₹31,500/year (Saved ₹10,500)';
-
-  if (score >= 90) {
-    tierName = 'Tier 1 (Super Merit)';
-    waiverPercent = 50;
-    effectiveMba = '₹60,000/year (Saved ₹60,000/yr - 50% Off)';
-    effectivePoly = '₹19,000/year (Saved ₹19,000/yr - 50% Off)';
-    effectiveBcom = '₹16,000/year (Saved ₹16,000/yr - 50% Off)';
-    effectiveBca = '₹21,000/year (Saved ₹21,000/yr - 50% Off)';
-  } else if (score >= 80) {
-    tierName = 'Tier 2 (High Merit)';
-    waiverPercent = 40;
-    effectiveMba = '₹72,000/year (Saved ₹48,000/yr - 40% Off)';
-    effectivePoly = '₹22,800/year (Saved ₹15,200/yr - 40% Off)';
-    effectiveBcom = '₹19,200/year (Saved ₹12,800/yr - 40% Off)';
-    effectiveBca = '₹25,200/year (Saved ₹16,800/yr - 40% Off)';
-  }
-
   // 1. VIP Mentorship & Priority VIP Counseling (₹349/month Plan)
   if (
     q.includes('vip') ||
@@ -208,37 +151,35 @@ Namaskaram **${name}**! MARGEXA provides a comprehensive **Student VIP Mentorshi
 Would you like to subscribe to the **₹349/month VIP Plan** or book your priority session today? Head over to the **VIP Mentorship** tab!`;
   }
 
-  // 2. Scholarships & Chathamkulam Merit Fee Waivers
+  // 2. Scholarships & Financial Aid in Kerala
   if (
     q.includes('waiver') ||
     q.includes('scholarship') ||
     q.includes('concession') ||
-    q.includes('chathamkulam merit') ||
-    q.includes('discount') ||
+    q.includes('grant') ||
     q.includes('e-grantz') ||
     q.includes('egrantz') ||
     q.includes('pragati') ||
     q.includes('girl child') ||
-    q.includes('fee reduction')
+    q.includes('fee reduction') ||
+    q.includes('kshec')
   ) {
-    return `### Chathamkulam Institutional Merit Scholarships & State Fee Waivers
+    return `### Kerala State Welfare Schemes & Higher Education Scholarships
 
-Namaskaram **${name}**! Based on your academic score of **${score}%**, here is your exact scholarship breakdown:
+Namaskaram **${name}**! Based on your academic score of **${score}%**, here is authentic guidance on higher education financial aid in Kerala:
 
-### 1. Your Chathamkulam Merit Tier: **${tierName} (${waiverPercent}% Tuition Fee Waiver)**
-* **Chathamkulam Business School (MBA):** Normal fee ₹1,20,000/yr ➔ **Your Discounted Fee: ${effectiveMba}**
-* **Chathamkulam Polytechnic Diploma:** Normal fee ₹38,000/yr ➔ **Your Discounted Fee: ${effectivePoly}**
-* **B.Com / BBA Degree (Calicut Univ):** Normal fee ₹32,000 - ₹35,000/yr ➔ **Your Discounted Fee: ${effectiveBcom}**
-* **BCA (Computer Applications):** Normal fee ₹42,000/yr ➔ **Your Discounted Fee: ${effectiveBca}**
+### 1. Chathamkulam Business School Fee Clarity:
+* **Fixed Transparent Fee:** Chathamkulam Business School maintains a standardized, AICTE-approved fee of **₹1,35,000 for the complete 2-Year MBA** (₹67,500/year). 
+* **Institutional Policy:** Chathamkulam does not offer arbitrary private fee waivers. The course fee is already kept strictly affordable and regulated under University of Calicut guidelines.
 
-### 2. Additional Grants You Can Combine:
-* **Single Girl Child Grant:** Additional **₹10,000 annual subsidy** under Chathamkulam's Women Empowerment Initiative.
-* **Kerala Pragati Scheme (AICTE):** **₹50,000/year** + laptop grant for girl students admitted into technical diplomas and degrees.
-* **Kerala Post-Matric Scholarship:** Up to **₹35,000/year** reimbursement for SEBC, OBC, and minority students (family income < ₹2.5 LPA).
-* **Kerala E-Grantz 3.0:** 100% full tuition fee reimbursement and monthly stipend for eligible SC/ST/OEC candidates.
+### 2. Kerala State & Central Welfare Grants You Can Avail:
+* **Kerala E-Grantz 3.0 DBT Scheme:** 100% full tuition & examination fee reimbursement plus monthly pocket money for eligible SC/ST/OEC/SEBC students in recognized institutions.
+* **Kerala State Higher Education Council (KSHEC) Scholarship:** Up to **₹60,000/year** for meritorious degree and postgraduate students.
+* **AICTE Pragati Scholarship for Girl Students:** **₹50,000/year** for female students admitted to technical diploma or degree courses.
+* **Prof. Joseph Mundassery Scholarship Scheme:** **₹15,000 to ₹25,000** cash award for minority students with top academic distinctions.
+* **Central Sector Scheme (NSP CSSS):** Up to **₹20,000/year** for top 20th percentile Plus Two achievers.
 
-### How to Lock in Your Discount:
-Apply for the **Chathamkulam Institutional Merit Grant** in the **Scholarships** tab on MARGEXA to generate your verified offer letter with locked-in discounted tuition!`;
+You can explore details and deadlines for these official government schemes under the **Scholarships** tab on MARGEXA!`;
   }
 
   // 3. Chathamkulam Business School & MBA Programs
@@ -268,9 +209,10 @@ Chathamkulam Business School (CBS) is an **AICTE-approved, Calicut University-af
   * Graduation in any discipline (B.Com, BBA, B.Tech, B.Sc, BA) with min 50% (45% for SEBC/OBC/SC/ST).
   * Valid score in **KMAT Kerala** (qualifying mark ~72/720), **CMAT**, or **CAT**.
 
-* **Fee & Concession for You:**
-  * Normal Tuition Fee: ₹1,20,000/year.
-  * With your score of **${score}%**, your effective fee is **${effectiveMba}**!
+* **Fee Structure:**
+  * Fixed Course Fee: ₹1,35,000 for the full 2-Year Program (₹67,500/year).
+  * Note: The complete 2-year MBA fee is ₹1,35,000 total (₹67,500 per year), not ₹1,35,000 for 1 year!
+  * Transparent Calicut University-affiliated fee schedule with zero hidden charges.
 
 * **Placements & Corporate Recruiter Network:**
   * **94%+ Placement Rate** | Average CTC: ₹4.8 - ₹6.2 LPA | Highest CTC: ₹8.5 LPA.
@@ -296,16 +238,16 @@ You can secure a provisional MBA seat today with zero application fees on MARGEX
 
 Polytechnic Diplomas in Kerala are 3-year technical qualifications recognized by **AICTE** and the **Directorate of Technical Education (DTE Kerala)**.
 
-* **Chathamkulam Polytechnic College (Palakkad):**
+* **Premier Kerala Polytechnic Colleges (e.g. Central Polytechnic College CPT, Govt Polytechnic Palakkad):**
   1. **Diploma in Computer Engineering:**
      - Curriculum: Software development, C/C++/Python, web design, computer networks, database management, and cloud fundamentals.
-     - Fee: ₹38,000 - ₹45,000/yr (Drops to **${effectivePoly}** with your ${score}% score).
+     - Fee: Govt. Subsidized ₹3,800/yr (Total ₹11,400 for 3 years).
   2. **Diploma in Mechanical Engineering:**
      - Curriculum: Advanced CNC machining, automobile engineering, CAD/CAM design, thermodynamics, industrial maintenance.
-     - Fee: ₹38,000 - ₹42,000/yr (Drops to **${effectivePoly}** with your ${score}% score).
+     - Fee: Govt. Subsidized ₹3,800/yr (Total ₹11,400 for 3 years).
   3. **Diploma in Civil Engineering:**
      - Curriculum: Total station surveying, AutoCAD & Revit BIM, concrete testing, structural analysis, construction planning.
-     - Fee: ₹36,000 - ₹40,000/yr (Drops to **${effectivePoly}** with your ${score}% score).
+     - Fee: Govt. Subsidized ₹3,800/yr (Total ₹11,400 for 3 years).
 
 * **Lateral Entry Pathways (How It Works):**
   * **Joining Diploma in 2nd Year:** If you have passed Plus Two (+2) Science with Physics, Chemistry, and Mathematics (PCM) OR possess a 2-year ITI certificate, you can enter directly into the **2nd year (3rd semester)** of the Polytechnic Diploma!
@@ -334,7 +276,7 @@ Both pathways lead to lucrative software engineering careers in Infopark Kochi, 
   - **Duration:** 3 Years (or 4 Years Honours under NEP/FYUGP).
   - **Focus:** Practical software engineering, web development (React, Node.js), Python, database administration, and mobile apps.
   - **Eligibility:** 10+2 in any stream (Mathematics or Computer Science preferred). No KEAM entrance needed.
-  - **Tuition:** Highly affordable — **₹42,000/yr at Chathamkulam College of Arts & Science** (drops to **${effectiveBca}** with your ${score}% score).
+  - **Premier Campus:** Sacred Heart College (Autonomous), Thevara (Kochi) — ₹38,000/year (Total ₹1,14,000 for 3 years).
   - **Career Pathway:** Start as Associate Software Engineer, or pursue a 2-year MCA for full equivalency to B.Tech in corporate hiring.
 
 * **B.Tech Computer Science & Engineering:**
@@ -344,7 +286,7 @@ Both pathways lead to lucrative software engineering careers in Infopark Kochi, 
   - **Tuition:** ₹35,000/yr (Govt Aided) to ₹1,50,000 - ₹2,40,000/yr (Private Self-Financing).
 
 * **Recommendation for ${name}:**
-  - If your annual budget is **${budget}/year** and you want practical software coding skills without entrance exam stress, **BCA at Chathamkulam College of Arts and Science** is an exceptional choice. You save 1 full year and significant tuition!`;
+  - If your annual budget is **${budget}/year** and you want practical software coding skills without entrance exam stress, **BCA at Sacred Heart College (Autonomous)** is an exceptional choice. You save 1 full year and significant tuition!`;
   }
 
   // 6. Commerce & Business: B.Com vs BBA vs M.Com
@@ -359,27 +301,33 @@ Both pathways lead to lucrative software engineering careers in Infopark Kochi, 
     q.includes('cma') ||
     q.includes('m.com')
   ) {
-    return `### B.Com vs. BBA at Chathamkulam College of Arts & Science (Palakkad)
+    return `### B.Com vs. BBA in Kerala: Sacred Heart College (Autonomous) & SGOU
 
-Both degrees are affiliated with the **University of Calicut** and tailored for Kerala's banking, corporate, and commerce sectors:
+Both degrees are tailored for Kerala's banking, corporate, and commerce sectors:
 
-* **B.Com (Computer Applications & Finance):**
+* **B.Com with Computer Application:**
+  - **Campus:** Sacred Heart College (Autonomous), Thevara (Kochi)
   - **Duration:** 3 Years (6 Semesters).
-  - **Tuition:** ₹32,000 - ₹34,000/year (drops to **${effectiveBcom}** with your ${score}% score).
+  - **Tuition:** ₹22,000/year (Total ₹66,000 for 3 years).
   - **Core Modules:** Tally Prime with GST e-filing, Corporate Accounting, Company Law, Financial Markets, Banking Operations.
   - **Ideal For:** Students preparing for Bank Clerk/PO exams (SBI, Federal Bank, South Indian Bank), Junior Accountant roles, or CA/CMA/ACCA professional studies.
 
 * **BBA (Bachelor of Business Administration):**
+  - **Campus:** Sacred Heart College (Autonomous), Thevara (Kochi)
   - **Duration:** 3 Years (6 Semesters).
-  - **Tuition:** ₹35,000/year (drops to **${effectiveBcom}** with your ${score}% score).
+  - **Tuition:** ₹30,000/year (Total ₹90,000 for 3 years).
   - **Core Modules:** Organizational behavior, digital marketing, corporate strategy, human resources, financial analysis.
   - **Ideal For:** Aspiring entrepreneurs, marketing executives, and students planning to pursue an MBA at Chathamkulam Business School.
+
+* **Distance / Online B.Com (Finance & Taxation):**
+  - **Campus:** Sree Narayana Guru Open University (SGOU), Kollam
+  - **Duration:** 3 Years | Total Fee: ₹11,400 (₹3,800/year). UGC-DEB approved and valid for Kerala PSC & banking exams!
 
 * **M.Com Finance (Postgraduate):**
   - **Duration:** 2 Years | Tuition: ₹40,000/year.
   - Includes intensive research methodology and UGC NET/JRF coaching support for academic lectureship.
 
-Hostel accommodation and college bus routes across Palakkad are fully available for all Commerce students!`;
+Hostel accommodation and campus transit facilities are available for outstation students!`;
   }
 
   // 7. Distance vs Regular Degrees & Kerala PSC / KAS Validity
@@ -414,7 +362,7 @@ Hostel accommodation and college bus routes across Palakkad are fully available 
 
 * **When to Choose Distance vs. Regular:**
   * **Choose Distance (SGOU / Calicut SDE):** If you are working full-time, preparing exclusively for competitive civil service exams, or require an ultra-low cost degree (₹3,000 - ₹5,500/yr).
-  * **Choose Regular (Chathamkulam Institutions):** If you desire active campus life, hands-on computer labs, daily faculty mentoring, peer networking, and **on-campus corporate placement drives**!`;
+  * **Choose Regular (e.g. Sacred Heart College / Chathamkulam Business School):** If you desire active campus life, hands-on computer labs, daily faculty mentoring, peer networking, and **on-campus corporate placement drives**!`;
   }
 
   // 8. Campus Life: Hostels, Mess Food, and Bus Routes at Chathamkulam
@@ -540,16 +488,16 @@ If you haven't taken an entrance exam yet, Chathamkulam Group of Institutions pr
 
 If your score is between 45% - 60%, please know that **you have multiple rewarding pathways** in Kerala:
 
-1. **Polytechnic Engineering Diplomas (Chathamkulam Polytechnic):**
+1. **Polytechnic Engineering Diplomas (e.g. Central Polytechnic College CPT / Govt Polytechnic):**
    - Minimum eligibility is a simple pass in 10th Standard / SSLC (approx. 40-45%).
    - Once you finish your diploma with good marks, you can enter directly into the 2nd year of B.Tech via the Kerala Lateral Entry Test (LET), completely bypassing competitive entrance pressure!
 
-2. **Institutional Quota Seats at Chathamkulam Institutions:**
-   - Chathamkulam Business School and Arts & Science College reserve institutional quota seats for students with passing marks (45% for reservation categories, 50% for general).
-   - You can secure a verified seat in **BCA, B.Com, BBA, or MBA** without high entrance exam percentiles.
+2. **Chathamkulam Business School MBA Admissions:**
+   - Chathamkulam Business School admits degree holders meeting Calicut University minimum eligibility (45% for SEBC/OBC/SC/ST, 50% for General) with a valid KMAT/CMAT score.
+   - You can secure a verified seat with the transparent ₹1,35,000 2-year fee structure.
 
-3. **Need-cum-Merit Concessions:**
-   - Even with 50-60%, Chathamkulam provides special community and economic support grants to make education affordable.
+3. **Autonomous & Open University Degree Tracks:**
+   - Sacred Heart College (Autonomous) and Sree Narayana Guru Open University (SGOU) provide regular and flexible pathways into B.Com, BBA, and BCA programs.
 
 4. **UGC-DEB Distance Degrees (SGOU / Calicut SDE):**
    - Open admissions with minimal cutoff constraints. You earn a recognized degree fully valid for Kerala PSC, Banking, and Master's programs.
@@ -601,19 +549,21 @@ Guidance centers can calculate projected earnings and register in the **Guidance
 
 With your annual budget of **${budget}/year**, here are the top matching programs in Kerala:
 
-1. **Chathamkulam Polytechnic Diploma (Palakkad):**
-   - **Annual Tuition:** ₹38,000/yr (Drops to **${effectivePoly}** after your ${score}% score merit waiver).
-   - **Why it fits:** 100% inside your budget. Immediate employment prospects in Kanjikode/Coimbatore industrial hubs, or lateral entry to B.Tech 2nd year.
+1. **Central Polytechnic College (CPT), Thiruvananthapuram:**
+   - **Annual Tuition:** ₹3,800/yr (Total ₹11,400 for 3 years - DTE Kerala subsidized).
+   - **Why it fits:** 100% inside your budget. Immediate employment prospects or lateral entry to B.Tech 2nd year.
 
-2. **Chathamkulam College of Arts & Science (B.Com / BBA / BCA):**
-   - **Annual Tuition:** ₹32,000 - ₹42,000/yr (Drops to **${effectiveBcom} - ${effectiveBca}**).
-   - **Why it fits:** Full University of Calicut regular degree with computer labs and campus placement cell.
+2. **Sree Narayana Guru Open University (SGOU) / SDE Calicut (Distance B.Com / BBA):**
+   - **Annual Tuition:** ₹3,800/year (Total ₹11,400 for 3-Year Degree).
+   - **Why it fits:** UGC-DEB approved, 100% valid for Kerala PSC, UPSC, and banking exams.
 
-3. **Government Polytechnic College, Palakkad:**
-   - **Annual Tuition:** Under ₹5,000/year for merit quota candidates.
+3. **Sacred Heart College (Autonomous), Thevara (B.Com / BBA / BCA):**
+   - **Annual Tuition:** ₹22,000 - ₹38,000/yr (Total ₹66,000 - ₹1,14,000 for 3 years).
+   - **Why it fits:** NAAC A++ autonomous institution with premier campus placements in Kochi.
 
-4. **School of Distance Education - Calicut University (Distance B.Com / BBA):**
-   - **Annual Tuition:** ₹3,500 - ₹5,000/year. 100% flexible study while working.
+4. **Chathamkulam Business School (2-Year MBA):**
+   - **Tuition:** ₹67,500/year (Fixed ₹1,35,000 for full 2 years).
+   - **Why it fits:** AICTE approved with 94%+ placement record and dual specializations.
 
 You can apply for any of these options directly from your MARGEXA dashboard!`;
   }
@@ -636,14 +586,14 @@ You can apply for any of these options directly from your MARGEXA dashboard!`;
   3. Transfer Certificate (TC) and Conduct Certificate from your last school/college.
   4. Entrance Scorecard (KMAT / CMAT / CAT for MBA; KEAM for B.Tech; LET for Lateral Entry).
   5. Migration Certificate (For CBSE, ICSE, or outside-Kerala students).
-  6. Caste & Income Certificates (Mandatory for E-Grantz and merit-cum-need fee concessions).
+  6. Caste & Income Certificates (Mandatory for E-Grantz and welfare concessions).
   7. Passport-size photographs (4 copies).
 
 * **How to Apply on MARGEXA:**
   - **Step 1:** Go to the **Colleges** tab or **AI Matchmaker**.
-  - **Step 2:** Select your program (e.g., Chathamkulam MBA, BCA, B.Com, or Polytechnic Diploma).
+  - **Step 2:** Select your program (e.g., Chathamkulam 2-Year MBA, CPT Polytechnic Diplomas, or Sacred Heart B.Com/BBA/BCA).
   - **Step 3:** Click **"One-Click Free Apply"**. Your application is transmitted directly to the college admission desk.
-  - **Step 4:** Visit the **Scholarships** tab to lock in your up to 50% merit waiver.
+  - **Step 4:** Visit the **Scholarships** tab to check state welfare grants (E-Grantz 3.0, KSHEC, AICTE Pragati).
   - **Step 5:** Download your provisional admission offer letter instantly from the **Applications** dashboard!`;
   }
 
@@ -664,13 +614,13 @@ I have analyzed your academic profile:
 * **Academic Score:** **${score}%** (${qual} - ${stream})
 * **Annual Budget:** **${budget}/year**
 * **Preferred Study Mode:** **${preferredMode}**
-* **Chathamkulam Merit Eligibility:** **${tierName} (${waiverPercent}% Fee Waiver)**
+* **Kerala Scholarships:** Eligible for State Welfare & Higher Education Grants
 
 Here are key topics I can immediately assist you with:
 1. **Student VIP Mentorship (₹349/mo):** 20-minute priority callbacks + 1-on-1 private strategy sessions with senior deans.
-2. **Chathamkulam Business School (CBS) MBA:** Dual specializations (Logistics, Finance, Marketing, HR) & 94%+ placement record.
-3. **Polytechnic Engineering Diplomas:** Computer, Mechanical & Civil with direct lateral entry to 2nd year B.Tech (LET).
-4. **BCA vs. B.Tech Computer Science:** Practical software development vs. 4-year engineering paths.
+2. **Chathamkulam Business School (CBS) MBA:** AICTE-approved 2-year MBA (total fee ₹1,35,000) with dual specializations & 94%+ placement record.
+3. **Polytechnic Engineering Diplomas:** Central Polytechnic College CPT (Computer, Mechanical & Civil) with lateral entry to 2nd year B.Tech (LET).
+4. **Undergraduate Degrees (BCA, B.Com, BBA):** Sacred Heart College (Autonomous) regular tracks & SGOU distance education.
 5. **Distance vs. Regular Degrees:** Kerala PSC and government exam legal equivalency.
 
 What specific course, college, or admission doubt would you like to explore today?`;
@@ -685,15 +635,20 @@ Here is tailored guidance based on your academic profile:
 * **Preferred Learning Mode:** **${preferredMode}**
 
 ### Recommended Admissions Strategy:
-1. **Chathamkulam Group of Institutions (Palakkad):**
-   - **Admission Probability:** **95%+ (High Merit)**. Your ${score}% puts you well above the threshold for Chathamkulam Business School (MBA), College of Arts & Science (BCA, B.Com, BBA), and Polytechnic Engineering Diplomas.
-   - **Locked-in Merit Concession:** You qualify for **${tierName} (${waiverPercent}% Tuition Fee Waiver)**, bringing programs well within your ₹${budget} budget.
+1. **Chathamkulam Business School (Palakkad):**
+   - **Admission Standing:** Standalone AICTE-approved 2-Year MBA affiliated to University of Calicut with standardized ₹1,35,000 total course fee (₹67,500/year).
+   - **Placement Record:** 94%+ placement with recruiters like Federal Bank, TCS, HDFC, Flipkart Logistics.
    - **Campus Life:** On-campus secure residential hostels (₹4,500 - ₹5,500/mo) and bus routes across Palakkad, Ottapalam, Alathur, and Chittur.
 
-2. **Student VIP Mentorship (₹349/mo):**
+2. **Premier Kerala Partner Institutions:**
+   - **Central Polytechnic College (CPT), Thiruvananthapuram:** 3-Year Technical Engineering Diplomas at ₹3,800/year.
+   - **Sacred Heart College (Autonomous), Thevara:** Regular B.Com CA, BBA, and BCA degrees.
+   - **Sree Narayana Guru Open University (SGOU):** Distance B.Com / BBA at ₹3,800/year.
+
+3. **Student VIP Mentorship (₹349/mo):**
    - You can schedule an express 20-minute priority callback or 1-on-1 video session with Prof. K. Sreedharan or Er. Ananya Nair for personalized college selection without paying per session!
 
-3. **Official Helpline:**
+4. **Official Helpline:**
    - Call our Palakkad Liaison Desk at **+91 94470 12389** for immediate seat reservation or campus visits.
 
 Feel free to ask me anything specific about MBA specializations, diploma branches, hostel mess, bus routes, or fee payment installments!`;

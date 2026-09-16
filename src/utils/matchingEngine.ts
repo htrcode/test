@@ -108,12 +108,12 @@ export function calculateMatch(student: StudentProfile, college: College, progra
   }
 
   let potentialScholarship = 'General Merit Consideration';
-  if (college.chathamkulamFlag && studentMarks >= 75) {
-    potentialScholarship = 'Chathamkulam Merit Grant (Up to 40% Fee Waiver)';
-  } else if (college.type === 'Government Aided' && studentBudget < 50000) {
-    potentialScholarship = 'Kerala E-Grantz 100% Fee Concession';
-  } else if (studentMarks >= 85) {
-    potentialScholarship = 'State Merit Higher Education Fellowship';
+  if (college.type === 'Government' || college.type === 'Government Aided') {
+    potentialScholarship = 'Kerala Post-Matric / E-Grantz 3.0 Scheme';
+  } else if (studentMarks >= 80) {
+    potentialScholarship = 'KSHEC Higher Education Merit Fellowship';
+  } else if (studentMarks >= 60) {
+    potentialScholarship = 'Central Sector / AICTE Pragati Scheme';
   }
 
   return {

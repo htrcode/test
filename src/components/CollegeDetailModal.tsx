@@ -204,18 +204,18 @@ export const CollegeDetailModal: React.FC<CollegeDetailModalProps> = ({
                   ★
                 </div>
                 <div>
-                  <span className="font-bold text-amber-300">Featured Partner: Chathamkulam Group of Institutions</span>
+                  <span className="font-bold text-amber-300">Featured Partner: Chathamkulam Business School</span>
                   <p className="text-slate-300 text-[11px]">
-                    Guaranteed merit quota, AICTE-approved MBA, BBA, B.Com, BCA, and 3-Year Polytechnic Engineering Diplomas with up to 50% tuition waiver!
+                    AICTE-approved standalone 2-Year MBA affiliated to University of Calicut with total course fee of ₹1,35,000 (₹67,500/year).
                   </p>
                 </div>
               </div>
               <button
-                onClick={() => onOpenAICounselor({ college: college.name, program: 'Chathamkulam Admissions & Merit Waiver' })}
+                onClick={() => onOpenAICounselor({ college: college.name, program: 'Chathamkulam MBA Admissions' })}
                 className="px-3 py-1.5 rounded-lg bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-[11px] whitespace-nowrap transition cursor-pointer flex items-center gap-1 shrink-0"
               >
                 <Sparkles className="w-3 h-3" />
-                <span>Calculate My Fee Waiver</span>
+                <span>Admission Guidance</span>
               </button>
             </div>
           )}
@@ -377,9 +377,21 @@ export const CollegeDetailModal: React.FC<CollegeDetailModalProps> = ({
                               {program.annualFee.toLocaleString('en-IN')}
                               <span className="text-xs text-slate-500 font-normal ml-1">/year</span>
                             </div>
-                            <div className="text-[11px] text-emerald-600 font-medium">
-                              Merit waivers applicable
-                            </div>
+                            {program.totalFee && (
+                              <div className="text-[11px] font-semibold text-slate-600 mt-0.5">
+                                Total: ₹{program.totalFee.toLocaleString('en-IN')} ({program.duration.split(' ')[0]} Yrs)
+                              </div>
+                            )}
+                            {program.feeNote && (
+                              <div className="text-[10px] text-indigo-700 font-medium bg-indigo-50/80 px-2 py-0.5 rounded mt-1 inline-block">
+                                {program.feeNote}
+                              </div>
+                            )}
+                            {college.scholarshipAvailable && (
+                              <div className="text-[11px] text-emerald-600 font-medium mt-1">
+                                State scholarships applicable
+                              </div>
+                            )}
                           </div>
 
                           {applied ? (
@@ -619,40 +631,55 @@ export const CollegeDetailModal: React.FC<CollegeDetailModalProps> = ({
                 <div className="flex items-center gap-2 text-amber-900">
                   <Award className="w-5 h-5 text-amber-600" />
                   <h4 className="text-sm font-bold font-heading">
-                    {college.name} Merit & Concession Programs
+                    {college.name} Fee Structure & Scholarship Guidelines
                   </h4>
                 </div>
-                <p className="text-xs text-slate-700 leading-relaxed">
-                  MARGEXA applicants enjoy direct institutional fee concessions evaluated automatically upon score verification:
-                </p>
-
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
-                  <div className="p-3.5 rounded-2xl bg-white border border-amber-200 shadow-xs space-y-1">
-                    <div className="text-[10px] font-bold uppercase text-amber-600">Tier 1: High Distinction</div>
-                    <div className="text-xl font-extrabold text-slate-900">50% Waiver</div>
-                    <p className="text-[11px] text-slate-500">Students with 90%+ in Plus Two or Degree exams.</p>
+                {college.chathamkulamFlag ? (
+                  <div className="space-y-3">
+                    <p className="text-xs text-slate-700 leading-relaxed">
+                      Chathamkulam Business School maintains a transparent AICTE-prescribed fee structure of <strong>₹1,35,000 for the complete 2-year full-time MBA</strong> (₹67,500/year). CBS does not offer arbitrary institutional private waivers.
+                    </p>
+                    <div className="p-3.5 rounded-2xl bg-white border border-amber-200 shadow-xs space-y-1.5">
+                      <div className="text-[10px] font-bold uppercase text-amber-700">Official Government Concessions</div>
+                      <p className="text-xs text-slate-600">
+                        Eligible candidates from SC, ST, OEC, and SEBC categories can submit applications through the <strong>Kerala E-Grantz 3.0</strong> portal and <strong>Kerala State Post-Matric Scholarship</strong> scheme, with full assistance provided by the campus admission desk.
+                      </p>
+                    </div>
                   </div>
+                ) : (
+                  <div className="space-y-3">
+                    <p className="text-xs text-slate-700 leading-relaxed">
+                      Students enrolling at {college.name} can avail of state and national higher education welfare grants based on merit and category eligibility:
+                    </p>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
+                      <div className="p-3.5 rounded-2xl bg-white border border-amber-200 shadow-xs space-y-1">
+                        <div className="text-[10px] font-bold uppercase text-amber-600">Kerala E-Grantz 3.0</div>
+                        <div className="text-base font-extrabold text-slate-900">100% Fee Grant</div>
+                        <p className="text-[11px] text-slate-500">Full tuition & examination fee assistance for eligible community candidates.</p>
+                      </div>
 
-                  <div className="p-3.5 rounded-2xl bg-white border border-amber-200 shadow-xs space-y-1">
-                    <div className="text-[10px] font-bold uppercase text-amber-600">Tier 2: Merit Quota</div>
-                    <div className="text-xl font-extrabold text-slate-900">40% Waiver</div>
-                    <p className="text-[11px] text-slate-500">Students with 80% - 89.9% in relevant entrance or qualifying boards.</p>
-                  </div>
+                      <div className="p-3.5 rounded-2xl bg-white border border-amber-200 shadow-xs space-y-1">
+                        <div className="text-[10px] font-bold uppercase text-amber-600">KSHEC Merit</div>
+                        <div className="text-base font-extrabold text-slate-900">Up to ₹60,000/yr</div>
+                        <p className="text-[11px] text-slate-500">Higher Education Council scholarship for meritorious degree & PG students.</p>
+                      </div>
 
-                  <div className="p-3.5 rounded-2xl bg-white border border-amber-200 shadow-xs space-y-1">
-                    <div className="text-[10px] font-bold uppercase text-amber-600">Special Category</div>
-                    <div className="text-xl font-extrabold text-slate-900">₹10,000 Off</div>
-                    <p className="text-[11px] text-slate-500">Girl students, sports distinction holders & rural outreach wards.</p>
+                      <div className="p-3.5 rounded-2xl bg-white border border-amber-200 shadow-xs space-y-1">
+                        <div className="text-[10px] font-bold uppercase text-amber-600">AICTE Pragati</div>
+                        <div className="text-base font-extrabold text-slate-900">₹50,000/year</div>
+                        <p className="text-[11px] text-slate-500">Government assistance for female students in technical diploma & degree tracks.</p>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                )}
 
                 <div className="pt-2">
                   <button
-                    onClick={() => onOpenAICounselor({ college: college.name, program: 'Scholarship Eligibility Calculation' })}
+                    onClick={() => onOpenAICounselor({ college: college.name, program: 'Scholarship Eligibility Guidance' })}
                     className="px-4 py-2 rounded-xl bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold shadow-xs transition flex items-center gap-1.5 cursor-pointer"
                   >
                     <Sparkles className="w-3.5 h-3.5" />
-                    <span>Calculate My Specific Waiver with AI Advisor</span>
+                    <span>Check Scholarship Eligibility with AI Advisor</span>
                   </button>
                 </div>
               </div>
