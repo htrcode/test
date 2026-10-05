@@ -77,6 +77,7 @@ const MainContent: React.FC = () => {
           <MatchmakerView
             onSelectCollege={handleSelectCollege}
             onOpenAICounselor={handleOpenAICounselor}
+            onNavigateToCollegePlans={() => setActiveTab('college-plans')}
           />
         )}
 

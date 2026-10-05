@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="cbsBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#312e81" />
+      <stop offset="50%" stop-color="#1e1b4b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="amberGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a" />
+      <stop offset="50%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#b45309" />
+    </linearGradient>
+    <linearGradient id="cbsShield" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4338ca" />
+      <stop offset="100%" stop-color="#1e1b4b" />
+    </linearGradient>
+    <filter id="cbsShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.4" />
+    </filter>
+  </defs>
+
+  <!-- Background rounded squircle -->
+  <rect width="200" height="200" rx="36" fill="url(#cbsBg)" />
+  <rect x="3" y="3" width="194" height="194" rx="33" fill="none" stroke="url(#amberGold)" stroke-width="2.5" stroke-opacity="0.7" />
+
+  <!-- Shield Base -->
+  <path d="M 58 52 C 58 52 100 46 100 46 C 100 46 142 52 142 52 C 142 98 128 126 100 144 C 72 126 58 98 58 52 Z"
+        fill="url(#cbsShield)" stroke="url(#amberGold)" stroke-width="3" filter="url(#cbsShadow)" />
+
+  <!-- Graduation Cap Motif -->
+  <g transform="translate(100, 72)">
+    <polygon points="0,-12 24,-2 0,8 -24,-2" fill="url(#amberGold)" />
+    <path d="M -16 2 L -16 11 C -16 16 16 16 16 11 L 16 2" fill="none" stroke="url(#amberGold)" stroke-width="2" />
+    <circle cx="0" cy="-2" r="2" fill="#ffffff" />
+    <path d="M 20 0 L 25 14" stroke="url(#amberGold)" stroke-width="1.5" />
+    <circle cx="25" cy="14" r="2" fill="url(#amberGold)" />
+  </g>
+
+  <!-- Pillar / Tower of Excellence -->
+  <path d="M 86 96 L 114 96 L 110 124 L 90 124 Z" fill="#ffffff" opacity="0.9" />
+  <line x1="100" y1="96" x2="100" y2="124" stroke="#4338ca" stroke-width="2" />
+
+  <!-- Lettering: CBS -->
+  <text x="100" y="116" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="10" font-weight="900" fill="#1e1b4b" text-anchor="middle" letter-spacing="1">CBS</text>
+
+  <!-- Banner at bottom: CHATHAMKULAM -->
+  <path d="M 32 156 Q 100 148 168 156 L 162 174 Q 100 166 38 174 Z" fill="url(#amberGold)" />
+  <text x="100" y="168" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="9" font-weight="900" fill="#0f172a" text-anchor="middle" letter-spacing="1.5">CHATHAMKULAM</text>
+
+  <!-- Subtitle: BUSINESS SCHOOL • PALAKKAD -->
+  <text x="100" y="188" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="8" font-weight="800" fill="#cbd5e1" text-anchor="middle" letter-spacing="1">PALAKKAD • ESTD 2005</text>
+  <text x="100" y="36" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="8.5" font-weight="800" fill="#fbbf24" text-anchor="middle" letter-spacing="0.5">CHATHAMKULAM GROUP</text>
+</svg>

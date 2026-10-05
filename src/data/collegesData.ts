@@ -17,7 +17,7 @@ export const COLLEGES_DATA: College[] = [
     rating: 4.8,
     reviewsCount: 342,
     heroImage: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1200&q=80',
-    logo: 'https://images.unsplash.com/photo-1592280771190-3e2e4d571952?auto=format&fit=crop&w=200&q=80',
+    logo: '/chathamkulam-logo.svg',
     tagline: 'AICTE Approved Premier MBA Business School in Palakkad, Kerala',
     description:
       'Chathamkulam Business School (CBS), affiliated with the University of Calicut and approved by AICTE, is situated in Chathamkulam Knowledge City, Palakkad. CBS specializes exclusively in postgraduate management education, offering master degree specializations strictly in Marketing, Human Resources, Finance, Data Analysis, and Logistics & Supply Chain Management with state-of-the-art corporate infrastructure, high-tech analytics labs, and extensive placement partnerships.',
@@ -35,8 +35,7 @@ export const COLLEGES_DATA: College[] = [
     activePlan: 'enterprise',
     featuredPromotion: {
       planTier: 'enterprise',
-      planPrice: '₹7,999 /month',
-      badge: '👑 PRIORITY ENTERPRISE PROMOTION',
+      badge: '👑 PRIORITY INSTITUTIONAL PROMOTION',
       tagline: 'AICTE Approved Premier Postgraduate Management School • 5 Exclusive MBA Programs',
       priorityRank: 1,
       highlights: [
@@ -1187,7 +1186,7 @@ export const COLLEGES_DATA: College[] = [
     rating: 4.8,
     reviewsCount: 590,
     heroImage: 'https://images.unsplash.com/photo-1590012314607-cda9d9b699ae?auto=format&fit=crop&w=1200&q=80',
-    logo: 'https://images.unsplash.com/photo-1568792923760-d70635a89fa8?auto=format&fit=crop&w=200&q=80',
+    logo: '/devagiri-logo.svg',
     tagline: 'Top-Ranked Autonomous College in North Kerala with NAAC A++',
     description:
       'St. Joseph’s College Devagiri is a premier academic institution in Kozhikode, renowned for academic excellence, state-of-the-art science labs, and vibrant campus life.',
@@ -1202,8 +1201,7 @@ export const COLLEGES_DATA: College[] = [
     activePlan: 'premium',
     featuredPromotion: {
       planTier: 'premium',
-      planPrice: '₹3,999 /month',
-      badge: '⭐ FEATURED COLLEGE PREMIUM',
+      badge: '⭐ FEATURED COLLEGE PROMOTION',
       tagline: 'NAAC A++ (CGPA 3.76) Heritage Autonomous Institution in Kozhikode',
       priorityRank: 2,
       highlights: [

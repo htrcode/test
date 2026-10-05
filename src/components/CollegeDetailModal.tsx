@@ -122,12 +122,20 @@ export const CollegeDetailModal: React.FC<CollegeDetailModalProps> = ({
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-5 pr-10 md:pr-0">
             {/* College Identity */}
             <div className="flex items-start gap-4">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white p-2 shrink-0 shadow-md border border-white/20 overflow-hidden flex items-center justify-center">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-slate-900 p-2 shrink-0 shadow-md border border-white/20 overflow-hidden flex items-center justify-center">
                 <img
                   src={college.logo}
                   alt={college.name}
-                  className="w-full h-full object-cover rounded-xl"
+                  className="w-full h-full object-contain rounded-xl"
                   referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    e.currentTarget.src =
+                      college.id === 'devagiri-calicut'
+                        ? '/devagiri-logo.svg'
+                        : college.id === 'chathamkulam-institutions'
+                        ? '/chathamkulam-logo.svg'
+                        : '/logo.svg';
+                  }}
                 />
               </div>
 

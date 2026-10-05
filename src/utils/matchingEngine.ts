@@ -144,14 +144,17 @@ export function rankMatchesForStudent(student: StudentProfile, colleges: College
     }
   }
 
-  // Sort descending by overall score, with Chathamkulam and top matches prioritized
+  // Recommend Chathamkulam and St. Joseph's Devagiri on top, then sort by score and rating
   return matches.sort((a, b) => {
+    const aRecommended = Boolean(a.college.chathamkulamFlag || a.college.id === 'devagiri-calicut');
+    const bRecommended = Boolean(b.college.chathamkulamFlag || b.college.id === 'devagiri-calicut');
+
+    if (aRecommended && !bRecommended) return -1;
+    if (!aRecommended && bRecommended) return 1;
+
     if (b.overallScore !== a.overallScore) {
       return b.overallScore - a.overallScore;
     }
-    // Boost featured institutions with same score
-    if (b.college.chathamkulamFlag && !a.college.chathamkulamFlag) return 1;
-    if (a.college.chathamkulamFlag && !b.college.chathamkulamFlag) return -1;
     return b.college.rating - a.college.rating;
   });
 }

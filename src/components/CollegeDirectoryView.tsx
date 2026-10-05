@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { COLLEGES_DATA } from '../data/collegesData';
 import { College, Program, getEffectiveFee, MARGEXA_FEE_DEDUCTION } from '../types';
+import { FeaturedCollegePromotions } from './FeaturedCollegePromotions';
 import {
   Search,
   Building,
@@ -19,7 +20,8 @@ import {
   ChevronRight,
   X,
   Building2,
-  ArrowRight
+  ArrowRight,
+  Crown
 } from 'lucide-react';
 
 interface CollegeDirectoryViewProps {
@@ -81,6 +83,13 @@ export const CollegeDirectoryView: React.FC<CollegeDirectoryViewProps> = ({
       if (!hasAffordableProgram) return false;
 
       return true;
+    }).sort((a, b) => {
+      // Recommend Chathamkulam and Devagiri on top
+      const aRec = Boolean(a.chathamkulamFlag || a.id === 'devagiri-calicut');
+      const bRec = Boolean(b.chathamkulamFlag || b.id === 'devagiri-calicut');
+      if (aRec && !bRec) return -1;
+      if (!aRec && bRec) return 1;
+      return b.rating - a.rating;
     });
   }, [districtFilter, modeFilter, searchQuery, levelFilter, maxFee]);
 
@@ -113,116 +122,12 @@ export const CollegeDirectoryView: React.FC<CollegeDirectoryViewProps> = ({
         </div>
       )}
 
-      {/* Featured Spotlight: Chathamkulam Institutions */}
-      {chathamkulam && (
-        <div className="rounded-3xl bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 text-white overflow-hidden shadow-xl border border-indigo-500/30">
-          <div className="p-6 sm:p-8 lg:p-10 flex flex-col lg:flex-row gap-8 items-center">
-            <div className="flex-1 space-y-4 text-left">
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="px-3 py-1 rounded-full bg-amber-400 text-indigo-950 font-black text-xs uppercase tracking-wider shadow-xs">
-                  Featured Institution
-                </span>
-                <span className="px-3 py-1 rounded-full bg-indigo-500/30 text-indigo-200 text-xs font-semibold border border-indigo-400/30">
-                  Palakkad, Kerala
-                </span>
-                <span className="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-semibold border border-emerald-400/30">
-                  AICTE & Calicut University Affiliated
-                </span>
-              </div>
-
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-heading text-white">
-                {chathamkulam.name}
-              </h2>
-
-              <p className="text-sm text-slate-300 leading-relaxed">
-                {chathamkulam.description}
-              </p>
-
-              {/* Key Amenities */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs pt-1 text-slate-200">
-                {chathamkulam.features.slice(0, 4).map((feat, i) => (
-                  <div key={i} className="flex items-center gap-2">
-                    <Check className="w-4 h-4 text-emerald-400 shrink-0" />
-                    <span>{feat}</span>
-                  </div>
-                ))}
-              </div>
-
-              {/* Action Links */}
-              <div className="flex flex-wrap items-center gap-3 pt-3">
-                <button
-                  onClick={() => setSelectedCollegeModal(chathamkulam)}
-                  className="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs shadow-md shadow-indigo-500/30 transition cursor-pointer flex items-center gap-2"
-                >
-                  <BookOpen className="w-4 h-4" />
-                  View All MBA Specializations ({chathamkulam.programs.length})
-                </button>
-
-                <a
-                  href={chathamkulam.officialWebsite}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs border border-white/20 transition cursor-pointer flex items-center gap-1.5"
-                >
-                  <span>Visit chathamkulaminstitutions.org</span>
-                  <ExternalLink className="w-3.5 h-3.5" />
-                </a>
-
-                <button
-                  onClick={() =>
-                    onOpenAICounselor({
-                      college: chathamkulam.name,
-                      program: 'MBA & Polytechnic Programs',
-                    })
-                  }
-                  className="px-4 py-2.5 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 text-amber-200 font-semibold text-xs border border-amber-400/40 transition cursor-pointer flex items-center gap-1.5"
-                >
-                  <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-                  Ask AI About Admissions
-                </button>
-              </div>
-            </div>
-
-            {/* Visual Card / Stats */}
-            <div className="w-full lg:w-80 shrink-0 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 p-5 space-y-4">
-              <div className="rounded-xl overflow-hidden aspect-video bg-slate-800 relative">
-                <img
-                  src={chathamkulam.heroImage}
-                  alt={chathamkulam.name}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 to-transparent flex items-end p-3">
-                  <span className="text-[11px] font-bold text-white">
-                    Palakkad Campus Infrastructure
-                  </span>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-2 gap-3 text-center">
-                <div className="bg-white/5 p-2.5 rounded-xl">
-                  <div className="text-xl font-extrabold text-amber-300 font-heading">
-                    {chathamkulam.rating} ★
-                  </div>
-                  <div className="text-[10px] text-slate-300">
-                    {chathamkulam.reviewsCount} Student Reviews
-                  </div>
-                </div>
-                <div className="bg-white/5 p-2.5 rounded-xl">
-                  <div className="text-xl font-extrabold text-emerald-300 font-heading">
-                    94%+
-                  </div>
-                  <div className="text-[10px] text-slate-300">Placement Record</div>
-                </div>
-              </div>
-
-              <div className="text-[11px] text-slate-300 text-left bg-white/5 p-3 rounded-xl border border-white/5">
-                <strong className="text-white block mb-1">Exclusive Postgraduate Management:</strong>
-                Chathamkulam Business School (MBA in Marketing, Human Resources, Finance, Data Analysis, and Logistics & Supply Chain).
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+      {/* Featured Institutional Promotions: Chathamkulam (₹7,999 Enterprise) & Devagiri (₹3,999 Premium) */}
+      <FeaturedCollegePromotions
+        onSelectCollege={(college) => setSelectedCollegeModal(college)}
+        onOpenAICounselor={onOpenAICounselor}
+        onNavigateToCollegePlans={onNavigateToCollegePlans}
+      />
 
       {/* MARGEXA Flat ₹10,000 Direct Fee Deduction Strategy Banner */}
       <div className="bg-gradient-to-r from-emerald-950 via-teal-950 to-slate-900 rounded-3xl p-6 sm:p-7 text-white shadow-xl border border-emerald-500/30 text-left">
@@ -402,11 +307,7 @@ export const CollegeDirectoryView: React.FC<CollegeDirectoryViewProps> = ({
           return (
             <div
               key={college.id}
-              className={`rounded-2xl bg-white border flex flex-col overflow-hidden transition duration-200 hover:shadow-lg ${
-                college.chathamkulamFlag
-                  ? 'border-indigo-400 ring-2 ring-indigo-200/60 shadow-md'
-                  : 'border-slate-200/90 shadow-xs'
-              }`}
+              className="rounded-2xl bg-white border border-slate-200/90 shadow-xs flex flex-col overflow-hidden transition duration-200 hover:shadow-lg"
             >
               {/* College Image Banner */}
               <div className="h-44 relative bg-slate-800 overflow-hidden">

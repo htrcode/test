@@ -79,7 +79,7 @@ export interface College {
   activePlan?: 'enterprise' | 'premium' | 'free';
   featuredPromotion?: {
     planTier: 'enterprise' | 'premium';
-    planPrice: string;
+    planPrice?: string;
     badge: string;
     tagline: string;
     highlights: string[];

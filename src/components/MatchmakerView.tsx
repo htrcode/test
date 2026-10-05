@@ -3,6 +3,7 @@ import { useAuth } from '../context/AuthContext';
 import { COLLEGES_DATA } from '../data/collegesData';
 import { rankMatchesForStudent } from '../utils/matchingEngine';
 import { MatchResult, College, Program, getEffectiveFee, MARGEXA_FEE_DEDUCTION } from '../types';
+import { FeaturedCollegePromotions } from './FeaturedCollegePromotions';
 import {
   Sparkles,
   SlidersHorizontal,
@@ -18,17 +19,20 @@ import {
   Zap,
   Info,
   Check,
-  ChevronRight
+  ChevronRight,
+  Crown
 } from 'lucide-react';
 
 interface MatchmakerViewProps {
   onSelectCollege: (college: College) => void;
   onOpenAICounselor: (collegeContext?: { college: string; program: string }) => void;
+  onNavigateToCollegePlans?: () => void;
 }
 
 export const MatchmakerView: React.FC<MatchmakerViewProps> = ({
   onSelectCollege,
   onOpenAICounselor,
+  onNavigateToCollegePlans,
 }) => {
   const { student, applyToProgram, applications, setIsProfileModalOpen } = useAuth();
 
@@ -193,6 +197,13 @@ export const MatchmakerView: React.FC<MatchmakerViewProps> = ({
         </div>
       </div>
 
+      {/* Featured College Promotions: Chathamkulam (₹7,999 Enterprise) & St. Joseph's Devagiri (₹3,999 Premium) */}
+      <FeaturedCollegePromotions
+        onSelectCollege={onSelectCollege}
+        onOpenAICounselor={onOpenAICounselor}
+        onNavigateToCollegePlans={onNavigateToCollegePlans}
+      />
+
       {/* Filter and Search Bar */}
       <div className="bg-white p-4 rounded-2xl shadow-xs border border-slate-200/80 flex flex-col md:flex-row md:items-center justify-between gap-4">
         {/* Left Level Filter Tabs */}
@@ -279,34 +290,8 @@ export const MatchmakerView: React.FC<MatchmakerViewProps> = ({
           return (
             <div
               key={`${match.college.id}-${match.program.id}`}
-              className={`rounded-2xl bg-white border transition duration-200 hover:shadow-lg overflow-hidden ${
-                match.college.chathamkulamFlag
-                  ? 'border-indigo-300 ring-1 ring-indigo-200/60 shadow-xs'
-                  : 'border-slate-200/90 shadow-xs'
-              }`}
+              className="rounded-2xl bg-white border border-slate-200/90 shadow-xs transition duration-200 hover:shadow-lg overflow-hidden"
             >
-              {/* Top Banner if Chathamkulam or High Match */}
-              {match.college.chathamkulamFlag && (
-                <div className="bg-gradient-to-r from-indigo-900 via-blue-900 to-indigo-900 text-white px-4 py-1.5 flex items-center justify-between text-xs">
-                  <div className="flex items-center gap-2">
-                    <span className="px-1.5 py-0.5 rounded-md bg-amber-400 text-indigo-950 font-extrabold text-[10px] uppercase tracking-wider">
-                      Featured Campus
-                    </span>
-                    <span className="font-semibold text-indigo-100">
-                      Chathamkulam Group of Institutions, Palakkad (AICTE & Calicut Univ Affiliated)
-                    </span>
-                  </div>
-                  <a
-                    href="https://chathamkulaminstitutions.org/"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="text-[11px] text-amber-300 hover:text-white flex items-center gap-1 font-medium transition"
-                  >
-                    Official Portal <ExternalLink className="w-3 h-3" />
-                  </a>
-                </div>
-              )}
-
               <div className="p-5 sm:p-6 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
                 {/* Left Side: Score & Details */}
                 <div className="flex items-start gap-4 flex-1">

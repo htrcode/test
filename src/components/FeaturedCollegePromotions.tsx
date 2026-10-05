@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { College, Program, getEffectiveFee } from '../types';
 import { COLLEGES_DATA } from '../data/collegesData';
 import {
@@ -7,26 +7,42 @@ import {
   Award,
   CheckCircle2,
   Calendar,
-  PhoneCall,
   Video,
   ExternalLink,
   BookOpen,
   ArrowRight,
   TrendingUp,
-  Building,
   GraduationCap,
   MapPin,
   Clock,
   ShieldCheck,
   Send,
   X,
-  FileText
+  ChevronLeft,
+  ChevronRight,
+  Pause,
+  Play,
+  Megaphone,
+  Check
 } from 'lucide-react';
 
 interface FeaturedCollegePromotionsProps {
   onSelectCollege: (college: College) => void;
   onOpenAICounselor: (context?: { college: string; program: string }) => void;
   onNavigateToCollegePlans?: () => void;
+}
+
+interface PromotedAdItem {
+  id: string;
+  collegeId: string;
+  badge: string;
+  badgeType: 'enterprise' | 'premium';
+  headline: string;
+  subheadline: string;
+  keyPills: string[];
+  ctaText: string;
+  ctaType: 'counseling' | 'enquiry' | 'view';
+  themeColor: 'amber' | 'indigo' | 'emerald';
 }
 
 export const FeaturedCollegePromotions: React.FC<FeaturedCollegePromotionsProps> = ({
@@ -36,6 +52,64 @@ export const FeaturedCollegePromotions: React.FC<FeaturedCollegePromotionsProps>
 }) => {
   const chathamkulam = COLLEGES_DATA.find((c) => c.id === 'chathamkulam-institutions');
   const devagiri = COLLEGES_DATA.find((c) => c.id === 'devagiri-calicut');
+
+  // Ad rotation items (5 seconds each)
+  const adItems: PromotedAdItem[] = [
+    {
+      id: 'ad-cbs',
+      collegeId: 'chathamkulam-institutions',
+      badge: 'Top Recommendation',
+      badgeType: 'enterprise',
+      headline: 'Chathamkulam Business School (Palakkad)',
+      subheadline: 'AICTE Approved • Affiliated to University of Calicut • 5 Specialized MBA Programs',
+      keyPills: [
+        'Marketing, HR, Finance, Data & Logistics',
+        '94%+ Placement Record',
+        'Online 1-on-1 Video Counselling with Dean',
+        'Flat -₹10,000 MARGEXA Deduction',
+      ],
+      ctaText: 'Schedule Video Counselling',
+      ctaType: 'counseling',
+      themeColor: 'amber',
+    },
+    {
+      id: 'ad-devagiri',
+      collegeId: 'devagiri-calicut',
+      badge: 'Top Recommendation',
+      badgeType: 'premium',
+      headline: "St. Joseph's College (Autonomous), Devagiri",
+      subheadline: 'NAAC A++ (CGPA 3.76) • Heritage Autonomous Institution in Kozhikode',
+      keyPills: [
+        'B.Sc Computer Science, B.Com & M.Sc Data Analytics',
+        'Direct Fast-Track Admissions Desk',
+        'Govt. Subsidized Fees from ₹6,000/yr',
+        'Flat -₹10,000 Fee Concession',
+      ],
+      ctaText: 'Submit Course Enquiry',
+      ctaType: 'enquiry',
+      themeColor: 'indigo',
+    },
+    {
+      id: 'ad-rajagiri',
+      collegeId: 'rajagiri-institutions',
+      badge: 'Top Recommendation',
+      badgeType: 'premium',
+      headline: 'Rajagiri College of Social Sciences & RSET (Kochi)',
+      subheadline: 'NAAC A++ (CGPA 3.83) • Premier Management & Tech Institution',
+      keyPills: [
+        'MBA, MCA & B.Com Computer Applications',
+        'Infopark & SmartCity Placement Tie-ups',
+        'International University Collaborations',
+        'Flat -₹10,000 Fee Concession',
+      ],
+      ctaText: 'View Autonomous Degrees',
+      ctaType: 'view',
+      themeColor: 'emerald',
+    },
+  ];
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isManualPaused, setIsManualPaused] = useState(false);
 
   // Interactive Online Counseling Modal for Enterprise Plan (Chathamkulam)
   const [isCounselingModalOpen, setIsCounselingModalOpen] = useState(false);
@@ -53,6 +127,35 @@ export const FeaturedCollegePromotions: React.FC<FeaturedCollegePromotionsProps>
   const [enquiryPhone, setEnquiryPhone] = useState('');
   const [enquiryEmail, setEnquiryEmail] = useState('');
   const [enquirySuccess, setEnquirySuccess] = useState(false);
+
+  // Reliable 5-second auto-rotation timer
+  useEffect(() => {
+    // Only pause if user manually toggled pause or opened a popup modal
+    if (isManualPaused || isCounselingModalOpen || isEnquiryModalOpen) {
+      return;
+    }
+
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % adItems.length);
+    }, 5000);
+
+    return () => clearInterval(timer);
+  }, [isManualPaused, isCounselingModalOpen, isEnquiryModalOpen, currentIndex, adItems.length]);
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % adItems.length);
+  };
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev - 1 + adItems.length) % adItems.length);
+  };
+
+  const handleSelectAd = (index: number) => {
+    setCurrentIndex(index);
+  };
+
+  const activeAd = adItems[currentIndex];
+  const activeCollege = COLLEGES_DATA.find((c) => c.id === activeAd.collegeId);
 
   const handleOpenCounseling = (college: College) => {
     setCounselingCollege(college);
@@ -76,308 +179,184 @@ export const FeaturedCollegePromotions: React.FC<FeaturedCollegePromotionsProps>
     setEnquirySuccess(true);
   };
 
+  if (!activeCollege) return null;
+
   return (
-    <div className="space-y-4 my-6">
-      {/* Section Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white p-4 sm:p-5 rounded-3xl border border-indigo-900/60 shadow-lg">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-2xl bg-amber-400/20 text-amber-300 flex items-center justify-center shrink-0 border border-amber-400/30">
-            <Sparkles className="w-5 h-5 text-amber-300 animate-pulse" />
+    <div className="my-5 space-y-2">
+      <style>{`
+        @keyframes adProgressAnim {
+          from { width: 0%; }
+          to { width: 100%; }
+        }
+      `}</style>
+
+      {/* Small, comfortable 5-Second Rotating Promoted Ad Banner */}
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-slate-950 via-slate-900 to-indigo-950 text-white border border-slate-700/80 shadow-lg transition-all duration-300 group">
+        {/* Animated 5-Second Progress Bar at Top */}
+        <div className="absolute top-0 left-0 right-0 h-1 bg-white/10 z-20 overflow-hidden">
+          <div
+            key={currentIndex}
+            className={`h-full ${
+              activeAd.themeColor === 'amber'
+                ? 'bg-gradient-to-r from-amber-400 via-amber-300 to-amber-400'
+                : activeAd.themeColor === 'emerald'
+                ? 'bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-400'
+                : 'bg-gradient-to-r from-indigo-400 via-sky-300 to-indigo-400'
+            }`}
+            style={{
+              animation: (isManualPaused || isCounselingModalOpen || isEnquiryModalOpen)
+                ? 'none'
+                : 'adProgressAnim 5s linear forwards',
+            }}
+          />
+        </div>
+
+        {/* Top Header Bar inside Ad */}
+        <div className="px-4 py-2 bg-slate-900/90 border-b border-white/10 flex items-center justify-between text-xs">
+          <div className="flex items-center gap-2">
+            <span className="flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-amber-400/20 text-amber-300 border border-amber-400/30 text-[10px] font-black uppercase tracking-wider">
+              <Sparkles className="w-3 h-3 text-amber-400" />
+              Top Recommendation
+            </span>
+            <span className="text-[11px] font-bold text-slate-300 hidden sm:inline">
+              Recommended by MARGEXA Academic Advisory
+            </span>
           </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="text-[10px] uppercase font-black tracking-wider text-amber-300 bg-amber-400/10 px-2 py-0.5 rounded-full border border-amber-400/20">
-                Featured Promotions
-              </span>
-              <span className="text-xs text-slate-300 font-medium hidden md:inline">
-                Verified MARGEXA College Premium & Enterprise Partners
-              </span>
+
+          {/* 5-Second Rotation Indicators & Pause Indicator */}
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-1.5">
+              {adItems.map((ad, idx) => (
+                <button
+                  key={ad.id}
+                  onClick={() => handleSelectAd(idx)}
+                  className={`h-2 rounded-full transition-all cursor-pointer ${
+                    currentIndex === idx
+                      ? 'w-6 bg-amber-400'
+                      : 'w-2 bg-slate-600 hover:bg-slate-400'
+                  }`}
+                  title={`Switch to ${ad.headline}`}
+                />
+              ))}
             </div>
-            <h2 className="text-lg sm:text-xl font-black text-white font-heading mt-0.5">
-              Promoted Institutional Admissions 2026
-            </h2>
+
+            <div className="flex items-center gap-1 text-[10px] text-slate-400 font-mono">
+              <span>5s</span>
+              <button
+                onClick={() => setIsManualPaused(!isManualPaused)}
+                className="p-1 text-slate-400 hover:text-white transition cursor-pointer"
+                title={isManualPaused ? 'Resume 5s rotation' : 'Pause rotation'}
+              >
+                {isManualPaused ? <Play className="w-3 h-3 text-emerald-400" /> : <Pause className="w-3 h-3" />}
+              </button>
+            </div>
           </div>
         </div>
 
-        {onNavigateToCollegePlans && (
-          <button
-            onClick={onNavigateToCollegePlans}
-            className="self-start sm:self-center px-3.5 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-semibold transition border border-white/20 flex items-center gap-1.5 cursor-pointer shrink-0"
-          >
-            <span>Are you a college? View Plans</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </button>
-        )}
-      </div>
-
-      {/* Featured Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* CARD 1: CHATHAMKULAM BUSINESS SCHOOL - ENTERPRISE PLAN (₹7,999/mo) */}
-        {chathamkulam && (
-          <div className="relative rounded-3xl bg-gradient-to-b from-slate-900 via-slate-900 to-indigo-950 text-white border-2 border-amber-400/60 shadow-xl shadow-amber-500/5 overflow-hidden flex flex-col justify-between group hover:border-amber-400 transition-all duration-300">
-            {/* Top Priority Badge */}
-            <div className="bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 text-slate-950 px-4 py-2 flex items-center justify-between text-xs font-black uppercase tracking-wider shadow-sm">
-              <div className="flex items-center gap-2">
-                <Crown className="w-4 h-4 text-slate-950 animate-bounce" />
-                <span>Priority Enterprise Promotion #1</span>
-              </div>
-              <span className="text-[10px] bg-slate-950 text-amber-300 font-black px-2 py-0.5 rounded-full border border-amber-400/30">
-                ₹7,999 /mo Enterprise Plan
+        {/* Compact Main Content Row */}
+        <div className="p-3 sm:p-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          {/* Left: College Logo & Details */}
+          <div className="flex items-center gap-3.5 flex-1 min-w-0">
+            {/* Verified College Logo (Clean, non-broken SVG / image) */}
+            <div className="relative shrink-0">
+              <img
+                src={activeCollege.logo}
+                alt={activeCollege.name}
+                className="w-13 h-13 sm:w-14 sm:h-14 rounded-xl object-contain p-1 border-2 border-white/20 bg-slate-900 shadow-md shrink-0"
+                onError={(e) => {
+                  e.currentTarget.src =
+                    activeCollege.id === 'devagiri-calicut'
+                      ? '/devagiri-logo.svg'
+                      : '/chathamkulam-logo.svg';
+                }}
+              />
+              <span className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-emerald-500 text-white flex items-center justify-center text-[10px] shadow-xs">
+                ✓
               </span>
             </div>
 
-            <div className="p-5 sm:p-6 space-y-4">
-              {/* College Title & Campus */}
-              <div className="flex items-start gap-3.5">
-                <img
-                  src={chathamkulam.logo}
-                  alt={chathamkulam.name}
-                  className="w-14 h-14 rounded-2xl object-cover border-2 border-amber-400/40 shrink-0 bg-white/10"
-                />
-                <div>
-                  <div className="flex items-center gap-1.5 text-xs text-amber-300 font-bold mb-0.5">
-                    <MapPin className="w-3.5 h-3.5 text-amber-400" />
-                    <span>Palakkad, Kerala • Affiliated to University of Calicut</span>
-                  </div>
-                  <h3 className="text-lg sm:text-xl font-black text-white leading-snug">
-                    {chathamkulam.name}
-                  </h3>
-                  <p className="text-xs text-slate-300 mt-1 line-clamp-2">
-                    {chathamkulam.tagline}
-                  </p>
-                </div>
+            {/* Texts */}
+            <div className="min-w-0 flex-1 text-left">
+              <div className="flex items-center gap-1.5 flex-wrap">
+                <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-white/10 text-amber-300 border border-white/10">
+                  {activeCollege.location.city}, Kerala
+                </span>
+                <span className="text-[10px] text-slate-400 truncate">
+                  {activeCollege.accreditation.split('|')[0]}
+                </span>
               </div>
 
-              {/* MBA Specializations Pill Strip */}
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-3 text-xs space-y-2">
-                <div className="flex items-center justify-between">
-                  <span className="font-extrabold text-amber-200 uppercase tracking-wider text-[10px] flex items-center gap-1.5">
-                    <GraduationCap className="w-4 h-4 text-amber-400" />
-                    Exclusively Offered MBA Specializations (5 Programs):
-                  </span>
-                  <span className="text-[10px] font-bold text-emerald-300 bg-emerald-950/60 border border-emerald-500/40 px-2 py-0.5 rounded">
-                    Flat -₹10,000 Fee Deduction
-                  </span>
-                </div>
-                <div className="flex flex-wrap gap-1.5">
-                  {[
-                    'Marketing Management',
-                    'Human Resources',
-                    'Financial Management',
-                    'Data Analysis & BI',
-                    'Logistics & Supply Chain',
-                  ].map((spec, i) => (
-                    <span
-                      key={i}
-                      className="px-2 py-0.5 bg-indigo-900/60 border border-indigo-400/30 text-indigo-200 rounded-md text-[11px] font-medium"
-                    >
-                      ✓ {spec}
-                    </span>
-                  ))}
-                </div>
-              </div>
+              <h3 className="text-sm sm:text-base font-black text-white truncate font-heading mt-0.5">
+                {activeCollege.name}
+              </h3>
 
-              {/* Enterprise Exclusive Capabilities */}
-              <div className="grid grid-cols-2 gap-2 text-xs">
-                <div className="bg-white/5 border border-white/10 p-2.5 rounded-xl flex items-center gap-2">
-                  <Video className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <div>
-                    <div className="font-bold text-white text-[11px]">Online Video Counselling</div>
-                    <div className="text-[10px] text-slate-400">Direct booking with Dean</div>
-                  </div>
-                </div>
-                <div className="bg-white/5 border border-white/10 p-2.5 rounded-xl flex items-center gap-2">
-                  <TrendingUp className="w-4 h-4 text-amber-400 shrink-0" />
-                  <div>
-                    <div className="font-bold text-white text-[11px]">94%+ Placement Cell</div>
-                    <div className="text-[10px] text-slate-400">Top MNC recruiters</div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Fee and Incentive */}
-              <div className="bg-emerald-950/60 border border-emerald-500/30 p-3 rounded-2xl flex items-center justify-between text-xs">
-                <div>
-                  <span className="text-[10px] uppercase font-bold text-emerald-300 block">
-                    MARGEXA Institutional Grant
+              {/* Key Features Pill Strip */}
+              <div className="flex flex-wrap items-center gap-1.5 mt-1">
+                {activeAd.keyPills.slice(0, 3).map((pill, i) => (
+                  <span
+                    key={i}
+                    className="text-[10px] px-2 py-0.5 rounded-md bg-white/5 border border-white/10 text-slate-300 font-medium whitespace-nowrap"
+                  >
+                    ✓ {pill}
                   </span>
-                  <span className="text-slate-300 text-[11px]">
-                    Standard Tuition: <span className="line-through">₹1,35,000/yr</span>
-                  </span>
-                </div>
-                <div className="text-right">
-                  <span className="text-base font-black text-emerald-300">
-                    Net: ₹1,25,000/yr
-                  </span>
-                  <span className="block text-[10px] text-emerald-400 font-semibold">
-                    Instant -₹10,000 Concession
-                  </span>
-                </div>
+                ))}
               </div>
             </div>
+          </div>
 
-            {/* Action Buttons */}
-            <div className="p-5 sm:p-6 pt-0 flex flex-wrap items-center gap-2.5">
+          {/* Right: Direct Action Buttons & Navigation Arrows */}
+          <div className="flex items-center gap-2 w-full md:w-auto shrink-0 justify-between md:justify-end pt-1 md:pt-0 border-t md:border-t-0 border-white/10">
+            {/* Primary Action Button based on college */}
+            {activeAd.ctaType === 'counseling' ? (
               <button
-                onClick={() => handleOpenCounseling(chathamkulam)}
-                className="flex-1 min-w-[170px] py-2.5 px-3 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black text-xs transition flex items-center justify-center gap-1.5 cursor-pointer shadow-md hover:scale-[1.02]"
+                onClick={() => handleOpenCounseling(activeCollege)}
+                className="flex-1 md:flex-none px-3.5 py-2 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black text-xs transition flex items-center justify-center gap-1.5 cursor-pointer shadow-md hover:scale-105"
               >
                 <Calendar className="w-3.5 h-3.5" />
-                <span>Schedule Online Counselling</span>
+                <span>{activeAd.ctaText}</span>
               </button>
-
+            ) : (
               <button
-                onClick={() => onSelectCollege(chathamkulam)}
-                className="py-2.5 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs transition flex items-center justify-center gap-1.5 cursor-pointer"
-              >
-                <BookOpen className="w-3.5 h-3.5" />
-                <span>View All 5 MBA Programs</span>
-              </button>
-
-              <a
-                href={chathamkulam.officialWebsite}
-                target="_blank"
-                rel="noreferrer"
-                className="p-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white transition flex items-center justify-center"
-                title="Official Portal"
-              >
-                <ExternalLink className="w-4 h-4" />
-              </a>
-            </div>
-          </div>
-        )}
-
-        {/* CARD 2: ST. JOSEPH'S COLLEGE (AUTONOMOUS), DEVAGIRI - PREMIUM PLAN (₹3,999/mo) */}
-        {devagiri && (
-          <div className="relative rounded-3xl bg-gradient-to-b from-slate-900 via-slate-900 to-blue-950 text-white border-2 border-indigo-400/60 shadow-xl shadow-indigo-500/5 overflow-hidden flex flex-col justify-between group hover:border-indigo-400 transition-all duration-300">
-            {/* Top Premium Badge */}
-            <div className="bg-gradient-to-r from-indigo-600 via-indigo-500 to-blue-600 text-white px-4 py-2 flex items-center justify-between text-xs font-black uppercase tracking-wider shadow-sm">
-              <div className="flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-amber-300" />
-                <span>Featured College Premium Promotion</span>
-              </div>
-              <span className="text-[10px] bg-white/20 text-white font-black px-2 py-0.5 rounded-full border border-white/20">
-                ₹3,999 /mo Premium Plan
-              </span>
-            </div>
-
-            <div className="p-5 sm:p-6 space-y-4">
-              {/* College Title & Campus */}
-              <div className="flex items-start gap-3.5">
-                <img
-                  src={devagiri.logo}
-                  alt={devagiri.name}
-                  className="w-14 h-14 rounded-2xl object-cover border-2 border-indigo-400/40 shrink-0 bg-white/10"
-                />
-                <div>
-                  <div className="flex items-center gap-1.5 text-xs text-indigo-300 font-bold mb-0.5">
-                    <MapPin className="w-3.5 h-3.5 text-indigo-400" />
-                    <span>Kozhikode, Kerala • NAAC A++ (CGPA 3.76)</span>
-                  </div>
-                  <h3 className="text-lg sm:text-xl font-black text-white leading-snug">
-                    {devagiri.name}
-                  </h3>
-                  <p className="text-xs text-slate-300 mt-1 line-clamp-2">
-                    {devagiri.tagline}
-                  </p>
-                </div>
-              </div>
-
-              {/* Flagship Autonomous Degrees */}
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-3 text-xs space-y-2">
-                <div className="flex items-center justify-between">
-                  <span className="font-extrabold text-indigo-200 uppercase tracking-wider text-[10px] flex items-center gap-1.5">
-                    <Award className="w-4 h-4 text-amber-400" />
-                    Flagship Autonomous Programs Listed:
-                  </span>
-                  <span className="text-[10px] font-bold text-emerald-300 bg-emerald-950/60 border border-emerald-500/40 px-2 py-0.5 rounded">
-                    Flat -₹10,000 Fee Deduction
-                  </span>
-                </div>
-                <div className="flex flex-wrap gap-1.5">
-                  {devagiri.programs.map((prog) => (
-                    <span
-                      key={prog.id}
-                      className="px-2 py-0.5 bg-blue-900/60 border border-blue-400/30 text-blue-200 rounded-md text-[11px] font-medium"
-                    >
-                      ✓ {prog.name} (₹{getEffectiveFee(prog.annualFee).toLocaleString('en-IN')}/yr)
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Premium Perks Highlight */}
-              <div className="grid grid-cols-2 gap-2 text-xs">
-                <div className="bg-white/5 border border-white/10 p-2.5 rounded-xl flex items-center gap-2">
-                  <FileText className="w-4 h-4 text-indigo-400 shrink-0" />
-                  <div>
-                    <div className="font-bold text-white text-[11px]">Digital Prospectus & 4K Gallery</div>
-                    <div className="text-[10px] text-slate-400">Verified Campus Tour</div>
-                  </div>
-                </div>
-                <div className="bg-white/5 border border-white/10 p-2.5 rounded-xl flex items-center gap-2">
-                  <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <div>
-                    <div className="font-bold text-white text-[11px]">Priority Enquiry Alerts</div>
-                    <div className="text-[10px] text-slate-400">Fast admissions review</div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Net Subsidized Tuition */}
-              <div className="bg-indigo-950/60 border border-indigo-500/30 p-3 rounded-2xl flex items-center justify-between text-xs">
-                <div>
-                  <span className="text-[10px] uppercase font-bold text-indigo-300 block">
-                    Starting Net Student Fee
-                  </span>
-                  <span className="text-slate-300 text-[11px]">
-                    Govt. Aided Autonomous Tuition from
-                  </span>
-                </div>
-                <div className="text-right">
-                  <span className="text-base font-black text-indigo-300">
-                    Net: ₹6,000 – ₹35,000/yr
-                  </span>
-                  <span className="block text-[10px] text-emerald-400 font-semibold">
-                    Flat -₹10,000 MARGEXA Concession
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            {/* Action Buttons */}
-            <div className="p-5 sm:p-6 pt-0 flex flex-wrap items-center gap-2.5">
-              <button
-                onClick={() => handleOpenEnquiry(devagiri)}
-                className="flex-1 min-w-[170px] py-2.5 px-3 rounded-xl bg-gradient-to-r from-indigo-500 to-blue-600 hover:from-indigo-400 hover:to-blue-500 text-white font-black text-xs transition flex items-center justify-center gap-1.5 cursor-pointer shadow-md hover:scale-[1.02]"
+                onClick={() => handleOpenEnquiry(activeCollege)}
+                className="flex-1 md:flex-none px-3.5 py-2 rounded-xl bg-gradient-to-r from-indigo-500 to-blue-600 hover:from-indigo-400 hover:to-blue-500 text-white font-black text-xs transition flex items-center justify-center gap-1.5 cursor-pointer shadow-md hover:scale-105"
               >
                 <Send className="w-3.5 h-3.5 text-amber-300" />
-                <span>Submit Course Enquiry</span>
+                <span>{activeAd.ctaText}</span>
               </button>
+            )}
 
+            {/* View College Details */}
+            <button
+              onClick={() => onSelectCollege(activeCollege)}
+              className="px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs transition flex items-center justify-center gap-1 cursor-pointer border border-white/15"
+              title="View Programs & Cutoffs"
+            >
+              <BookOpen className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">Programs</span>
+            </button>
+
+            {/* Prev / Next Arrows */}
+            <div className="flex items-center gap-1 pl-1">
               <button
-                onClick={() => onSelectCollege(devagiri)}
-                className="py-2.5 px-4 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs transition flex items-center justify-center gap-1.5 cursor-pointer border border-white/20"
+                onClick={handlePrev}
+                className="p-2 rounded-lg bg-white/5 hover:bg-white/15 text-slate-300 hover:text-white transition cursor-pointer"
+                title="Previous Ad"
               >
-                <BookOpen className="w-3.5 h-3.5" />
-                <span>View Prospectus & Degrees</span>
+                <ChevronLeft className="w-4 h-4" />
               </button>
-
-              <a
-                href={devagiri.officialWebsite}
-                target="_blank"
-                rel="noreferrer"
-                className="p-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white transition flex items-center justify-center"
-                title="Official Portal"
+              <button
+                onClick={handleNext}
+                className="p-2 rounded-lg bg-white/5 hover:bg-white/15 text-slate-300 hover:text-white transition cursor-pointer"
+                title="Next Ad"
               >
-                <ExternalLink className="w-4 h-4" />
-              </a>
+                <ChevronRight className="w-4 h-4" />
+              </button>
             </div>
           </div>
-        )}
+        </div>
       </div>
 
-      {/* Online Counseling Booking Modal (Enterprise Plan Feature - Chathamkulam) */}
+      {/* Online Counseling Booking Modal (For Chathamkulam) */}
       {isCounselingModalOpen && counselingCollege && (
         <div className="fixed inset-0 z-50 bg-slate-950/75 backdrop-blur-xs flex items-center justify-center p-4">
           <div className="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-200 relative animate-scale-up text-left">
@@ -430,14 +409,14 @@ export const FeaturedCollegePromotions: React.FC<FeaturedCollegePromotionsProps>
                 <div className="flex items-center gap-2 text-amber-600 mb-1">
                   <Crown className="w-5 h-5 text-amber-500" />
                   <span className="text-xs font-bold uppercase tracking-wider">
-                    Enterprise Online Counselling Scheduler
+                    Online Counselling Scheduler
                   </span>
                 </div>
                 <h3 className="text-xl font-black text-slate-900 mb-1">
                   Schedule Video Counselling with {counselingCollege.shortName}
                 </h3>
                 <p className="text-xs text-slate-500 mb-5">
-                  Exclusive feature for Chathamkulam Business School via the MARGEXA College Enterprise plan.
+                  Direct admission consultation with Chathamkulam Business School faculty.
                 </p>
 
                 <form onSubmit={handleBookCounseling} className="space-y-4">
@@ -502,7 +481,7 @@ export const FeaturedCollegePromotions: React.FC<FeaturedCollegePromotionsProps>
                   </div>
 
                   <div className="p-3 bg-amber-50 border border-amber-200 rounded-xl text-[11px] text-amber-900">
-                    💡 <strong>Enterprise Guarantee:</strong> An authorized admissions faculty from Chathamkulam Business School will join you on video to review your degree marks, KMAT eligibility, and ensure your flat ₹10,000 MARGEXA deduction is credited.
+                    💡 <strong>Faculty Counselling:</strong> An authorized admissions faculty from Chathamkulam Business School will join you on video to review your degree marks, KMAT eligibility, and ensure your flat ₹10,000 MARGEXA deduction is credited.
                   </div>
 
                   <div className="flex gap-2 pt-2">
@@ -528,7 +507,7 @@ export const FeaturedCollegePromotions: React.FC<FeaturedCollegePromotionsProps>
         </div>
       )}
 
-      {/* Quick Enquiry Modal (Premium Plan Feature - Devagiri) */}
+      {/* Quick Enquiry Modal (For Devagiri) */}
       {isEnquiryModalOpen && enquiryCollege && (
         <div className="fixed inset-0 z-50 bg-slate-950/75 backdrop-blur-xs flex items-center justify-center p-4">
           <div className="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-200 relative animate-scale-up text-left">
@@ -549,7 +528,7 @@ export const FeaturedCollegePromotions: React.FC<FeaturedCollegePromotionsProps>
                 </h3>
                 <p className="text-xs text-slate-600 max-w-sm mx-auto">
                   Your enquiry for <strong className="text-indigo-700">{enquiryCourse}</strong> has been routed to the Admissions Desk of{' '}
-                  <strong>{enquiryCollege.name}</strong> via MARGEXA College Premium CRM.
+                  <strong>{enquiryCollege.name}</strong> via MARGEXA Verified Desk.
                 </p>
                 <div className="bg-slate-50 border border-slate-200 rounded-2xl p-4 text-xs space-y-1.5 text-left">
                   <div className="flex justify-between">
@@ -561,7 +540,7 @@ export const FeaturedCollegePromotions: React.FC<FeaturedCollegePromotionsProps>
                     <span className="font-bold text-indigo-700">{enquiryCourse}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-slate-500">Priority Notification:</span>
+                    <span className="text-slate-500">Notification:</span>
                     <span className="text-emerald-700 font-bold">✓ Sent to Devagiri Admissions Team</span>
                   </div>
                 </div>
@@ -577,14 +556,14 @@ export const FeaturedCollegePromotions: React.FC<FeaturedCollegePromotionsProps>
                 <div className="flex items-center gap-2 text-indigo-600 mb-1">
                   <Sparkles className="w-5 h-5 text-indigo-500" />
                   <span className="text-xs font-bold uppercase tracking-wider">
-                    College Premium Direct Enquiry
+                    Direct Course Enquiry
                   </span>
                 </div>
                 <h3 className="text-xl font-black text-slate-900 mb-1">
                   Direct Student Enquiry for {enquiryCollege.shortName}
                 </h3>
                 <p className="text-xs text-slate-500 mb-5">
-                  Subscribed to MARGEXA College Premium (₹3,999/mo) with priority notification alerts.
+                  Admissions notification routed directly to Devagiri College Calicut.
                 </p>
 
                 <form onSubmit={handleSendEnquiry} className="space-y-4">
