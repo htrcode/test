@@ -51,6 +51,7 @@ export const CollegeRegistrationModal: React.FC<CollegeRegistrationModalProps> =
   const [offeredLevels, setOfferedLevels] = useState<string[]>(['Undergraduate', 'Diploma']);
   const [estimatedIntake, setEstimatedIntake] = useState<number>(300);
   const [meritScholarshipOffered, setMeritScholarshipOffered] = useState<boolean>(true);
+  const [desiredPlan, setDesiredPlan] = useState<'Free (₹0)' | 'College Premium (₹3,999/mo)' | 'College Enterprise (₹7,999/mo)'>('College Premium (₹3,999/mo)');
   const [notes, setNotes] = useState('');
 
   // Submitted Application state
@@ -124,6 +125,7 @@ export const CollegeRegistrationModal: React.FC<CollegeRegistrationModalProps> =
       offeredLevels: offeredLevels as any,
       estimatedIntake,
       meritScholarshipOffered,
+      desiredPlan,
       notes,
       status: 'Pending Review',
       submittedAt: new Date().toLocaleDateString('en-IN', {
@@ -303,6 +305,12 @@ export const CollegeRegistrationModal: React.FC<CollegeRegistrationModalProps> =
                       <div>
                         <span className="text-slate-400">Representative:</span>
                         <div className="font-semibold text-slate-800">{submittedApplication.representativeName}</div>
+                      </div>
+                      <div className="col-span-2 pt-1 border-t border-slate-200/60 flex items-center justify-between">
+                        <span className="text-slate-500 font-semibold">Selected College Plan:</span>
+                        <span className="font-black text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded border border-indigo-200">
+                          {submittedApplication.desiredPlan || 'College Premium (₹3,999/mo)'}
+                        </span>
                       </div>
                     </div>
 
@@ -624,6 +632,111 @@ export const CollegeRegistrationModal: React.FC<CollegeRegistrationModalProps> =
                         placeholder="List any specific flagship programs (e.g. MBA Logistics, Mechanical Diploma, BCA) or seat quotas..."
                         className="w-full px-3.5 py-2 text-xs rounded-xl border border-slate-300 focus:outline-hidden focus:ring-2 focus:ring-indigo-500"
                       />
+                    </div>
+                  </div>
+
+                  {/* Section 4: Desired College Plan Tier */}
+                  <div className="space-y-3 pt-2 border-t border-slate-200">
+                    <div className="flex items-center justify-between">
+                      <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
+                        <Award className="w-4 h-4 text-amber-500" />
+                        4. Select Desired MARGEXA College Plan
+                      </h3>
+                      <span className="text-[10px] text-slate-400 font-medium">
+                        Can be upgraded or changed anytime
+                      </span>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                      {/* Free Plan */}
+                      <div
+                        onClick={() => setDesiredPlan('Free (₹0)')}
+                        className={`p-3.5 rounded-2xl border text-xs cursor-pointer transition relative ${
+                          desiredPlan === 'Free (₹0)'
+                            ? 'bg-indigo-50/70 border-indigo-600 ring-2 ring-indigo-600/20 shadow-xs'
+                            : 'bg-slate-50 border-slate-200 hover:border-slate-300'
+                        }`}
+                      >
+                        <div className="font-bold text-slate-900 text-sm mb-0.5">Free</div>
+                        <div className="text-lg font-black text-slate-900 mb-1">₹0</div>
+                        <div className="text-[11px] text-slate-500 font-medium mb-2">
+                          For every listed college
+                        </div>
+                        <ul className="text-[10px] text-slate-600 space-y-1">
+                          <li>• Basic college profile</li>
+                          <li>• Course & fee info</li>
+                          <li>• Standard search listing</li>
+                          <li>• Basic enquiry form</li>
+                          <li>• Contact information</li>
+                          <li>• Admission announcements</li>
+                        </ul>
+                      </div>
+
+                      {/* College Premium Plan */}
+                      <div
+                        onClick={() => setDesiredPlan('College Premium (₹3,999/mo)')}
+                        className={`p-3.5 rounded-2xl border text-xs cursor-pointer transition relative ${
+                          desiredPlan === 'College Premium (₹3,999/mo)'
+                            ? 'bg-amber-50/80 border-amber-500 ring-2 ring-amber-500/30 shadow-md'
+                            : 'bg-white border-amber-200 hover:border-amber-400'
+                        }`}
+                      >
+                        <span className="absolute -top-2.5 right-2 bg-amber-500 text-slate-950 text-[9px] font-black uppercase px-2 py-0.5 rounded-full shadow-xs">
+                          ⭐ Recommended
+                        </span>
+                        <div className="font-bold text-slate-900 text-sm mb-0.5">College Premium</div>
+                        <div className="text-lg font-black text-indigo-700 mb-1">
+                          ₹3,999 <span className="text-[10px] font-semibold text-slate-500">/mo</span>
+                        </div>
+                        <div className="text-[10px] text-indigo-800 font-bold mb-1">
+                          Everything in Free, plus:
+                        </div>
+                        <ul className="text-[10px] text-slate-700 space-y-1">
+                          <li>• Enhanced college profile</li>
+                          <li>• Photo gallery & prospectus</li>
+                          <li>• College analytics dashboard</li>
+                          <li>• Student enquiry management</li>
+                          <li>• Admission campaign manager</li>
+                          <li>• Monthly performance reports</li>
+                          <li>• Course-specific enquiry forms</li>
+                          <li>• Priority enquiry notifications</li>
+                          <li>• Limited featured placements</li>
+                        </ul>
+                      </div>
+
+                      {/* College Enterprise Plan */}
+                      <div
+                        onClick={() => setDesiredPlan('College Enterprise (₹7,999/mo)')}
+                        className={`p-3.5 rounded-2xl border text-xs cursor-pointer transition relative ${
+                          desiredPlan === 'College Enterprise (₹7,999/mo)'
+                            ? 'bg-slate-900 text-white border-slate-700 ring-2 ring-indigo-500/40 shadow-md'
+                            : 'bg-white border-slate-200 hover:border-slate-400'
+                        }`}
+                      >
+                        <span className="absolute -top-2.5 right-2 bg-indigo-600 text-white text-[9px] font-black uppercase px-2 py-0.5 rounded-full shadow-xs">
+                          Enterprise
+                        </span>
+                        <div className={`font-bold text-sm mb-0.5 ${desiredPlan === 'College Enterprise (₹7,999/mo)' ? 'text-white' : 'text-slate-900'}`}>
+                          College Enterprise
+                        </div>
+                        <div className={`text-lg font-black mb-1 ${desiredPlan === 'College Enterprise (₹7,999/mo)' ? 'text-amber-300' : 'text-slate-900'}`}>
+                          ₹7,999 <span className="text-[10px] font-semibold text-slate-400">/mo</span>
+                        </div>
+                        <div className={`text-[10px] font-bold mb-1 ${desiredPlan === 'College Enterprise (₹7,999/mo)' ? 'text-indigo-300' : 'text-indigo-700'}`}>
+                          Everything in Premium, plus:
+                        </div>
+                        <ul className={`text-[10px] space-y-1 ${desiredPlan === 'College Enterprise (₹7,999/mo)' ? 'text-slate-300' : 'text-slate-700'}`}>
+                          <li>• Advanced analytics</li>
+                          <li>• Multiple staff accounts</li>
+                          <li>• Lead assignment & tracking</li>
+                          <li>• Automated enquiry reminders</li>
+                          <li>• Priority campaign placement</li>
+                          <li>• Online counselling scheduler</li>
+                          <li>• Custom admission landing pages</li>
+                          <li>• Course demand insights</li>
+                          <li>• Quarterly performance review</li>
+                        </ul>
+                      </div>
                     </div>
                   </div>
 

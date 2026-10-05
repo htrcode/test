@@ -18,7 +18,7 @@ import {
 
 interface FAQItem {
   id: string;
-  category: 'general' | 'chathamkulam' | 'scholarships' | 'distance' | 'partners';
+  category: 'general' | 'chathamkulam' | 'scholarships' | 'distance' | 'premium';
   question: string;
   answer: string;
 }
@@ -27,16 +27,23 @@ const FAQ_DATA: FAQItem[] = [
   {
     id: 'faq-1',
     category: 'chathamkulam',
-    question: 'Can I join B.Tech 2nd year directly after a Polytechnic Diploma in Kerala?',
+    question: 'What courses and specializations are offered at Chathamkulam?',
     answer:
-      'Yes! AICTE and the Directorate of Technical Education (DTE Kerala) provide a direct Lateral Entry pathway. Diploma graduates who complete their 3-year diploma in Computer, Mechanical, or Civil Engineering from recognized colleges (such as Central Polytechnic College CPT Thiruvananthapuram or GPTC Palakkad) can take the Kerala Lateral Entry Test (LET) and gain direct admission into the 2nd year (3rd semester) of B.Tech across all KTU-affiliated government and private engineering colleges in Kerala. Plus Two Science (PCM) students can also join directly into the 2nd year of the diploma.',
+      'Chathamkulam Business School (CBS) in Palakkad exclusively offers AICTE-approved, Calicut University-affiliated Master of Business Administration (MBA) programs. CBS focuses strictly on 5 industry-demanded specializations:\n1. Marketing\n2. Human Resources\n3. Finance\n4. Data Analysis\n5. Logistics & Supply Chain Management\nNo other non-MBA courses are offered at Chathamkulam, ensuring undivided institutional focus on executive corporate readiness.',
   },
   {
     id: 'faq-2',
     category: 'scholarships',
-    question: 'How do I qualify for Kerala State & Central Government Scholarships?',
+    question: 'How do I qualify for Chathamkulam Institutional Merit Fee Waivers?',
     answer:
-      'Scholarships and fee concessions are processed through official government portals based on your academic marks and socioeconomic category:\n• Kerala E-Grantz 3.0: 100% full tuition and examination fee reimbursement for eligible SC/ST/OEC and backward category students admitted into recognized degree, diploma, and PG courses.\n• KSHEC Merit Scholarship: Up to ₹60,000/year for meritorious undergraduate and postgraduate students.\n• AICTE Pragati Scheme: ₹50,000/year for girl students in approved technical diplomas and degrees.\n• Central Sector Scheme (NSP): ₹12,000 to ₹20,000/year for top 20th percentile Plus Two achievers.\nChathamkulam Business School maintains a transparent AICTE-prescribed fee (₹1,35,000 total for 2 years) without unverified private markups or gimmicks.',
+      'Merit fee waivers are awarded automatically based on your qualifying graduation and entrance score:\n• Super Merit (90%+ marks): Flat 50% Tuition Fee Waiver across all semesters (e.g. CBS MBA tuition reduces from ₹1,35,000 to ₹67,500/yr).\n• Distinction Merit (80% - 89% marks): 40% Tuition Fee Waiver.\n• First Class Merit (75% - 79% marks): 25% Tuition Fee Waiver.\n• Women in Higher Ed Grant: Additional ₹10,000 annual concession for single girl children.\nPlus, MARGEXA’s flat ₹10,000 direct fee deduction is automatically applied on top!',
+  },
+  {
+    id: 'faq-fee-deduction',
+    category: 'scholarships',
+    question: 'How does MARGEXA provide a Flat ₹10,000 Fee Deduction across all colleges?',
+    answer:
+      'MARGEXA coordinates direct group admissions with partner colleges. When institutions receive cohorts of students, they allocate institutional grants and partner allowances (typically ₹20,000 to ₹25,000 per student). Rather than keeping the entire margin, MARGEXA operates on a transparent student-first model: we deduct flat ₹10,000 directly from your total college tuition fees! This ₹10,000 deduction applies to every partner college and program in our directory, saving your family ₹10,000 instantly while MARGEXA covers operational guidance.',
   },
   {
     id: 'faq-3',
@@ -47,18 +54,20 @@ const FAQ_DATA: FAQItem[] = [
   },
   {
     id: 'faq-4',
-    category: 'partners',
-    question: 'How does the MARGEXA Partner Network work for Career Guidance Centers and Consultancies?',
+    category: 'premium',
+    question: 'What are MARGEXA\'s campus packages and how do they differ?',
     answer:
-      'Educational consultancies, coaching centers, and individual career advisors can enroll as certified MARGEXA partners. Partners receive authorized admission quotas, white-label counseling tools, priority document processing, and direct per-admission commissions:\n• Silver Counselor: Monthly subscription of ₹9,999/mo with ₹5,000 commission per admission.\n• Gold Certified Center: Monthly subscription of ₹19,999/mo with ₹10,000 commission per admission.\n• Platinum Master Franchise: Monthly subscription of ₹49,999/mo with ₹15,000 commission per admission and exclusive district territorial rights.',
+      'MARGEXA offers three specialized on-campus packages:\n\n1. Basic – MARGEXA Student Visit (₹999, For 1 student): Includes a dedicated college guide, college admission assistance, campus tour, course and fee structure explanation, free lunch, free refreshments, admission document checklist, college comparison notes, and post-visit digital summary.\n\n2. Recommended – MARGEXA Travel Plus (₹1,499, For 1 student): Everything in Student Visit PLUS free round-trip train transport to the college, dedicated campus guide, hostel & accommodation walkthrough, student interaction where available, priority campus visit coordination, personalized visit itinerary, and post-visit digital college comparison report.\n\n3. Family – MARGEXA VIP Family Experience (₹1,999, 1 student + up to 3 family members): Everything in Student Visit PLUS free lunch and refreshments for all 4 attendees, family-focused admission counselling, detailed campus and hostel tour, parent-focused college information session, family discussion & college selection worksheet, family campus photo where permitted, and priority visit scheduling.',
   },
   {
     id: 'faq-5',
-    category: 'partners',
-    question: 'Are consultancy partnership plans billed monthly or yearly?',
+    category: 'premium',
+    question: 'What is MARGEXA Admission Plus (₹499) for online assistance?',
     answer:
-      'All MARGEXA partner plans are billed on a MONTHLY basis, not yearly! This ensures maximum flexibility for your career guidance academy without burdensome multi-year contracts or large upfront capital locks. You can upgrade, pause, or renew your partnership on a month-to-month schedule.',
+      'MARGEXA Admission Plus (₹499) is our dedicated remote online assistance package for one student. It includes:\n• 5 one-to-one calls with MARGEXA staff (20 mins per call, 100 minutes total assistance)\n• College and course selection guidance\n• Admission eligibility guidance\n• Application form assistance\n• Scholarship and fee structure information\n• Personalized college comparison report\n• Digital admission checklist\n• Admission deadline reminders\n• Personalized admission roadmap\n• WhatsApp scheduling support\n• Session summaries and action points',
   },
+
+
   {
     id: 'faq-6',
     category: 'general',
@@ -67,18 +76,11 @@ const FAQ_DATA: FAQItem[] = [
       'MARGEXA is 100% FREE for students and parents! You can take our AI compatibility assessment, compare course fees, check scholarship eligibility, apply for institutional seats, and download your verified Provisional Offer Letter without paying a single rupee. All tuition fees and hostel deposits are paid directly to the respective college accounts.',
   },
   {
-    id: 'faq-vip-mentorship',
-    category: 'general',
-    question: 'How does the Student VIP Mentorship Monthly Plan (₹349/month) work?',
-    answer:
-      'The Student VIP Mentorship is an all-inclusive monthly plan for just ₹349/month. Students DO NOT have to pay every time they book! It unlocks both key VIP features: (1) Book Priority VIP Counseling with guaranteed 20-minute fast-track callbacks or video consultations from senior admission officers, and (2) 1-on-1 Personalized Academic Mentorship sessions with veteran academic deans, KTU/Calicut University advisors, and corporate placement heads. All sessions throughout your active subscription month are 100% included with no per-session fees.',
-  },
-  {
     id: 'faq-7',
     category: 'chathamkulam',
-    question: 'What specializations are available at Chathamkulam Business School (CBS) for MBA?',
+    question: 'How are placements conducted for MBA students at Chathamkulam Business School?',
     answer:
-      'Chathamkulam Business School (Palakkad), approved by AICTE and affiliated with the University of Calicut, offers dual specializations in high-demand fields: Logistics & Supply Chain Management, Finance, Marketing, Human Resource Management, and Business Analytics/Systems. CBS has strong corporate placement tie-ups across Ernakulam, Bengaluru, and the UAE, with an average placement package of ₹4.8 LPA to ₹8.5 LPA.',
+      'Chathamkulam Business School operates an active Corporate Relations & Placement Cell. Students across Marketing, Human Resources, Finance, Data Analysis, and Logistics participate in port logistics internships, live analytics projects, and corporate interviews across Kochi, Bangalore, Chennai, and the UAE, achieving an average placement package of ₹4.8 LPA to ₹8.5 LPA.',
   },
   {
     id: 'faq-8',
@@ -106,13 +108,13 @@ const FAQ_DATA: FAQItem[] = [
 interface FAQViewProps {
   onNavigateToMatchmaker: () => void;
   onNavigateToContact: () => void;
-  onNavigateToPartners: () => void;
+  onNavigateToPremium?: () => void;
 }
 
 export const FAQView: React.FC<FAQViewProps> = ({
   onNavigateToMatchmaker,
   onNavigateToContact,
-  onNavigateToPartners,
+  onNavigateToPremium,
 }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState<string>('all');
@@ -144,7 +146,7 @@ export const FAQView: React.FC<FAQViewProps> = ({
         </h1>
 
         <p className="text-xs sm:text-sm text-slate-600 max-w-2xl mx-auto">
-          Clear, authentic answers regarding Chathamkulam Business School, Kerala state scholarships, polytechnic lateral entry, Kerala PSC degree validity, and our monthly partner consultancy plans.
+          Clear, authentic answers regarding Chathamkulam Group of Institutions, merit fee waivers, Kerala PSC degree validity, and our MARGEXA Premium campus visit packages.
         </p>
 
         {/* Search Bar */}
@@ -154,7 +156,7 @@ export const FAQView: React.FC<FAQViewProps> = ({
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search keywords: LET, MBA, scholarship, hostel, monthly plan, PSC..."
+            placeholder="Search keywords: LET, MBA, scholarship, hostel, premium visit, PSC..."
             className="w-full pl-12 pr-4 py-3 rounded-2xl border border-slate-200 shadow-xs focus:outline-hidden focus:ring-2 focus:ring-indigo-500 bg-white text-xs sm:text-sm text-slate-900"
           />
         </div>
@@ -165,9 +167,9 @@ export const FAQView: React.FC<FAQViewProps> = ({
         {[
           { id: 'all', label: 'All Questions' },
           { id: 'chathamkulam', label: 'Chathamkulam Campus' },
+          { id: 'premium', label: 'MARGEXA Premium (₹999–₹1,999)' },
           { id: 'scholarships', label: 'Merit Grants & Waivers' },
           { id: 'distance', label: 'Distance vs Regular (PSC)' },
-          { id: 'partners', label: 'Consultancy Partner Plans' },
           { id: 'general', label: 'General & Support' },
         ].map((tab) => (
           <button

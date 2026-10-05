@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { Navbar, NavTabType } from './components/Navbar';
 import { MatchmakerView } from './components/MatchmakerView';
@@ -6,13 +6,13 @@ import { CollegeDirectoryView } from './components/CollegeDirectoryView';
 import { ApplicationsDashboard } from './components/ApplicationsDashboard';
 import { ScholarshipsView } from './components/ScholarshipsView';
 import { PremiumServicesView } from './components/PremiumServicesView';
+import { CollegePremiumPlansView } from './components/CollegePremiumPlansView';
 import { AuthModal } from './components/AuthModal';
 import { ProfileModal } from './components/ProfileModal';
 import { AICounselorDrawer } from './components/AICounselorDrawer';
 import { OfferLetterModal } from './components/OfferLetterModal';
 import { CollegeDetailModal } from './components/CollegeDetailModal';
 import { CollegeRegistrationModal } from './components/CollegeRegistrationModal';
-import { PartnerNetworkView } from './components/PartnerNetworkView';
 import { AboutView } from './components/AboutView';
 import { HowItWorksView } from './components/HowItWorksView';
 import { FAQView } from './components/FAQView';
@@ -30,13 +30,12 @@ import {
   ShieldCheck,
   Award,
   Building,
-  Handshake,
+  Crown,
   Info,
   Compass,
-  HelpCircle,
-  ChevronDown,
-  ChevronUp
+  HelpCircle
 } from 'lucide-react';
+
 
 type TabType = NavTabType;
 
@@ -47,23 +46,6 @@ const MainContent: React.FC = () => {
   const [isAICounselorOpen, setIsAICounselorOpen] = useState(false);
   const [aiContext, setAiContext] = useState<{ college: string; program: string } | null>(null);
   const [selectedOfferApplication, setSelectedOfferApplication] = useState<Application | null>(null);
-  const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    const onScroll = () => {
-      setScrollY(window.scrollY);
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-
-  const handleScrollAction = () => {
-    if (scrollY < 250) {
-      window.scrollBy({ top: 600, behavior: 'smooth' });
-    } else {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  };
 
   const handleOpenAICounselor = (context?: { college: string; program: string }) => {
     setAiContext(context || null);
@@ -95,7 +77,6 @@ const MainContent: React.FC = () => {
           <MatchmakerView
             onSelectCollege={handleSelectCollege}
             onOpenAICounselor={handleOpenAICounselor}
-            onNavigateToMentorship={() => setActiveTab('premium')}
           />
         )}
 
@@ -105,6 +86,7 @@ const MainContent: React.FC = () => {
             setSelectedCollegeModal={setSelectedCollegeModal}
             onOpenAICounselor={handleOpenAICounselor}
             onOpenCollegeRegistrationModal={() => setIsCollegeRegModalOpen(true)}
+            onNavigateToCollegePlans={() => setActiveTab('college-plans')}
           />
         )}
 
@@ -118,12 +100,15 @@ const MainContent: React.FC = () => {
 
         {activeTab === 'scholarships' && <ScholarshipsView />}
 
-        {activeTab === 'premium' && <PremiumServicesView />}
+        {activeTab === 'premium' && (
+          <PremiumServicesView onNavigateToCollegePlans={() => setActiveTab('college-plans')} />
+        )}
 
-        {activeTab === 'partners' && (
-          <PartnerNetworkView
+        {activeTab === 'college-plans' && (
+          <CollegePremiumPlansView
             onOpenCollegeRegistrationModal={() => setIsCollegeRegModalOpen(true)}
-            onOpenAICounselor={handleOpenAICounselor}
+            onNavigateToDirectory={() => setActiveTab('colleges')}
+            onNavigateToContact={() => setActiveTab('contact')}
           />
         )}
 
@@ -150,7 +135,7 @@ const MainContent: React.FC = () => {
           <FAQView
             onNavigateToMatchmaker={() => setActiveTab('matchmaker')}
             onNavigateToContact={() => setActiveTab('contact')}
-            onNavigateToPartners={() => setActiveTab('partners')}
+            onNavigateToPremium={() => setActiveTab('premium')}
           />
         )}
 
@@ -158,26 +143,6 @@ const MainContent: React.FC = () => {
           <ContactView onOpenAICounselor={handleOpenAICounselor} />
         )}
       </main>
-
-      {/* Floating Scroll Navigation Button */}
-      <button
-        onClick={handleScrollAction}
-        className="fixed bottom-20 right-6 z-40 bg-white/95 backdrop-blur-xs hover:bg-slate-50 text-slate-700 hover:text-indigo-600 p-3 sm:px-4 sm:py-2.5 rounded-full shadow-lg border border-slate-200/90 flex items-center gap-1.5 transition-all duration-200 cursor-pointer hover:shadow-xl hover:scale-105"
-        title={scrollY < 250 ? 'Scroll Down' : 'Back to Top'}
-        aria-label={scrollY < 250 ? 'Scroll Down' : 'Back to Top'}
-      >
-        {scrollY < 250 ? (
-          <>
-            <ChevronDown className="w-4 h-4 text-indigo-600 animate-bounce" />
-            <span className="text-xs font-semibold hidden sm:inline">Scroll Down</span>
-          </>
-        ) : (
-          <>
-            <ChevronUp className="w-4 h-4 text-indigo-600" />
-            <span className="text-xs font-semibold hidden sm:inline">Back to Top</span>
-          </>
-        )}
-      </button>
 
       {/* Floating AI Counselor Floating Trigger */}
       <button
@@ -294,15 +259,25 @@ const MainContent: React.FC = () => {
                     onClick={() => setActiveTab('scholarships')}
                     className="hover:text-white transition cursor-pointer"
                   >
-                    Kerala Scholarships & Grants
+                    Chathamkulam Merit Grants
                   </button>
                 </li>
                 <li>
                   <button
-                    onClick={() => setActiveTab('partners')}
-                    className="hover:text-cyan-300 transition cursor-pointer text-cyan-400 font-medium"
+                    onClick={() => setActiveTab('premium')}
+                    className="hover:text-amber-300 transition cursor-pointer text-amber-400 font-medium flex items-center gap-1"
                   >
-                    Career Center Partner Network
+                    <Crown className="w-3 h-3 text-amber-400" />
+                    <span>Student Premium (₹499–₹1,999)</span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => setActiveTab('college-plans')}
+                    className="hover:text-amber-300 transition cursor-pointer text-amber-300 font-bold flex items-center gap-1 bg-amber-400/10 px-2 py-0.5 rounded border border-amber-400/20"
+                  >
+                    <Building className="w-3 h-3 text-amber-400" />
+                    <span>College Premium Plans (₹3,999/mo)</span>
                   </button>
                 </li>
               </ul>
@@ -311,7 +286,7 @@ const MainContent: React.FC = () => {
             {/* Featured Institutions */}
             <div className="space-y-2">
               <h4 className="text-xs font-bold uppercase tracking-wider text-slate-300">
-                Partner Institutions
+                Featured Institutions
               </h4>
               <ul className="space-y-1.5 text-xs text-slate-400">
                 <li>
@@ -325,11 +300,12 @@ const MainContent: React.FC = () => {
                     <ExternalLink className="w-3 h-3" />
                   </a>
                 </li>
-                <li>Chathamkulam Business School (MBA)</li>
-                <li>Sacred Heart College (Autonomous), Thevara</li>
-                <li>Central Polytechnic College (CPT), Thiruvananthapuram</li>
-                <li>Sree Narayana Guru Open University (SGOU)</li>
-                <li>Rajagiri College of Social Sciences, Kochi</li>
+                <li>Chathamkulam Business School (MBA - 5 Specializations)</li>
+                <li>College of Engineering Trivandrum (CET)</li>
+                <li>Model Engineering College (MEC), Kochi</li>
+                <li>Rajagiri Institutions, Kochi</li>
+                <li>SCMS Group of Institutions, Aluva</li>
+                <li>TKM College of Engineering, Kollam</li>
                 <li>Govt. Polytechnic College, Palakkad</li>
               </ul>
             </div>

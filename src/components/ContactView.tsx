@@ -92,7 +92,7 @@ export const ContactView: React.FC<ContactViewProps> = ({ onOpenAICounselor }) =
           </h1>
 
           <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
-            Whether you are a student exploring collegiate options, a parent reviewing Chathamkulam merit fee concessions, or an educational consultancy seeking partner collaboration, our academic support officers are ready to assist.
+            Whether you are a student exploring collegiate options, a parent scheduling a MARGEXA Premium campus tour, or reviewing Chathamkulam merit fee concessions, our academic support officers are ready to assist.
           </p>
 
           {/* Prominent Support Mail Callout */}
@@ -183,7 +183,7 @@ export const ContactView: React.FC<ContactViewProps> = ({ onOpenAICounselor }) =
                   admissions@margexa.edu.in
                 </a>
                 <p className="text-slate-500 text-[11px]">
-                  Chathamkulam Business School & Kerala partner colleges admissions.
+                  Chathamkulam Business School MBA & Kerala institutional admissions.
                 </p>
               </div>
             </div>
@@ -337,11 +337,15 @@ export const ContactView: React.FC<ContactViewProps> = ({ onOpenAICounselor }) =
                       className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-hidden focus:ring-2 focus:ring-indigo-500 bg-white font-medium"
                     >
                       <option value="Admission & Course Inquiry">Admission & Course Inquiry</option>
-                      <option value="Chathamkulam Business School (MBA)">Chathamkulam Business School (MBA)</option>
-                      <option value="Polytechnic Diploma & Lateral Entry (LET)">Polytechnic Diploma & Lateral Entry (LET)</option>
-                      <option value="Kerala Scholarships & Financial Aid">Kerala Scholarships & Financial Aid</option>
-                      <option value="Career Guidance Center Partner Network (Monthly Plans)">
-                        Career Center Partner Network (Monthly Plans)
+                      <option value="Chathamkulam Business School (MBA - 5 Specializations)">
+                        Chathamkulam Business School (MBA - 5 Specializations)
+                      </option>
+                      <option value="Kerala Engineering & Polytechnic Admissions">
+                        Kerala Engineering & Polytechnic Admissions
+                      </option>
+                      <option value="Merit Scholarships & Fee Waivers">Merit Scholarships & Fee Waivers</option>
+                      <option value="MARGEXA Premium Campus Tour (₹999–₹1,999)">
+                        MARGEXA Premium Campus Tour (₹999–₹1,999)
                       </option>
                       <option value="Distance Education Degree (PSC Validity)">
                         Distance Education Degree (PSC Validity)

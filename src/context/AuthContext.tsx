@@ -4,6 +4,8 @@ import {
   Application,
   Scholarship,
   PriorityCounselingBooking,
+  CampusVisitBooking,
+  AdmissionPlusBooking,
   College,
   Program
 } from '../types';
@@ -15,6 +17,8 @@ interface AuthContextType {
   applications: Application[];
   scholarships: Scholarship[];
   counselingBookings: PriorityCounselingBooking[];
+  campusVisitBookings: CampusVisitBooking[];
+  admissionPlusBookings: AdmissionPlusBooking[];
   login: (email: string, pass: string) => boolean;
   signUp: (email: string, pass: string, name: string) => boolean;
   logout: () => void;
@@ -23,16 +27,14 @@ interface AuthContextType {
   withdrawApplication: (appId: string) => void;
   applyForScholarship: (scholarshipId: string) => void;
   bookPriorityCounseling: (booking: Omit<PriorityCounselingBooking, 'id' | 'bookedAt' | 'status'>) => void;
+  bookCampusVisit: (booking: Omit<CampusVisitBooking, 'id' | 'bookedAt' | 'status' | 'guideAssigned' | 'guideContact'>) => CampusVisitBooking;
+  bookAdmissionPlus: (booking: Omit<AdmissionPlusBooking, 'id' | 'bookedAt' | 'status' | 'assignedAdvisor' | 'roadmapSent' | 'remainingCalls' | 'totalCalls' | 'callDurationMinutes' | 'totalMinutes' | 'amount'>) => AdmissionPlusBooking;
   selectedApplicationForLetter: Application | null;
   setSelectedApplicationForLetter: (app: Application | null) => void;
   isAuthModalOpen: boolean;
   setIsAuthModalOpen: (open: boolean) => void;
   isProfileModalOpen: boolean;
   setIsProfileModalOpen: (open: boolean) => void;
-  isVipMember: boolean;
-  vipPlanExpiry: string;
-  subscribeVipPlan: () => void;
-  cancelVipPlan: () => void;
 }
 
 const DEFAULT_PROFILE: StudentProfile = {
@@ -51,8 +53,6 @@ const DEFAULT_PROFILE: StudentProfile = {
   entranceExam: 'KMAT / Board Merit',
   counselorRequested: true,
   isRegistered: true,
-  isVipMember: false,
-  vipPlanExpiry: '',
 };
 
 const INITIAL_APPLICATIONS: Application[] = [
@@ -62,18 +62,21 @@ const INITIAL_APPLICATIONS: Application[] = [
     studentName: 'Rahul K. Menon',
     studentEmail: 'rahul.menon@gmail.com',
     collegeId: 'chathamkulam-institutions',
-    collegeName: 'Chathamkulam Business School',
+    collegeName: 'Chathamkulam Group of Institutions',
     collegeLogo: 'https://images.unsplash.com/photo-1592280771190-3e2e4d571952?auto=format&fit=crop&w=200&q=80',
-    programId: 'ck-mba-gen',
-    programName: 'MBA (Dual Specialization - 2 Years)',
+    programId: 'cbs-mba-logistics',
+    programName: 'MBA in Logistics & Supply Chain Management',
     programLevel: 'Postgraduate',
     appliedDate: '12 Sep 2026',
+    standardFee: 145000,
+    margexaDeduction: 10000,
+    effectiveFee: 135000,
     status: 'Offer Letter Issued',
     timeline: [
       { stage: 'Application Submitted via MARGEXA', timestamp: '12 Sep 2026, 10:30 AM', done: true },
-      { stage: 'Academic Eligibility Verified', timestamp: '13 Sep 2026, 02:15 PM', done: true, notes: 'Degree 84% marks & entrance scorecard verified against Calicut University criteria' },
-      { stage: 'Counseling & Document Scrutiny', timestamp: '13 Sep 2026, 04:45 PM', done: true, notes: 'Direct merit allotment confirmed' },
-      { stage: 'Provisional Admission Offer Letter Issued', timestamp: '14 Sep 2026, 09:10 AM', done: true, current: true, notes: 'Provisional Seat Allotted under Calicut University Quota' },
+      { stage: 'Academic Eligibility Verified', timestamp: '13 Sep 2026, 02:15 PM', done: true, notes: 'Degree score verified against Calicut University MBA criteria' },
+      { stage: 'Counseling & Document Scrutiny', timestamp: '13 Sep 2026, 04:45 PM', done: true, notes: 'Priority interview waived due to merit standing' },
+      { stage: 'Provisional Admission Offer Letter Issued', timestamp: '14 Sep 2026, 09:10 AM', done: true, current: true, notes: 'Chathamkulam Institutional Grant of ₹25,000 allocated' },
       { stage: 'Fee Payment & Final Enrolment', timestamp: 'Pending Verification', done: false, notes: 'Seat held until 28 Sep 2026' },
     ],
     counselorAssigned: 'Prof. K. Sreedharan (Senior Academic Consultant)',
@@ -81,8 +84,8 @@ const INITIAL_APPLICATIONS: Application[] = [
     applicationFeeStatus: 'Free via MARGEXA',
     provisionalOfferDate: '14 Sep 2026',
     documents: [
-      { name: '10th SSLC Marksheet', status: 'Verified' },
-      { name: 'Plus Two (+2) Marksheet', status: 'Verified' },
+      { name: 'Undergraduate Degree Certificate / Marksheet', status: 'Verified' },
+      { name: 'KMAT / CMAT Entrance Score Card', status: 'Verified' },
       { name: 'Transfer & Conduct Certificate', status: 'Pending Review' },
     ],
   },
@@ -136,9 +139,87 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   });
 
+  const [campusVisitBookings, setCampusVisitBookings] = useState<CampusVisitBooking[]>(() => {
+    try {
+      const saved = localStorage.getItem('margexa_campus_visits');
+      if (saved) return JSON.parse(saved);
+    } catch {
+      // fallback to initial
+    }
+    return [
+      {
+        id: 'MGX-VISIT-7729',
+        studentName: 'Rahul K. Menon',
+        studentEmail: 'rahul.menon@gmail.com',
+        phone: '+91 98471 89210',
+        collegeName: 'Chathamkulam Group of Institutions, Palakkad',
+        packageTier: 'MARGEXA VIP Family Experience (₹1,999)',
+        amount: 1999,
+        visitDate: '28 Sep 2026',
+        timeSlot: 'Morning (09:30 AM - 01:00 PM)',
+        attendeesCount: 3,
+        foodPreference: 'Vegetarian',
+        notes: 'Campus walkthrough with Dean meeting for MBA Logistics & BBA honors seat quota.',
+        status: 'Guide Assigned',
+        bookedAt: '14 Sep 2026, 11:20 AM',
+        guideAssigned: 'Prof. K. Sreedharan (Senior Academic Escort)',
+        guideContact: '+91 94470 12389',
+      },
+    ];
+  });
+
   const [selectedApplicationForLetter, setSelectedApplicationForLetter] = useState<Application | null>(null);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState<boolean>(false);
   const [isProfileModalOpen, setIsProfileModalOpen] = useState<boolean>(false);
+
+  // Sync to localStorage
+  useEffect(() => {
+    try {
+      localStorage.setItem('margexa_campus_visits', JSON.stringify(campusVisitBookings));
+    } catch (e) {
+      console.error(e);
+    }
+  }, [campusVisitBookings]);
+
+  const [admissionPlusBookings, setAdmissionPlusBookings] = useState<AdmissionPlusBooking[]>(() => {
+    try {
+      const saved = localStorage.getItem('margexa_admission_plus');
+      if (saved) return JSON.parse(saved);
+    } catch {
+      // fallback
+    }
+    return [
+      {
+        id: 'ADM-PLUS-2819',
+        studentName: 'Rahul K. Menon',
+        studentEmail: 'rahul.menon@gmail.com',
+        phone: '+91 98471 89210',
+        whatsappNumber: '+91 98471 89210',
+        targetCourse: 'MBA (Marketing / Logistics / Data Analysis) - Chathamkulam Business School',
+        preferredTiming: 'Evening (05:00 PM - 07:00 PM)',
+        totalCalls: 5,
+        remainingCalls: 5,
+        callDurationMinutes: 20,
+        totalMinutes: 100,
+        amount: 499,
+        status: 'Active',
+        bookedAt: 'Today',
+        assignedAdvisor: 'Dr. Ananya Varma (Senior Admission Strategist)',
+        roadmapSent: true,
+        notes: 'Needs guidance on KMAT/Board merit seat quotas and fee structure breakdown',
+      },
+    ];
+  });
+
+  // Sync to localStorage
+  useEffect(() => {
+    try {
+      localStorage.setItem('margexa_admission_plus', JSON.stringify(admissionPlusBookings));
+    } catch (e) {
+      console.error(e);
+    }
+  }, [admissionPlusBookings]);
+
 
   // Sync to localStorage
   useEffect(() => {
@@ -218,32 +299,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const updateProfile = (updated: Partial<StudentProfile>) => {
-    setStudent((prev) => {
-      const next = { ...prev, ...updated };
-      try {
-        localStorage.setItem('margexa_student_profile', JSON.stringify(next));
-      } catch (e) {
-        console.error('Failed to persist profile', e);
-      }
-      return next;
-    });
-  };
-
-  const subscribeVipPlan = () => {
-    const nextMonth = new Date();
-    nextMonth.setDate(nextMonth.getDate() + 30);
-    const expiryStr = `Active until ${nextMonth.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}`;
-    updateProfile({
-      isVipMember: true,
-      vipPlanExpiry: expiryStr,
-    });
-  };
-
-  const cancelVipPlan = () => {
-    updateProfile({
-      isVipMember: false,
-      vipPlanExpiry: '',
-    });
+    setStudent((prev) => ({
+      ...prev,
+      ...updated,
+    }));
   };
 
   const applyToProgram = (college: College, program: Program) => {
@@ -277,6 +336,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       programName: program.name,
       programLevel: program.level,
       appliedDate: todayStr,
+      standardFee: program.annualFee,
+      margexaDeduction: 10000,
+      effectiveFee: Math.max(0, program.annualFee - 10000),
       status: 'Submitted',
       timeline: [
         {
@@ -351,6 +413,53 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setCounselingBookings((prev) => [newBooking, ...prev]);
   };
 
+  const bookCampusVisit = (
+    bookingData: Omit<CampusVisitBooking, 'id' | 'bookedAt' | 'status' | 'guideAssigned' | 'guideContact'>
+  ): CampusVisitBooking => {
+    const newVisit: CampusVisitBooking = {
+      id: `MGX-VISIT-${Math.floor(1000 + Math.random() * 9000)}`,
+      ...bookingData,
+      status: 'Guide Assigned',
+      bookedAt: new Intl.DateTimeFormat('en-GB', {
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+      }).format(new Date()),
+      guideAssigned: 'Prof. K. Sreedharan (Senior Academic Escort)',
+      guideContact: '+91 94470 12389',
+    };
+    setCampusVisitBookings((prev) => [newVisit, ...prev]);
+    return newVisit;
+  };
+
+  const bookAdmissionPlus = (
+    bookingData: Omit<AdmissionPlusBooking, 'id' | 'bookedAt' | 'status' | 'assignedAdvisor' | 'roadmapSent' | 'remainingCalls' | 'totalCalls' | 'callDurationMinutes' | 'totalMinutes' | 'amount'>
+  ): AdmissionPlusBooking => {
+    const newSubscription: AdmissionPlusBooking = {
+      id: `ADM-PLUS-${Math.floor(1000 + Math.random() * 9000)}`,
+      ...bookingData,
+      totalCalls: 5,
+      remainingCalls: 5,
+      callDurationMinutes: 20,
+      totalMinutes: 100,
+      amount: 499,
+      status: 'Active',
+      bookedAt: new Intl.DateTimeFormat('en-GB', {
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+      }).format(new Date()),
+      assignedAdvisor: 'Dr. Ananya Varma (Senior Admission Strategist)',
+      roadmapSent: true,
+    };
+    setAdmissionPlusBookings((prev) => [newSubscription, ...prev]);
+    return newSubscription;
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -359,6 +468,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         applications,
         scholarships,
         counselingBookings,
+        campusVisitBookings,
+        admissionPlusBookings,
         login,
         signUp,
         logout,
@@ -367,21 +478,20 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         withdrawApplication,
         applyForScholarship,
         bookPriorityCounseling,
+        bookCampusVisit,
+        bookAdmissionPlus,
         selectedApplicationForLetter,
         setSelectedApplicationForLetter,
         isAuthModalOpen,
         setIsAuthModalOpen,
         isProfileModalOpen,
         setIsProfileModalOpen,
-        isVipMember: Boolean(student.isVipMember),
-        vipPlanExpiry: student.vipPlanExpiry || '',
-        subscribeVipPlan,
-        cancelVipPlan,
       }}
     >
       {children}
     </AuthContext.Provider>
   );
+
 };
 
 export const useAuth = () => {

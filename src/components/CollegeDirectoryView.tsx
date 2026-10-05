@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { COLLEGES_DATA } from '../data/collegesData';
-import { College, Program } from '../types';
+import { College, Program, getEffectiveFee, MARGEXA_FEE_DEDUCTION } from '../types';
 import {
   Search,
   Building,
@@ -17,7 +17,9 @@ import {
   PhoneCall,
   Check,
   ChevronRight,
-  X
+  X,
+  Building2,
+  ArrowRight
 } from 'lucide-react';
 
 interface CollegeDirectoryViewProps {
@@ -25,6 +27,7 @@ interface CollegeDirectoryViewProps {
   setSelectedCollegeModal: (college: College | null) => void;
   onOpenAICounselor: (collegeContext?: { college: string; program: string }) => void;
   onOpenCollegeRegistrationModal?: () => void;
+  onNavigateToCollegePlans?: () => void;
 }
 
 export const CollegeDirectoryView: React.FC<CollegeDirectoryViewProps> = ({
@@ -32,6 +35,7 @@ export const CollegeDirectoryView: React.FC<CollegeDirectoryViewProps> = ({
   setSelectedCollegeModal,
   onOpenAICounselor,
   onOpenCollegeRegistrationModal,
+  onNavigateToCollegePlans,
 }) => {
   const { applyToProgram, applications } = useAuth();
 
@@ -66,14 +70,14 @@ export const CollegeDirectoryView: React.FC<CollegeDirectoryViewProps> = ({
         if (!matchesName && !matchesCity && !matchesCourses) return false;
       }
 
-      // Program Level & Fee within college
+      // Program Level & Fee within college (evaluated after MARGEXA's flat ₹10,000 fee deduction)
       if (levelFilter !== 'All') {
         const hasLevel = college.programs.some((p) => p.level === levelFilter);
         if (!hasLevel) return false;
       }
 
-      // At least one program within maxFee
-      const hasAffordableProgram = college.programs.some((p) => p.annualFee <= maxFee);
+      // At least one program within maxFee after ₹10,000 MARGEXA deduction
+      const hasAffordableProgram = college.programs.some((p) => getEffectiveFee(p.annualFee) <= maxFee);
       if (!hasAffordableProgram) return false;
 
       return true;
@@ -151,7 +155,7 @@ export const CollegeDirectoryView: React.FC<CollegeDirectoryViewProps> = ({
                   className="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs shadow-md shadow-indigo-500/30 transition cursor-pointer flex items-center gap-2"
                 >
                   <BookOpen className="w-4 h-4" />
-                  View All Degree & Diploma Courses ({chathamkulam.programs.length})
+                  View All MBA Specializations ({chathamkulam.programs.length})
                 </button>
 
                 <a
@@ -212,13 +216,54 @@ export const CollegeDirectoryView: React.FC<CollegeDirectoryViewProps> = ({
               </div>
 
               <div className="text-[11px] text-slate-300 text-left bg-white/5 p-3 rounded-xl border border-white/5">
-                <strong className="text-white block mb-1">Offered Programs:</strong>
-                Chathamkulam Business School: AICTE-Approved 2-Year Full-Time MBA with Dual Specializations (Logistics, Finance, Marketing, HR, Systems) at ₹1,35,000 total course fee.
+                <strong className="text-white block mb-1">Exclusive Postgraduate Management:</strong>
+                Chathamkulam Business School (MBA in Marketing, Human Resources, Finance, Data Analysis, and Logistics & Supply Chain).
               </div>
             </div>
           </div>
         </div>
       )}
+
+      {/* MARGEXA Flat ₹10,000 Direct Fee Deduction Strategy Banner */}
+      <div className="bg-gradient-to-r from-emerald-950 via-teal-950 to-slate-900 rounded-3xl p-6 sm:p-7 text-white shadow-xl border border-emerald-500/30 text-left">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+          <div className="space-y-2 max-w-3xl">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-400/20 text-emerald-300 text-xs font-bold border border-emerald-400/30">
+              <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
+              <span>MARGEXA Direct Institutional Grant • Applies to All Colleges</span>
+            </div>
+            <h2 className="text-xl sm:text-2xl font-black font-heading text-white">
+              Flat ₹10,000 Instant Fee Deduction on ALL Partner Colleges
+            </h2>
+            <p className="text-xs sm:text-sm text-emerald-100/90 leading-relaxed">
+              When MARGEXA coordinates verified student admissions, colleges allocate institutional intake benefits (up to ₹25,000 per student). Rather than keeping the entire margin, MARGEXA automatically passes <strong className="text-emerald-300 font-bold">₹10,000 directly back to your family</strong> as an upfront deduction from the college tuition fee across all institutions!
+            </p>
+          </div>
+
+          <div className="bg-emerald-900/40 backdrop-blur-md rounded-2xl p-4 border border-emerald-400/30 shrink-0 lg:w-72 space-y-2.5">
+            <div className="text-[11px] font-bold text-emerald-300 uppercase tracking-wider">
+              Sample Benefit Breakdown
+            </div>
+            <div className="space-y-1.5 text-xs text-slate-200">
+              <div className="flex justify-between">
+                <span>Standard College Fee:</span>
+                <span className="line-through text-slate-400 font-semibold">₹42,000/yr</span>
+              </div>
+              <div className="flex justify-between text-emerald-300 font-bold bg-emerald-500/20 px-2 py-0.5 rounded">
+                <span>MARGEXA Deduction:</span>
+                <span>-₹10,000</span>
+              </div>
+              <div className="flex justify-between font-black text-white text-sm pt-1 border-t border-emerald-500/30">
+                <span>Student Net Payable:</span>
+                <span className="text-emerald-300">₹32,000/yr</span>
+              </div>
+            </div>
+            <div className="text-[10px] text-emerald-200/80 italic">
+              ✓ Guaranteed deduction applied to all degrees & diplomas
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* Advanced Filter Bar */}
       <div className="bg-white p-5 rounded-2xl shadow-xs border border-slate-200/80 space-y-4">
@@ -312,6 +357,45 @@ export const CollegeDirectoryView: React.FC<CollegeDirectoryViewProps> = ({
         </div>
       </div>
 
+      {/* Institutional Banner for Colleges */}
+      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-4 text-white flex flex-col sm:flex-row items-center justify-between gap-3 text-left shadow-md">
+        <div className="flex items-center gap-3">
+          <div className="w-9 h-9 rounded-xl bg-amber-400/20 text-amber-300 flex items-center justify-center shrink-0">
+            <Building2 className="w-5 h-5" />
+          </div>
+          <div>
+            <div className="text-xs font-bold text-white flex items-center gap-2">
+              <span>Are you an educational institution in Kerala or South India?</span>
+              <span className="text-[10px] bg-amber-400 text-slate-950 font-black px-1.5 py-0.2 rounded">
+                COLLEGE PLANS
+              </span>
+            </div>
+            <p className="text-[11px] text-slate-400">
+              List for Free (₹0) or upgrade to <strong>College Premium (₹3,999/mo)</strong> and <strong>College Enterprise (₹7,999/mo)</strong> for verified student enquiry management, featured placement, and course demand intel.
+            </p>
+          </div>
+        </div>
+        <div className="flex items-center gap-2 shrink-0 w-full sm:w-auto">
+          {onNavigateToCollegePlans && (
+            <button
+              onClick={onNavigateToCollegePlans}
+              className="flex-1 sm:flex-none px-4 py-2 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 rounded-xl text-xs font-black transition cursor-pointer shadow-sm flex items-center justify-center gap-1.5 hover:scale-105"
+            >
+              <span>View College Plans</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          )}
+          {onOpenCollegeRegistrationModal && (
+            <button
+              onClick={onOpenCollegeRegistrationModal}
+              className="flex-1 sm:flex-none px-3.5 py-2 bg-white/10 hover:bg-white/20 text-white rounded-xl text-xs font-semibold transition cursor-pointer border border-white/15"
+            >
+              Register College
+            </button>
+          )}
+        </div>
+      </div>
+
       {/* College Directory Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredColleges.map((college) => {
@@ -370,6 +454,36 @@ export const CollegeDirectoryView: React.FC<CollegeDirectoryViewProps> = ({
                     {college.tagline || college.description}
                   </p>
 
+                  {/* Fee with MARGEXA ₹10,000 Deduction */}
+                  {(() => {
+                    const minFee = Math.min(...college.programs.map((p) => p.annualFee));
+                    const effectiveMinFee = getEffectiveFee(minFee);
+                    return (
+                      <div className="bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-200/80 rounded-xl p-2.5 flex items-center justify-between">
+                        <div>
+                          <div className="text-[10px] uppercase font-bold text-emerald-800 flex items-center gap-1">
+                            <IndianRupee className="w-3 h-3 text-emerald-600" />
+                            Net Student Fee from
+                          </div>
+                          <div className="flex items-baseline gap-1.5 mt-0.5">
+                            <span className="text-sm font-black text-emerald-950 font-heading">
+                              ₹{effectiveMinFee.toLocaleString('en-IN')}<span className="text-[10px] font-normal text-slate-500">/yr</span>
+                            </span>
+                            <span className="text-[11px] text-slate-400 line-through">
+                              ₹{minFee.toLocaleString('en-IN')}
+                            </span>
+                          </div>
+                        </div>
+                        <div className="text-right">
+                          <span className="px-2 py-0.5 rounded-full bg-emerald-600 text-white text-[10px] font-bold shadow-xs">
+                            -₹10,000 Off
+                          </span>
+                          <div className="text-[9px] text-emerald-700 font-semibold mt-0.5">MARGEXA Grant</div>
+                        </div>
+                      </div>
+                    );
+                  })()}
+
                   <div className="text-[11px] text-slate-600 bg-slate-50 p-2.5 rounded-xl border border-slate-100">
                     <strong className="text-slate-800 block text-[10px] uppercase font-bold text-slate-500 mb-1">
                       Available Programs ({college.programs.length}):
@@ -426,10 +540,10 @@ export const CollegeDirectoryView: React.FC<CollegeDirectoryViewProps> = ({
             Institutional Admissions 2026-27
           </div>
           <h3 className="text-xl sm:text-2xl font-black font-heading text-white">
-            Are You a College, Polytechnic, or Career Guidance Center?
+            Are You an Academic College or Polytechnic Institution?
           </h3>
           <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-            Apply to register your institution on MARGEXA. List degree and polytechnic seat quotas, receive pre-qualified student applications, and partner with regional career centers across Kerala.
+            Apply to list your institution on MARGEXA. Showcase degree and polytechnic seat quotas, receive pre-qualified student applications, and connect directly with verified candidates across Kerala.
           </p>
         </div>
 

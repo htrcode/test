@@ -2,7 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { COLLEGES_DATA } from '../data/collegesData';
 import { rankMatchesForStudent } from '../utils/matchingEngine';
-import { MatchResult, College, Program } from '../types';
+import { MatchResult, College, Program, getEffectiveFee, MARGEXA_FEE_DEDUCTION } from '../types';
 import {
   Sparkles,
   SlidersHorizontal,
@@ -18,20 +18,17 @@ import {
   Zap,
   Info,
   Check,
-  ChevronRight,
-  Crown
+  ChevronRight
 } from 'lucide-react';
 
 interface MatchmakerViewProps {
   onSelectCollege: (college: College) => void;
   onOpenAICounselor: (collegeContext?: { college: string; program: string }) => void;
-  onNavigateToMentorship?: () => void;
 }
 
 export const MatchmakerView: React.FC<MatchmakerViewProps> = ({
   onSelectCollege,
   onOpenAICounselor,
-  onNavigateToMentorship,
 }) => {
   const { student, applyToProgram, applications, setIsProfileModalOpen } = useAuth();
 
@@ -59,8 +56,8 @@ export const MatchmakerView: React.FC<MatchmakerViewProps> = ({
       if (modeFilter !== 'All' && match.program.mode !== modeFilter) {
         return false;
       }
-      // Budget
-      if (withinBudgetOnly && match.program.annualFee > student.budget) {
+      // Budget (evaluated after MARGEXA's flat ₹10,000 direct fee deduction)
+      if (withinBudgetOnly && getEffectiveFee(match.program.annualFee) > student.budget) {
         return false;
       }
       // Search
@@ -196,42 +193,6 @@ export const MatchmakerView: React.FC<MatchmakerViewProps> = ({
         </div>
       </div>
 
-      {/* Student VIP Mentorship Banner (₹349/month) */}
-      <div className="bg-gradient-to-r from-amber-500/15 via-indigo-500/10 to-blue-500/15 border border-amber-300/80 rounded-2xl p-4 sm:p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 text-left shadow-xs">
-        <div className="flex items-start sm:items-center gap-3.5">
-          <div className="w-10 h-10 rounded-xl bg-amber-500 text-white flex items-center justify-center shrink-0 shadow-sm mt-0.5 sm:mt-0">
-            <Crown className="w-5 h-5 text-amber-100" />
-          </div>
-          <div>
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="text-[10px] uppercase font-black tracking-wider text-amber-900 bg-amber-200/90 px-2 py-0.5 rounded border border-amber-300">
-                VIP Mentorship Monthly Plan • ₹349/mo
-              </span>
-              <h3 className="text-sm font-bold text-slate-950">
-                Students can get Priority VIP Counseling & 1-on-1 Mentorship for ₹349/mo
-              </h3>
-            </div>
-            <p className="text-xs text-slate-600 mt-0.5 leading-relaxed">
-              One monthly subscription unlocks 20-minute priority callbacks and 1-on-1 strategic sessions with veteran academic deans. You do not have to pay every time!
-            </p>
-          </div>
-        </div>
-
-        <div className="flex items-center gap-3 shrink-0 self-end md:self-auto">
-          <div className="text-right hidden sm:block">
-            <div className="text-xs text-slate-400 font-medium">Monthly Plan</div>
-            <div className="text-sm font-black text-slate-900">₹349 / month</div>
-          </div>
-          <button
-            onClick={() => onNavigateToMentorship && onNavigateToMentorship()}
-            className="px-4 py-2 rounded-xl bg-slate-900 hover:bg-indigo-600 text-white text-xs font-bold transition whitespace-nowrap cursor-pointer flex items-center gap-1.5 shadow-xs"
-          >
-            <Crown className="w-3.5 h-3.5 text-amber-400" />
-            Get VIP Plan (₹349/mo)
-          </button>
-        </div>
-      </div>
-
       {/* Filter and Search Bar */}
       <div className="bg-white p-4 rounded-2xl shadow-xs border border-slate-200/80 flex flex-col md:flex-row md:items-center justify-between gap-4">
         {/* Left Level Filter Tabs */}
@@ -312,7 +273,8 @@ export const MatchmakerView: React.FC<MatchmakerViewProps> = ({
           const applied = isApplied(match.college.id, match.program.id);
           const isHighMatch = match.overallScore >= 85;
           const isModerateMatch = match.overallScore >= 74 && match.overallScore < 85;
-          const feeDifference = student.budget - match.program.annualFee;
+          const effectiveFee = getEffectiveFee(match.program.annualFee);
+          const feeDifference = student.budget - effectiveFee;
 
           return (
             <div
@@ -490,32 +452,40 @@ export const MatchmakerView: React.FC<MatchmakerViewProps> = ({
 
                 {/* Right Side: Fee & Action CTA */}
                 <div className="lg:w-64 shrink-0 flex flex-col justify-between border-t lg:border-t-0 lg:border-l border-slate-100 pt-4 lg:pt-0 lg:pl-6 space-y-3 text-left">
-                  {/* Fee vs Budget */}
-                  <div className="bg-slate-50/90 p-3 rounded-xl border border-slate-100">
-                    <div className="text-[11px] text-slate-500 font-medium">Annual Course Fee</div>
-                    <div className="text-xl font-black text-slate-900 flex items-center font-heading">
-                      <IndianRupee className="w-4 h-4 text-slate-700" />
-                      {match.program.annualFee.toLocaleString('en-IN')}
-                      <span className="text-xs font-normal text-slate-500 ml-1">/ year</span>
+                  {/* Fee vs Budget with MARGEXA ₹10,000 Deduction */}
+                  <div className="bg-slate-50/90 p-3 rounded-xl border border-slate-200/80 space-y-1.5">
+                    <div className="flex items-center justify-between text-[11px] text-slate-500">
+                      <span>Standard Fee:</span>
+                      <span className="line-through font-medium text-slate-400">
+                        ₹{match.program.annualFee.toLocaleString('en-IN')}/yr
+                      </span>
                     </div>
-                    {match.program.totalFee && (
-                      <div className="text-[11px] font-semibold text-slate-600 mt-0.5">
-                        Total Course: ₹{match.program.totalFee.toLocaleString('en-IN')}
+
+                    <div className="flex items-center justify-between text-[11px] font-bold text-emerald-800 bg-emerald-100/70 px-2 py-0.5 rounded-md border border-emerald-300/60">
+                      <span className="flex items-center gap-1">
+                        <Sparkles className="w-3 h-3 text-emerald-600" />
+                        MARGEXA Deduction:
+                      </span>
+                      <span>-₹10,000</span>
+                    </div>
+
+                    <div className="pt-1 border-t border-slate-200 flex items-baseline justify-between">
+                      <span className="text-xs font-bold text-slate-700">Net Fee:</span>
+                      <div className="text-xl font-black text-emerald-950 flex items-center font-heading">
+                        <IndianRupee className="w-4 h-4 text-emerald-700" />
+                        {effectiveFee.toLocaleString('en-IN')}
+                        <span className="text-[10px] text-slate-500 font-normal ml-0.5">/yr</span>
                       </div>
-                    )}
-                    {match.program.feeNote && (
-                      <div className="text-[10px] text-indigo-700 font-medium bg-indigo-50/80 px-2 py-0.5 rounded mt-1">
-                        {match.program.feeNote}
-                      </div>
-                    )}
+                    </div>
+
                     {feeDifference >= 0 ? (
                       <div className="text-[11px] text-emerald-700 font-semibold mt-0.5 flex items-center gap-1">
-                        <CheckCircle2 className="w-3 h-3 text-emerald-600" />
-                        ₹{feeDifference.toLocaleString('en-IN')} below your budget
+                        <CheckCircle2 className="w-3 h-3 text-emerald-600 shrink-0" />
+                        ₹{feeDifference.toLocaleString('en-IN')} within your budget
                       </div>
                     ) : (
                       <div className="text-[11px] text-amber-700 font-medium mt-0.5">
-                        ₹{Math.abs(feeDifference).toLocaleString('en-IN')} above standard budget
+                        ₹{Math.abs(feeDifference).toLocaleString('en-IN')} above budget (scholarships avail.)
                       </div>
                     )}
                   </div>

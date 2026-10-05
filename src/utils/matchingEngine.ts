@@ -1,4 +1,4 @@
-import { College, Program, StudentProfile, MatchResult } from '../types';
+import { College, Program, StudentProfile, MatchResult, getEffectiveFee } from '../types';
 
 export function calculateMatch(student: StudentProfile, college: College, program: Program): MatchResult {
   // 1. Academic Fit (40 points)
@@ -22,18 +22,19 @@ export function calculateMatch(student: StudentProfile, college: College, progra
     matchReasons.push(`Reach Program: Standard cutoff is ${minMarks}%, review via management/special counseling quota.`);
   }
 
-  // 2. Budget Fit (25 points)
+  // 2. Budget Fit (25 points) - Evaluated after MARGEXA's flat ₹10,000 direct fee deduction
   let budgetFit = 0;
   const studentBudget = student.budget || 100000;
-  const courseFee = program.annualFee || 50000;
+  const standardFee = program.annualFee || 50000;
+  const courseFee = getEffectiveFee(standardFee);
 
   if (courseFee <= studentBudget) {
     budgetFit = 25;
     const savings = studentBudget - courseFee;
     if (savings > 25000) {
-      matchReasons.push(`Excellent Budget Fit: Course fee (₹${courseFee.toLocaleString('en-IN')}/yr) is well below your ₹${studentBudget.toLocaleString('en-IN')} budget.`);
+      matchReasons.push(`Flat ₹10,000 MARGEXA Deduction Applied: Effective fee is ₹${courseFee.toLocaleString('en-IN')}/yr (Standard: ₹${standardFee.toLocaleString('en-IN')}), well within your budget.`);
     } else {
-      matchReasons.push(`Within Budget: Annual fee of ₹${courseFee.toLocaleString('en-IN')} fits comfortably.`);
+      matchReasons.push(`Within Budget with ₹10,000 MARGEXA Deduction: Effective fee is ₹${courseFee.toLocaleString('en-IN')}/yr (Standard: ₹${standardFee.toLocaleString('en-IN')}).`);
     }
   } else {
     const gap = courseFee - studentBudget;
@@ -41,9 +42,9 @@ export function calculateMatch(student: StudentProfile, college: College, progra
     budgetFit = Math.max(8, Math.round(25 - ratio * 15));
     if (college.scholarshipAvailable && studentMarks >= 70) {
       budgetFit = Math.min(25, budgetFit + 8);
-      matchReasons.push(`Scholarship Potential: Can reduce annual fee through ${college.shortName} merit grant.`);
+      matchReasons.push(`Scholarship Potential: Flat ₹10,000 MARGEXA cut applied + additional merit grant at ${college.shortName}.`);
     } else {
-      matchReasons.push(`Above standard budget by ₹${gap.toLocaleString('en-IN')}/yr (Installment & loan options available).`);
+      matchReasons.push(`₹${gap.toLocaleString('en-IN')}/yr above budget after ₹10,000 MARGEXA deduction (Standard: ₹${standardFee.toLocaleString('en-IN')}).`);
     }
   }
 

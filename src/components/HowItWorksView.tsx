@@ -66,17 +66,18 @@ export const HowItWorksView: React.FC<HowItWorksViewProps> = ({
     },
     {
       step: '03',
-      title: 'Kerala Scholarship & Concession Tracker',
-      tagline: 'Unlock State Welfare & Merit Grants',
+      title: 'Flat ₹10,000 Direct Fee Deduction & Merit Scholarships',
+      tagline: 'Flat ₹10,000 Off on All Colleges + Up to 50% Concessions',
       icon: Award,
       color: 'emerald',
       description:
-        'MARGEXA automatically scans state and national higher education welfare guidelines to match you with valid schemes including Kerala E-Grantz 3.0, KSHEC Higher Education Fellowships, and AICTE Pragati grants.',
+        'Under MARGEXA’s direct institutional partnership model, a flat ₹10,000 is deducted from the official college fee across all partner colleges. Plus, MARGEXA automatically scans institutional endowment rules to calculate additional merit fee waivers up to 50%.',
       details: [
-        'Kerala E-Grantz 3.0: 100% Tuition & Exam Fee Reimbursement for eligible categories',
-        'KSHEC Merit Scholarship: Up to ₹60,000/yr for top undergraduate & postgraduate students',
-        'AICTE Pragati Scheme: ₹50,000/year for female technical diploma & degree students',
-        'Central Sector Scheme (NSP): Direct cash grants for top 20th percentile Plus Two achievers',
+        'Flat ₹10,000 Direct Fee Deduction applied upfront to all partner colleges',
+        'Super Merit (90%+): 50% Additional Tuition Fee Reduction',
+        'Distinction Merit (80-89%): 40% Additional Tuition Fee Reduction',
+        'First Class Merit (75-79%): 25% Additional Tuition Fee Reduction',
+        'Additional ₹10,000 grant for Single Girl Children under women education quota',
       ],
     },
     {
@@ -114,11 +115,11 @@ export const HowItWorksView: React.FC<HowItWorksViewProps> = ({
       icon: Building,
       color: 'violet',
       description:
-        'Our Palakkad & Kochi admission coordinators arrange guided campus walkthroughs at Chathamkulam Knowledge City or partner campuses. Meet professors, inspect laboratory infrastructure, and finalize admission with complete confidence.',
+        'Our Palakkad & Kochi coordinators arrange all-inclusive MARGEXA Premium guided campus visits (₹999–₹1,999) featuring a personal guide, complimentary food, comprehensive college tours, and admission counseling at Chathamkulam Knowledge City and premier Kerala campuses.',
       details: [
-        'Hostel room inspections and mess food tasting arranged for parents',
-        'Dedicated admissions desk to assist with original certificate deposits',
-        'Continuous semester mentorship and campus placement guidance',
+        'All 6 services included: visit coordination, personal guide, food, college tour, counseling, and application assistance',
+        'Hostel room inspections and cafeteria food tasting arranged for parents',
+        'Direct admission counseling and on-the-spot merit scholarship verification',
       ],
     },
   ];

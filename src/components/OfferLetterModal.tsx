@@ -126,8 +126,44 @@ export const OfferLetterModal: React.FC<OfferLetterModalProps> = ({
               </div>
             </div>
 
+            {/* Locked Fee Structure & Concession */}
+            <div className="bg-emerald-50/80 border border-emerald-300/80 rounded-xl p-4 space-y-2 text-left">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-bold uppercase tracking-wider text-emerald-900 flex items-center gap-1.5">
+                  <ShieldCheck className="w-4 h-4 text-emerald-700" />
+                  AUTHENTICATED FEE ALLOTMENT & MARGEXA DEDUCTION
+                </span>
+                <span className="px-2 py-0.5 rounded-md bg-emerald-600 text-white font-black text-[10px] uppercase">
+                  Locked Guarantee
+                </span>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 text-xs">
+                <div className="bg-white p-2.5 rounded-lg border border-emerald-200">
+                  <span className="text-[10px] text-slate-500 uppercase block font-semibold">Standard Annual Fee</span>
+                  <span className="text-sm font-bold text-slate-800 line-through">
+                    ₹{(application.standardFee || 38000).toLocaleString('en-IN')}/yr
+                  </span>
+                </div>
+                <div className="bg-white p-2.5 rounded-lg border border-emerald-200">
+                  <span className="text-[10px] text-emerald-700 uppercase block font-bold">MARGEXA Direct Deduction</span>
+                  <span className="text-sm font-black text-emerald-700">
+                    -₹{(application.margexaDeduction || 10000).toLocaleString('en-IN')}
+                  </span>
+                </div>
+                <div className="bg-emerald-100/80 p-2.5 rounded-lg border border-emerald-300">
+                  <span className="text-[10px] text-emerald-950 uppercase block font-black">Net Tuition Fee Payable</span>
+                  <span className="text-base font-black text-emerald-950 font-heading">
+                    ₹{(application.effectiveFee || 28000).toLocaleString('en-IN')}/yr
+                  </span>
+                </div>
+              </div>
+              <p className="text-[10px] text-emerald-800 italic pt-1">
+                * Flat ₹10,000 deduction is credited directly under MARGEXA Institutional Bulk Intake Agreement.
+              </p>
+            </div>
+
             <p>
-              This allotment is recognized under direct university/institutional intake. If you are eligible for the <strong>Kerala State Post-Matric Scholarship, E-Grantz 3.0, or KSHEC Merit Fellowship</strong>, the applicable state educational assistance will be processed via your institutional verification desk.
+              This allotment is recognized under direct institutional intake and scholarship quota. If you are eligible for the <strong>Chathamkulam Institutional Merit Grant</strong> or <strong>Kerala State Scholarship</strong>, additional fee waivers of up to 40% will be adjusted during campus reporting.
             </p>
 
             <div className="space-y-1.5 pt-2">

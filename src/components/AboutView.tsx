@@ -99,26 +99,26 @@ export const AboutView: React.FC<AboutViewProps> = ({
           <div className="w-12 h-12 rounded-2xl bg-amber-600 text-white flex items-center justify-center shadow-md shadow-amber-600/20">
             <Award className="w-6 h-6" />
           </div>
-          <h3 className="text-xl font-bold font-heading text-slate-900">Kerala State Welfare & Merit Grants</h3>
+          <h3 className="text-xl font-bold font-heading text-slate-900">Guaranteed Merit Grants</h3>
           <p className="text-xs text-slate-600 leading-relaxed">
-            We guide eligible students to claim official Kerala government schemes like E-Grantz 3.0, KSHEC Merit Fellowships, and AICTE Pragati grants, securing full tuition fee reimbursements and official allowances.
+            Through institutional endowments from Chathamkulam Group and affiliated foundations, students with 75%+ marks receive locked-in fee waivers between 25% and 50% for all semesters of study.
           </p>
         </div>
       </section>
 
-      {/* Featured Strategic Alliance: Chathamkulam Business School & Kerala Partner Network */}
+      {/* Featured Strategic Alliance: Chathamkulam Group of Institutions */}
       <section className="bg-white rounded-3xl border border-slate-200 p-8 sm:p-10 shadow-md space-y-6">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-100 pb-6">
           <div className="space-y-1">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-bold">
               <Building className="w-3.5 h-3.5 text-amber-700" />
-              Verified College Network
+              Strategic Campus Anchor
             </div>
             <h2 className="text-2xl sm:text-3xl font-black font-heading text-slate-950">
-              Chathamkulam Business School & Premier Kerala Institutions
+              The Chathamkulam Group of Institutions Alliance
             </h2>
             <p className="text-xs sm:text-sm text-slate-600">
-              Palakkad & Statewide Kerala — Verified AICTE, University of Calicut, and DTE Recognized Higher Education.
+              Palakkad, Kerala — An esteemed hub of professional technical, managerial, and collegiate education.
             </p>
           </div>
 
@@ -128,48 +128,48 @@ export const AboutView: React.FC<AboutViewProps> = ({
             rel="noreferrer"
             className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold transition shrink-0 self-start md:self-auto"
           >
-            <span>Chathamkulam Portal</span>
+            <span>Official Campus Portal</span>
             <ExternalLink className="w-3.5 h-3.5 text-amber-300" />
           </a>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-3">
             <div className="text-base font-bold text-slate-900 flex items-center gap-2">
               <GraduationCap className="w-5 h-5 text-indigo-600" />
               <span>Chathamkulam Business School</span>
             </div>
             <p className="text-xs text-slate-600 leading-relaxed">
-              AICTE approved, affiliated with the University of Calicut. Offers premium 2-year full-time MBA programs in Logistics, Finance, Marketing, HR, and Business Analytics with strong tie-ups and campus placements.
+              AICTE approved, affiliated with the University of Calicut. Exclusively dedicated to postgraduate MBA excellence with cutting-edge academic infrastructure and high placement outcomes in Palakkad, Kerala.
             </p>
-            <div className="text-[11px] font-bold text-indigo-600">
-              • Total 2-Year MBA Course Fee: ₹1,35,000 (₹67,500/year)
+            <div className="text-[11px] font-bold text-indigo-700">
+              • AICTE Approved • University of Calicut Affiliated
             </div>
           </div>
 
           <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-3">
             <div className="text-base font-bold text-slate-900 flex items-center gap-2">
-              <Building className="w-5 h-5 text-cyan-600" />
-              <span>Central Polytechnic College (CPT)</span>
+              <Building className="w-5 h-5 text-emerald-600" />
+              <span>5 Focused MBA Specializations</span>
             </div>
             <p className="text-xs text-slate-600 leading-relaxed">
-              Government of Kerala premier technical institute in Thiruvananthapuram offering 3-year AICTE-approved diplomas in Mechanical, Civil, and Computer Engineering with lateral entry to B.Tech 2nd year.
-            </p>
-            <div className="text-[11px] font-bold text-cyan-700">
-              • Total 3-Year Polytechnic Fee: ₹11,400 (Govt. Subsidized)
-            </div>
-          </div>
-
-          <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-3">
-            <div className="text-base font-bold text-slate-900 flex items-center gap-2">
-              <BookOpen className="w-5 h-5 text-emerald-600" />
-              <span>Sacred Heart College (Autonomous)</span>
-            </div>
-            <p className="text-xs text-slate-600 leading-relaxed">
-              Top NAAC A++ rated premier institution in Kochi offering prestigious 3-year B.Com with Computer Application, BBA, and BCA programs with modern computing labs and campus recruitment.
+              Providing rigorous master's curriculum strictly in 5 industry-driven disciplines: <strong>Marketing</strong>, <strong>Human Resources</strong>, <strong>Finance</strong>, <strong>Data Analysis</strong>, and <strong>Logistics & Supply Chain Management</strong>.
             </p>
             <div className="text-[11px] font-bold text-emerald-700">
-              • Total 3-Year Degree Fee: ₹66,000 - ₹1,14,000
+              • Standard: ₹1,35,000–₹1,45,000/yr (Flat ₹10,000 MARGEXA deduction applied)
+            </div>
+          </div>
+
+          <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-3">
+            <div className="text-base font-bold text-slate-900 flex items-center gap-2">
+              <Award className="w-5 h-5 text-amber-600" />
+              <span>Placements & Industry Immersion</span>
+            </div>
+            <p className="text-xs text-slate-600 leading-relaxed">
+              Strategically situated near the Kanjikode industrial belt with corporate training, live analytics labs, and port logistics internships in Kochi and Chennai, leading to an outstanding 94%+ placement record.
+            </p>
+            <div className="text-[11px] font-bold text-amber-700">
+              • 94%+ Placement Record • International Certifications
             </div>
           </div>
         </div>

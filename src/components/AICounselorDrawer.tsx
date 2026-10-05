@@ -3,7 +3,6 @@ import Markdown from 'react-markdown';
 import { useAuth } from '../context/AuthContext';
 import { MargexaIcon } from './MargexaLogo';
 import { Send, Sparkles, X, User, RefreshCw, HelpCircle, ShieldCheck } from 'lucide-react';
-import { generateDomainExpertReply } from '../data/advisorKnowledge';
 
 interface AICounselorDrawerProps {
   isOpen: boolean;
@@ -112,11 +111,10 @@ How can I guide your admission journey today?`;
       };
       setMessages((prev) => [...prev, botMsg]);
     } catch (err) {
-      const richReply = generateDomainExpertReply(userPrompt, student);
       const fallbackMsg: ChatMessage = {
         id: (Date.now() + 1).toString(),
         sender: 'assistant',
-        text: richReply,
+        text: `With your score of **${student.percentage}%** and budget of **₹${student.budget.toLocaleString('en-IN')}/year**, you are eligible for direct seat allotment and up to **40% merit fee concessions** at Chathamkulam Institutions (Palakkad). Please apply through your MARGEXA dashboard or call our helpline at **+91 94470 12389**.`,
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
       };
       setMessages((prev) => [...prev, fallbackMsg]);
@@ -126,15 +124,14 @@ How can I guide your admission journey today?`;
   };
 
   const quickPrompts = [
-    'Tell me about the ₹349/month VIP Mentorship plan',
-    'Which Kerala state scholarships and E-Grantz schemes can I apply for?',
-    'Tell me about Chathamkulam Business School MBA options',
+    'How do I qualify for Chathamkulam merit fee waivers?',
+    'Tell me about Chathamkulam Business School MBA options (Marketing, HR, Finance, Data Analysis, Logistics)',
+    'Which diploma branch has the highest placement in Kerala?',
     'Can I join B.Tech 2nd year after polytechnic diploma (LET)?',
     'Distance vs Regular Degree: which is valid for Kerala PSC?',
-    'BCA vs B.Tech: Which is better for software jobs?',
-    'What are the hostel, food, and bus facilities at Chathamkulam?',
     'What courses fit my exact budget and marks?',
-    'How can Career Guidance Centers partner with MARGEXA?',
+    'What are the hostel, food, and bus facilities at Chathamkulam?',
+    'How does MARGEXA Flat ₹10,000 Fee Deduction work across colleges?',
   ];
 
   return (
@@ -277,7 +274,7 @@ How can I guide your admission journey today?`;
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Ask about colleges, cutoffs, Kerala scholarships, MBA..."
+              placeholder="Ask about Chathamkulam, cutoffs, merit fee waivers, MBA..."
               className="flex-1 bg-slate-100 border border-slate-200 rounded-xl px-4 py-2.5 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#0b2447] focus:bg-white transition"
               disabled={loading}
             />

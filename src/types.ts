@@ -28,6 +28,12 @@ export interface StudentProfile {
   vipPlanExpiry?: string;
 }
 
+export const MARGEXA_FEE_DEDUCTION = 10000;
+
+export const getEffectiveFee = (standardAnnualFee: number): number => {
+  return Math.max(0, standardAnnualFee - MARGEXA_FEE_DEDUCTION);
+};
+
 export interface Program {
   id: string;
   name: string;
@@ -70,6 +76,16 @@ export interface College {
   scholarshipAvailable: boolean;
   chathamkulamFlag?: boolean;
   galleryImages?: string[];
+  activePlan?: 'enterprise' | 'premium' | 'free';
+  featuredPromotion?: {
+    planTier: 'enterprise' | 'premium';
+    planPrice: string;
+    badge: string;
+    tagline: string;
+    highlights: string[];
+    priorityRank: number;
+    specialPerks: string[];
+  };
 }
 
 export interface CollegeRegistrationApplication {
@@ -91,6 +107,7 @@ export interface CollegeRegistrationApplication {
   offeredLevels: ('Diploma' | 'Undergraduate' | 'Postgraduate' | 'Distance Education')[];
   estimatedIntake: number;
   meritScholarshipOffered: boolean;
+  desiredPlan?: 'Free (₹0)' | 'College Premium (₹3,999/mo)' | 'College Enterprise (₹7,999/mo)';
   notes: string;
   status: 'Pending Review' | 'Inspection Scheduled' | 'Approved & Listed';
   submittedAt: string;
@@ -159,6 +176,9 @@ export interface Application {
   programName: string;
   programLevel: string;
   appliedDate: string;
+  standardFee?: number;
+  margexaDeduction?: number;
+  effectiveFee?: number;
   status:
     | 'Submitted'
     | 'Document Verification'
@@ -204,6 +224,52 @@ export interface Mentor {
   bio: string;
 }
 
+export interface CampusVisitBooking {
+  id: string;
+  studentName: string;
+  studentEmail: string;
+  phone: string;
+  collegeName: string;
+  packageTier:
+    | 'MARGEXA Admission Plus (₹499)'
+    | 'MARGEXA Student Visit (₹999)'
+    | 'MARGEXA Travel Plus (₹1,499)'
+    | 'MARGEXA VIP Family Experience (₹1,999)'
+    | 'Standard Visit Pass (₹999)'
+    | 'VIP Family Comprehensive (₹1,999)';
+  amount: number;
+  visitDate: string;
+  timeSlot: string;
+  attendeesCount: number;
+  foodPreference: 'Vegetarian' | 'Non-Vegetarian' | 'Any';
+  notes?: string;
+  status: 'Confirmed' | 'Guide Assigned' | 'Completed';
+  bookedAt: string;
+  guideAssigned?: string;
+  guideContact?: string;
+}
+
+export interface AdmissionPlusBooking {
+  id: string;
+  studentName: string;
+  studentEmail: string;
+  phone: string;
+  whatsappNumber: string;
+  targetCourse: string;
+  preferredTiming: string;
+  totalCalls: number;
+  remainingCalls: number;
+  callDurationMinutes: number;
+  totalMinutes: number;
+  amount: number;
+  status: 'Active' | 'In Progress' | 'Completed';
+  bookedAt: string;
+  assignedAdvisor: string;
+  roadmapSent: boolean;
+  notes?: string;
+}
+
+
 export interface PriorityCounselingBooking {
   id: string;
   studentName: string;
@@ -216,3 +282,50 @@ export interface PriorityCounselingBooking {
   status: 'Scheduled' | 'In Progress' | 'Completed';
   bookedAt: string;
 }
+
+export type CollegePlanTier = 'free' | 'premium' | 'enterprise';
+
+export interface CollegeSubscriptionPlan {
+  id: CollegePlanTier;
+  name: string;
+  price: number;
+  billingPeriod: string;
+  badge?: string;
+  description: string;
+  features: string[];
+  subFeaturesHeader?: string;
+}
+
+export interface CollegeSubscriptionBooking {
+  id: string;
+  collegeId: string;
+  collegeName: string;
+  contactPerson: string;
+  designation: string;
+  email: string;
+  phone: string;
+  plan: CollegePlanTier;
+  billingCycle: 'monthly' | 'annual';
+  amount: number;
+  status: 'Active' | 'Pending Verification' | 'Trial Active';
+  subscribedAt: string;
+  validUntil: string;
+  leadQuota?: string;
+  assignedManager?: string;
+}
+
+export interface CollegeEnquiryLead {
+  id: string;
+  studentName: string;
+  phone: string;
+  email: string;
+  district: string;
+  courseInterest: string;
+  scorePercentage: number;
+  budgetAnnual: number;
+  status: 'New' | 'Contacted' | 'Counseling Scheduled' | 'Admission Confirmed' | 'Archived';
+  receivedAt: string;
+  assignedStaff?: string;
+  notes?: string;
+}
+
